@@ -1,0 +1,9 @@
+22/08 10:14:50 I| ======= location: C:\Users\Administrator\Desktop\学习资料\学习内容\FreeSwitch\FreeSwitch\软电话\qyipphone\QYIPPhone.exe
+22/08 10:14:50 I| ======= FileVersion: F1.07_20171120     ProductVersion: 1.0.0.1
+22/08 10:14:50 I| =======
+22/08 10:14:50 I| 初始化: 读取QYIPPhone.ini成功.
+22/08 10:14:50 I| 初始化: 调入QYIPPhone.dll成功.
+22/08 10:14:50 I| 初始化: dll初始化成功!
+22/08 10:14:50 I| 初始化: 登录操作成功!
+22/08 10:14:50 I| 事件: 登录成功
+22/08 10:15:56 I| 事件: 来电: Incoming call|0

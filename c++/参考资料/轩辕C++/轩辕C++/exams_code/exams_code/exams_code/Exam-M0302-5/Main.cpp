@@ -1,0 +1,29 @@
+/*
+ *  stock.cpp
+ *
+ *  Created on: 2010-1-9
+ *      Author: kwarph
+ */
+
+#include <iostream>
+#include <algorithm>
+#include "Stock.h"
+
+int main() {
+    const int STOCK_COUNT = 5;
+
+    StockSystem::Stock stocks[STOCK_COUNT] = {
+            { "GOOG", 594.09 },
+            { "MSFT", 30.48 },
+            { "YHOO", 16.7 },
+            { "BIDU", 404.63 },
+            { "CSCO", 24.53 }
+    };
+
+    std::cout << "Welcome to Stock Management System!\n";
+
+    while (StockSystem::handleCommands(stocks, STOCK_COUNT))
+        ;
+
+    std::cout << "Bye!\n";
+}

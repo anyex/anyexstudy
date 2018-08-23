@@ -1,0 +1,26 @@
+10/08 18:22:38 I| ======= program location: C:\Users\Administrator\Desktop\学习资料\全宇平台\qyphoneupdate20180809\qyphoneupdate\QYPhone.exe
+10/08 18:22:38 I| ======= FileVersion: 软电话 20180809     ProductVersion: 软电话 20180809
+10/08 18:22:38 I| =======
+10/08 18:22:39 I| 启动侦听webclient成功，端口 = 80
+10/08 18:23:10 I| 版本更新: 发现新版本:  旧版本(1.00), 新版本(1.5)
+10/08 18:23:10 I| 版本更新: 下载时间点变更:  时间范围(00:00-01:00),  下载时间点(00:39)
+10/08 18:25:05 I| Client: WebStub=4380336, NMT_Connect(client ip = 127.0.0.1)
+10/08 18:25:05 I| Client: WebStub=4380336, NMT_WebLoginSucc(client ip = 127.0.0.1)
+10/08 18:25:06 I| 客户端事件：WebLoginSucc
+10/08 18:25:06 I| 客户端事件：Version - nothing,ExtPhone = 10001002, Password = xxx, SipServerIPPort=192.168.1.251:65060
+10/08 18:26:06 I| volume:set_speaker:SetVolum_win7: succ,volume=70
+10/08 18:26:06 I| volume:set_microphone:SetVolum_win7: succ,volume=70
+10/08 18:29:39 I| volume:set_speaker:SetVolum_win7: succ,volume=70
+10/08 18:29:39 I| volume:set_microphone:SetVolum_win7: succ,volume=70
+10/08 18:33:48 I| volume:set_speaker:SetVolum_win7: succ,volume=70
+10/08 18:33:48 I| volume:set_microphone:SetVolum_win7: succ,volume=70
+10/08 18:36:46 I| volume:set_speaker:SetVolum_win7: succ,volume=70
+10/08 18:36:46 I| volume:set_microphone:SetVolum_win7: succ,volume=70
+10/08 18:46:58 I| volume:set_speaker:SetVolum_win7: succ,volume=70
+10/08 18:46:58 I| volume:set_microphone:SetVolum_win7: succ,volume=70
+10/08 18:48:53 I| volume:set_speaker:SetVolum_win7: succ,volume=70
+10/08 18:48:53 I| volume:set_microphone:SetVolum_win7: succ,volume=70
+10/08 18:53:02 I| volume:set_speaker:SetVolum_win7: succ,volume=70
+10/08 18:53:02 I| volume:set_microphone:SetVolum_win7: succ,volume=70
+10/08 18:55:25 I| Client: WebStub=4380336, NMT_Disconnect(client ip = 127.0.0.1), 
+10/08 18:55:26 I| 客户端事件：Disconnect

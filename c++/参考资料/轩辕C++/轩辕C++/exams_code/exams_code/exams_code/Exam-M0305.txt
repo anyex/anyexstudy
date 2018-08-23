@@ -1,0 +1,112 @@
+Exam-M0305 函数
+一、请将下面无法通过编译、或会导致警告的代码片段找出来，并说明原因：
+// #1 
+int f1(); 
+int f1() const; 	// 如果是类的成员函数，可以通过编译，否则错误，const只能出现在类的成员函数
+
+// #2 
+int f2(const int& a, const int& b = 0); 
+int f3(const int& a = 1, const int& = 0); 
+int f4(const int& a = 1, const int&);  // 错误，默认参数必须从最后的参数依次向前声明
+// ... 
+// implementation of f2() 
+int f2(const int& a, const int& b = 0) {  // 错误，如果函数有事先声明，默认参数只能在函数声明中出现，不能出现在函数定义中
+    // ... 
+    return 0; 
+} 
+
+// #3 
+int f5(int&, int&) { /* ... */ return 0; } 
+int f5(int& a, int& b) { /* ... */ return a + b; }  // 重复定义f5
+void f5(int& a, int& b) { /* ... */} 				// 重复定义f5
+int f5(int& b, int& a) { /* ... */ return b + a; } 	// 重复定义f5
+void f5(int& b, int& a) { /* ... */ } 				// 重复定义f5
+
+// #4 
+void f6(const int& a = 0); 
+void f6(); 
+// ... 
+// call f6() 
+f6(); 				// 调用过程中出现二义性，编译错误
+
+// #5 
+int f7(const int& n) { 
+    if (8 < n) { 
+        return n + 8; 
+    } 
+}					// 编译警告，可能没有返回值，比如 (8 >= n)的情况下
+
+// #6
+void f8(int& n);
+void f9(double[] d);
+void f10(int* a);
+void f11(const int& n);
+
+// call f8(), f9(), f10(), f11()
+short s = 9;
+			// 记住一点：任何方式的类型转换都会产生临时对象（右值）
+f8(s);		// 错误，引用类型的参数不接受左值。因为s是short而非int，所以传参过程中会将s转换为int而临时对象(右值)
+f8(6);		// 错误，引用类型的参数不接受左值。字面量是右值
+f8(short(3));	// 错误，同 f8(s);
+
+int x = 8;
+int a[5];
+f10(a);  // OK
+
+double* dp = new double(.618);
+f9(dp);  // 编译器OK，但运行期有隐患
+
+f11(s);		// OK，const引用 接受右值
+
+二、请预测下面代码的输出
+struct C {
+    C(const int& id) : _id(id) {
+        cout << "Object #" << _id << " created.\n";
+    }
+
+    ~C() {
+        cout << "Object #" << _id << " destroyed.\n";
+    }
+
+private:
+    int _id;
+};
+
+C cc(36);
+
+int main() {
+    cout << "------- begin -------\n";
+    for (int i = 0, j = 12; i < 5; ++i, ++j) {
+        C c1(i);
+        static C c2(j);		// 注意：静态对象只被构造(初始化)一次，并且在main函数结束后析构
+    }
+    cout << "-------- end --------\n";
+    return 0;
+}
+
+三、实现一个打印 斐波那契数列(Fibonacci Sequence)的函数
+要求：
+1. 用递归函数实现；
+2. 提示用户输入要输出的数字个数，如：
+How many figures you want to export? 5       # 5是用户的输入
+The result you want: 1 1 2 3 5
+(略)
+
+四、实现一系列相关的函数，完成下列功能：
+找出一个int型数组中符合特定条件的元素，打印之；
+特定条件如（不限于）：
+1. 数组元素比n小；
+2. 数组元素比n大；
+3. 数组元素等于n
+4. ...
+提示：使用函数指针来简化任务。
+(略)
+
+五、设计一些函数，实现UNIX下cat命令的部分功能
+1. 接受一个到多个文件名作为命令行参数，将所有文件的文件名及其内容打印到屏幕；
+2. 如果命令行参数中有”-n“，则为每一个输出行标上行号（如同cat -n 所做的）；
+3. 如果没有输入任何文件名，则默认从标准输入（键盘）读取内容，并打印读取到的内容。
+
+提示：逐行读取文件内容的操作，关键方法：getline(istream&, string&)，可以参考 类istream 的API；
+
+(附件：my_cat.zip)

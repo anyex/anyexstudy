@@ -1,0 +1,237 @@
+客户端
+
+int main()
+{
+	GOOGLE_PROTOBUF_VERIFY_VERSION;//检查Proubf版本
+	//定义几种服务
+	Service<TestService> testService;
+	Service<FooCall> fooCall;
+	Service<FooOneway> fooOneway;
+	Service<FooEvent> fooEvent;
+	Service<FooBroadcast> fooBroadcast;
+	
+	Service<MyTest> myTest;
+	
+	//测试自己实现的服务
+    printf("1 + 2 = %d\n", testService->Add(1, 2));
+	
+	//加载动态库
+	void* libbus_rocketmq = dlopen("./libbus_rocketmq.so", RTLD_LAZY);
+	//加载失败将不能运行
+	if (!libbus_rocketmq)
+	{
+		fprintf(stderr, "%s\n", dlerror());
+		exit(EXIT_FAILURE);
+	}
+	//初始化RPC
+	RPCServiceContainer::GetContainer()->Init();
+	printf("started\n");
+	sleep(1);
+	//定义服务请求包和回复包
+	std::shared_ptr<FooRequest> req = std::make_shared<FooRequest>();
+	std::shared_ptr<FooResponse> rsp = std::make_shared<FooResponse>();
+	//设置服务请求
+	req->set_id(1);
+	req->set_name("testuser");
+	req->set_email("testuser@test.com");
+	req->set_name("test");
+	int i;
+	std::cout << "0:TestMethod1\n1:TestMethod2\n2:Oneway\n3:FireEvent1\n4:Broadcast1" << std::endl;
+	std::cout << "select:";
+	std::string line;
+	while (std::getline(std::cin, line))
+	{
+		if (line.length() != 1)
+		{
+			std::cout << "0:TestMethod1\n1:TestMethod2\n2:Oneway\n3:FireEvent1\n4:Broadcast1" << std::endl;
+			std::cout << "select:";
+			continue;
+		}
+		if (!std::isdigit(line[0]))
+		{
+			std::cout << "0:TestMethod1\n1:TestMethod2\n2:Oneway\n3:FireEvent1\n4:Broadcast1" << std::endl;
+			std::cout << "select:";
+			continue;
+		}
+		i = std::atoi(line.c_str());
+		switch (i)
+		{
+		case 0:
+			fooCall->TestMethod1(req, rsp);//
+			
+			/*TestMethod1(FooRequest,FooResponse)
+			{
+			   RPCClient->Call("服务名"，“方法名”,FooRequest,FooResponse，延时)
+			   {
+			        Serialize序列化；
+					ResponseBus->CreateFuture(response)；
+					MQClient->Call()
+					{
+					   //设置消息
+					   MQMessage message；
+					      setTag
+						  setKey
+						  setBody
+					   RocketMQ->send(message);//发送到消息总线
+					}
+			   }
+			}*/
+			
+			
+			
+			
+			std::cout << "TestMethod1:" << rsp->result() << std::endl;
+			/*
+				
+			*/
+			
+			break;
+		case 1:
+			fooCall->TestMethod2(req, rsp);
+			std::cout << "TestMethod2:" << rsp->result() << std::endl;
+			break;
+		case 2:
+			fooOneway->Oneway(req);
+			std::cout << "Oneway" << std::endl;
+			break;
+		case 3:
+			fooEvent->FireEvent1(req);
+			std::cout << "FireEvent1" << std::endl;
+			break;
+		case 4:
+			fooBroadcast->Broadcast1(req);
+			std::cout << "Broadcast1" << std::endl;
+			break;
+		case 5:
+			myTest->DoTest(req,rsp);
+			std::cout << rsp->result()<<"\t"<<rsp->message()<<std::endl;
+			std::cout << "MyTest" << std::endl;
+		default:
+			std::cout << "0:TestMethod1\n1:TestMethod2\n2:Oneway\n3:FireEvent1\n4:Broadcast1" << std::endl;
+		}
+		std::cout << "select:";
+	}
+    return 0;
+}
+
+
+
+服务端：
+//继承probuf生成的MyTestServer，通过实现纯虚函数来实现功能
+	class MyTestImpl :public MyTestServer {
+public:
+	virtual void DoTest(std::shared_ptr<FooRequest> resuest,
+		std::shared_ptr<FooResponse> response) {
+
+		//std::time_t now = std::time(nullptr);
+		std::cout << "resuset:" << resuest->name() << "\t" << resuest->age() << "\t" << resuest->sex() << "\t" << std::endl;
+
+		response->set_result(555);
+		response->set_message("back message");
+		
+	}
+};
+
+
+static RPCService<MyTest> myTest = std::make_shared<MyTestImpl>();
+/*
+   template <class TService> class RPCService
+{
+public:
+	template<class TImpl>RPCService(std::shared_ptr<TImpl> impl)
+	{
+		impl->SetImplementor(typeid(TImpl).name());
+		std::shared_ptr<ServiceBase> service = std::dynamic_pointer_cast<ServiceBase>(impl);
+		RPCServiceContainer::GetContainer()->Add(service);
+		{
+		   servers.insert(server);//插入到服务器容器集合
+	      if (inited)
+	      {
+           		server->Init()
+           		{
+           		  switch (type)//根据服务类型注册不同的监听事件
+           	{
+           	case SERVICE_CALL:
+           		listener = factory->Listen(serviceName.c_str(), shared_from_this());
+				
+				/*
+				 std::shared_ptr<RPCListener> RPCServiceFactoryImpl::Listen(const char * serviceName,
+				 std::shared_ptr<RPCCallback> callback)
+				{
+					std::shared_ptr<rocketmq::DefaultMQPushConsumer> consumer = mq->CreateConsumer(serviceName, serviceName);
+					consumer->setMessageModel(rocketmq::CLUSTERING);
+					return std::make_shared<RPCListenerImpl>(consumer, callback);//将回调函数和消费者进行绑定
+				}
+				
+				*/
+				
+				
+           		break;
+           	case SERVICE_EVENT:
+           		listener = factory->ListenEvent(serviceName.c_str(), implementorName.c_str(), shared_from_this());
+           		break;
+           	case SERVICE_BROADCAST:
+           		listener = factory->ListenBroadcast(serviceName.c_str(), shared_from_this());
+           		break;
+           	
+           	}
+           	if (listener && autoStart)
+           	{
+           		listener->Start();
+           	}
+           		};
+	}
+		}
+	}
+};
+   
+
+*/
+	
+int main()
+{
+	GOOGLE_PROTOBUF_VERIFY_VERSION;	//检查Proubf版本
+	void* libbus_rocketmq = dlopen("./libbus_rocketmq.so", RTLD_LAZY);//加载动态库
+	if (!libbus_rocketmq)//加载失败就直接退出
+	{
+		fprintf(stderr, "%s\n", dlerror());
+		exit(EXIT_FAILURE);
+	}
+	RPCServiceContainer::GetContainer()->Init();//初始化
+	/*{
+		RPCServiceContainerImpl::Init()
+		{
+		  ServiceBase->Init()
+		  {
+		    RPCServiceBase->Init();
+			switch(type)
+			{
+			   RPCServiceFactory->listen()//根据消息类型调用监听
+			   {
+			     RocketMQ->CreateConsumer()//创建消费者从消息总线获取消息
+				 根据监听到的服务名生成监听到的服务实例
+				 再调用回调函数
+			   }
+			   
+			}
+		  }
+		}
+		
+	}*/
+	printf("started\n");
+	sleep(-1);//主线程休眠无限时间
+    return 0;
+}
+
+
+
+总结：
+	1.客户端上通过调用用probuf申明的服务及相应方法，通过服务的方法并传入应答和请求的数据，就可以实现和服务端的通信。
+	
+	
+	2.服务端上通过继承注册的服务类，然后重写要实现的回调方法，调用RPCServiceContainer::GetContainer()->Init()就可以实现根据不同的服务标志调用不同的服务函数
+	  并通过设置probuf定义的应答消息，向客户端反馈。
+	  
+	  
+	
+	

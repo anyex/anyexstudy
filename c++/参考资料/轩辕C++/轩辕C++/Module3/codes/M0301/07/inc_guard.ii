@@ -1,0 +1,19 @@
+# 1 "inc_guard.cpp"
+# 1 "<built-in>"
+# 1 "<command-line>"
+# 1 "inc_guard.cpp"
+# 1 "inc_guard.h" 1
+
+
+
+class A {
+ short m;
+
+public:
+ void f();
+};
+# 2 "inc_guard.cpp" 2
+
+int main() {
+
+}

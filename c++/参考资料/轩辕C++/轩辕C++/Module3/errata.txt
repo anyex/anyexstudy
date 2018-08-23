@@ -1,0 +1,59 @@
+Module03-01.ogv：
+1，讲义page M03-01-19中，“即一次定义原则（OOD）"中缩写 OOD 错误，应为 ODR。
+
+Module03-02.ogv：
+1，int* p = &i; p += 4;
+在视频(34'-36'之间)中所讲有误：应该是指针 p 被移动了 4*sizeof(Type) bytes ，我们这次的Type是int，
+所以不是移动了4bytes，而是4个int型所占的空间大小。
+
+Module03-05.ogv：
+1, 在视频(1h33'前后)，函数定义的是 void f(double a) {}，但在main() 里面作前置声明的时候写成
+double f(double); 属于笔误！
+
+Module03-08.ogv：
+1，关于类的赋值操作符，视频和原讲义中描述的是：一个类的赋值操作符不能重载，是错误的说法，
+一个类的赋值操作符可以被重载
+
+Module03-09.ogv：
+1，在视频中，对于一个类的某个成员函数是另一个类的友元的演示不成功，原因是将一个类X声明为另一个类Y
+的友元，要求类X在类Y之前已经正确定义！
+
+class X {
+    int a;
+public:
+    void f1();
+};
+
+class Y {
+    int k;
+public:
+    void func();
+    friend void X::f1();    // class X 必须在 class Y 之前定义
+};
+
+================================================================
+下面代码就有问题：
+
+class Y;    // 尽管做了前置声明
+
+class X {
+    int a;
+public:
+    void f1();
+    friend void Y::func(); // 但这里一定报错，因为要成为class X 的友元，class Y 须先完整定义
+};
+
+class Y {
+    int k;
+public:
+    void func();
+    friend void X::f1();
+};
+
+2,讲义Module03-10的page M03-10-12中
+   派生类要使用自己的版本的函数，可以覆盖(Overwriting)基类的虚函数，但必须符合：
+   Overwriting一词不准确，应为 Overriding
+   
+Module03-13.ogv：
+1, 文件Array.tcc中的 #include "Array.h" 没有必要，因为Array.tcc是被Array.h包含
+

@@ -1,0 +1,59 @@
+一、请为下列事物定义合适的类型：
+1. 地球到火星的距离 	double
+2. 水杉林中树木数  int
+3. 人类的性别  bool / enum { MAEL, FEMALE };
+4. 刘翔在国际赛事中110米栏最好成绩 	float / double
+5. 一年12个月和四季、一周7天的表示   enum { ... };
+6. 信号灯的状态 enum { GREEN, YELLOW, READ };
+
+二、类型大小与极值
+1. 用cout打印您的C++实现中所有基本类型的极值以及size。
+2. 定义一些枚举类型，找出各种类型的极值以及size。
+3. 尝试查看头文件<limits>中有关浮点数的各种操作。
+
+三、文字常量
+1. 下面几个文字常量的正确性？
+12    5e-3    (OK)
+'La'  (L'a')
+'\y'  (无效的转义字符)
+
+2. 将下面的整型数分别按16进制、8进制的格式，浮点数按科学计数法打印出来(提示：可以查阅C++ I/O流相关的API和文档)：
+178    65535   12.21    .236
+std::cout << "hexadecimal of 178 and 65535: " << std::hex << 178 << ' ' << 65535 << '\n';
+std::cout << "Octal of 178 and 65535: " << std::oct << 178 << ' ' << 65535 << '\n';
+std::cout << "scientific notation of 12.21 and .236: " << std::scientific << 12.21 << ' ' << .236 << '\n';
+
+四、请判断下面名字的正确性，如果不正确，指出错误所在：
+unsigned n = 8;		// 正确
+static m = 0;		// 错误，m未指定类型
+extern double yp;	// 正确
+extern double yp;	// 正确，由于是声明，不涉及存储分配，所以可以重复声明
+
+int age = 90;
+short age = 12;		// 错误，age重复定义
+
+int 2i;				// 错误，名字只能由英文字母和_开头
+int i-2;			// 错误，名字含无效字符-
+int i_2;			// 正确
+
+Main_Loop&Local_Var; // 错误， 类型缺失，名字包含无效字符&
+
+One~Three;			// 错误，名字含无效字符～
+one_to_three;		// 正确
+one2three;			// 正确
+
+enum E1 { OK, CANCEL };
+enum E1 e = OK;		// 正确，类型前可以加enum struct等关键字
+
+五、预测下面代码的输出结果：
+int i;
+int main() {
+       cout << i << endl; // #1				// 打印全局对象i的值，0
+       int i;
+
+       {
+              int i = 8;					
+              cout << i << endl; // #2		// 打印该语句块中局部对象i的值，8
+       }
+       cout << i << endl; // #3				// 打印main()函数局部对象i的值，值不确定
+}

@@ -1,0 +1,186 @@
+
+通信，必须要有协议，否则无法理解对方的码流，在probuf中，协议是由一系列的消息组成。
+
+一.什么是probuf
+	Google Protocol Buffer是一种轻便高效的结构化数据存储格式，与平台，语言无关，可扩展，可用于通信协议和数据存储
+	
+二.优点
+	解析速度快，比对应的XML快约20-100倍
+	序列化数据非常简洁，紧凑，与XML相比，其序列化之后的数据量约为1/3到1/10
+
+
+
+
+
+
+
+
+
+三. RPC
+	1.简介
+		RPC(远程过程调用)，是建立在Socket之上的，出于一种类比的愿望，在一台机器上运行的主程序可以调用另外一台机器上的字程序。
+	RPC的基本原则是以模块调用的简单性忽略通讯的具体细节，以便程序员不用关心C/S之间的通讯协议。RPC是在Socket的基础上实现的，比Socket需要更多
+	的网络资源和系统资源
+	
+	2.结构原理
+		RPC也是种C/S的编程模式，类似于C/S Socket的编程模式，在建立RPC服务以后，客户端的调用可以通过底层的RPC传输通道，可以是UDP，也可以是TCP，并根据传输钱所提供的目的地址及RPC
+		上层的应用程序号转至相应的RPC应用程序服务端，且此时的客户端处于等待的状态，直至收到应答或Time Out超时信号
+		
+		当服务端获得请求消息时，会根据注册RPC时告诉给RPC系统的例程入口地址，执行相应的操作，并将结果返回至客户端
+		一个远程的有三个要素来唯一确定：程序号，版本号，过程号
+			程序号是用来区别一组相关的并且具有唯一过程号的远程过程
+			一个程序可以有一个或几个不同的版本，而每个版本的程序都包含一系列能被远程调用的过程
+			每个版本都包含有许多可远程调用的过程，每个过程都有其唯一的标识的过程号
+
+	
+四.probuf语法
+	message是proubuf中的结构化数据，类似于C++中的类，可以在其中定义要处理的数据
+	probuf有三个字段修饰符：
+		option:该字段可以有0个或1个值，不超过1个
+		required：该值必须要设置
+		repeated：该字段可以重复任意多次，可以视为一个数组
+		
+	
+		
+
+
+定义消息类型
+    syntax = "proto3";//限定文件使用proto3的语法
+	
+	//定义消息
+	message SearchRequest{
+		string query = 1;//string指定了字段类型，1是分配标量(每个定义在消息中的字段都会被分配一个唯一的标量，这些标量用于标识定义在二进制消息格式中的属性
+							每个标量一旦定义就不允许被改变)
+		int32 page_number = 2;
+		int32 result_per_page = 3;
+	}
+	
+	//还可以定义保留字段
+	message Foo{
+		reserved  2;
+		reserved  "foo","bar";
+	}//定义保留属性位置2，即在2这个位置上不可以定义属性，如string a = 2；
+	
+默认值
+	string 类型，默认是空字符串
+	bytes  类型，默认值是bytes
+	bool   类型，默认是false
+	数字   类型，默认是0
+	枚举   类型，默认第一个枚举值是0
+	repeated 修饰的属性，默认值是空(在相对应的编程语言中通常是一个空的list)
+	
+引用其它消息类型
+
+	message SearchResponse{
+		repeated Result results = 1;//定义一个Result类型的消息列表
+	}
+	
+	message Result{
+		string url = 1;
+		string title = 2;
+		repeated string snippets = 3;
+	}
+	
+导入其它proto文件的消息类型
+import "project/other.proto"	
+	
+
+消息内嵌：
+	message SearchResponse{
+		message Result{
+			string url = 1;
+			string ti = 2;
+		}
+		repeated a = 1;
+		
+	}
+	
+五.Probuf RPC使用
+
+test.proto:
+
+syntax = "proto3";//表明使用的probuf的编译器版本为v3
+import "rpc.proto";//导入了一个外部proto文件中的定义，类似c++中的include,但是只能引导当前目录下的proto文件
+
+package foo.bar;//声明了一个包名，防止不同的消息类型命名冲突
+
+message Person {//message是proubuf中的结构化数据，类似于C++中的类，可以在其中定义需要处理的数据
+  string name = 1;
+  int32 id = 2;
+  string email = 3;
+}
+
+message FooRequest {
+  string name = 1;
+  int32 id = 2;
+  string email = 3;
+}
+
+message FooResponse {
+  int32 result = 1;
+  string message = 2;
+}
+
+//定义一个服务，服务的请求包是FooRequest类型，回复由FooResponse定义，未定义rpc.type就使用默认的类型为CALL
+service FooCall {
+	option(rpc.default_timeout) = 1000;//option修饰符，该字段可以有0个或1个值，不超过1个
+  rpc TestMethod1(FooRequest) returns(FooResponse){
+  	option(rpc.timeout)=2000;
+  }
+  rpc TestMethod2(FooRequest) returns(FooResponse);
+}
+
+//定义一个服务FooOneWay，类型为Call，服务的请求由FooRequest定义，回复由FooResponse定义
+service FooOneway {
+	option(rpc.type)=CALL;
+  rpc Oneway(FooRequest) returns(FooResponse){
+  	option(rpc.oneway) = true;
+  }
+}
+
+//定义服务FooEvent，注册类型为EVENT，请求由FooRequest定义，回复由rpc.Void定义
+service FooEvent {
+	option(rpc.type)=EVENT;
+  rpc FireEvent1(FooRequest) returns(rpc.Void);
+}
+
+service FooBroadcast {
+	option(rpc.type)=BROADCAST;
+  rpc Broadcast1(FooRequest) returns(rpc.Void);
+}		
+		
+	
+	
+RPC.proto:
+	
+syntax = "proto2";
+import "google/protobuf/descriptor.proto";
+package rpc;
+
+//定义服务类型
+enum ServiceType {
+  CALL = 1;
+  EVENT = 2;
+  BROADCAST = 3;  
+}
+//service扩展属性
+extend google.protobuf.ServiceOptions {
+  optional int32 default_timeout = 50000 [default = 5000];
+  optional ServiceType type = 50001 [default = CALL];
+}
+//Method扩展属性
+extend google.protobuf.MethodOptions {
+  optional int32 timeout = 60000;
+  optional bool oneway = 60001 [default = false];
+}
+
+message Void {
+
+}
+
+
+	
+	
+	
+
+	

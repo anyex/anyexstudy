@@ -1,0 +1,12 @@
+sofia  global siptrace on  				//开启SIP消息路由跟踪
+sofia  global siptrace off 				//关闭SIP路由
+show codec				 				//显示支持的编解码方案
+			
+reloadxml								//重新加载配置文件
+reload mod_xxx							//重新加载模块
+sofia status profile internal			//查看internal的配置情况
+
+
+	
+ 	
+	

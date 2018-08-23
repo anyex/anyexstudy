@@ -1,0 +1,36 @@
+﻿生成启动时间为 2018/8/22 星期三 下午 06:27:16。
+     1>项目“C:\Users\Administrator\Desktop\学习资料\学习内容\FreeSwitch\练习源码\TestClient\TestClient\TestClient.vcxproj”在节点 2 上(Build 个目标)。
+     1>InitializeBuildStatus:
+         正在创建“C:\Users\Administrator\Desktop\学习资料\学习内容\FreeSwitch\练习源码\TestClient\TestClient\obj\x64\Debug\TestClient.tlog\unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+       _ValidateSources:
+         Validating sources
+       _CopySources:
+         Copying sources remotely to '192.168.1.136'
+         Copying file 'C:\Users\Administrator\Desktop\学习资料\学习内容\FreeSwitch\练习源码\TestClient\TestClient\main.cpp' to '/root/projects/TestClient/main.cpp'
+       _ValidateValidArchitecture:
+         Validating architecture
+         Current project architecture 'x64' is compatible with the remote system architecture 'x64' ('x64').
+       ClCompile:
+         Starting remote build
+         Compiling sources:
+         Invoking 'g++'
+         g++ -c -x c++ /root/projects/TestClient/main.cpp -I /root/projects/TestClient/D/VS2017/Common7/IDE/VC/Linux/include/usr/include -g2 -gdwarf-2 -o "/root/projects/TestClient/obj/x64/Debug/main.o" -Wall -Wswitch -W"no-deprecated-declarations" -W"empty-body" -Wconversion -W"return-type" -Wparentheses -W"no-format" -Wuninitialized -W"unreachable-code" -W"unused-function" -W"unused-value" -W"unused-variable" -O0 -fno-strict-aliasing -fno-omit-frame-pointer -fthreadsafe-statics -fexceptions -frtti -std=c++11
+         main.cpp
+         Done compiling '/root/projects/TestClient/main.cpp'
+       Link:
+         Linking objects
+         Invoking 'ld'
+         g++ -o "/root/projects/TestClient/bin/x64/Debug/TestClient.out" -Wl,--no-undefined -Wl,-L/usr/lib -Wl,-L/usr/lib/ -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack -lpthread /root/projects/TestClient/obj/x64/Debug/main.o -lesl
+         Done linking, output file name: '/root/projects/TestClient/bin/x64/Debug/TestClient.out'
+         Copying file '/root/projects/TestClient/bin/x64/Debug/TestClient.out' to 'C:\Users\Administrator\Desktop\学习资料\学习内容\FreeSwitch\练习源码\TestClient\TestClient\bin\x64\Debug\TestClient.out'
+         TestClient.vcxproj -> C:\Users\Administrator\Desktop\学习资料\学习内容\FreeSwitch\练习源码\TestClient\TestClient\bin\x64\Debug\TestClient.out
+       FinalizeBuildStatus:
+         正在删除文件“C:\Users\Administrator\Desktop\学习资料\学习内容\FreeSwitch\练习源码\TestClient\TestClient\obj\x64\Debug\TestClient.tlog\unsuccessfulbuild”。
+         正在对“C:\Users\Administrator\Desktop\学习资料\学习内容\FreeSwitch\练习源码\TestClient\TestClient\obj\x64\Debug\TestClient.tlog\TestClient.lastbuildstate”执行 Touch 任务。
+     1>已完成生成项目“C:\Users\Administrator\Desktop\学习资料\学习内容\FreeSwitch\练习源码\TestClient\TestClient\TestClient.vcxproj”(Build 个目标)的操作。
+
+已成功生成。
+    0 个警告
+    0 个错误
+
+已用时间 00:00:01.66

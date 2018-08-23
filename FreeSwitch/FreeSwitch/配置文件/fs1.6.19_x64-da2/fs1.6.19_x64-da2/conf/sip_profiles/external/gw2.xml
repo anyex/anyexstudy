@@ -1,0 +1,9 @@
+<gateway name="gw2"> 
+    <param name="realm" value="114.55.58.172:5060"/>
+    <param name="username" value="cqqycs1711"/>
+    <param name="password" value="76456549"/>
+    <param name="register" value="true" />
+    <param name="caller-id-in-from" value="true"/>
+    <param name="expire-seconds" value="45"/>
+    <param name="retry-seconds" value="30"/>
+</gateway>

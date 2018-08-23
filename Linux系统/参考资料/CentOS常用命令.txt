@@ -1,0 +1,49 @@
+yum
+
+安装软件
+   yum -y install 
+搜索程序
+   yum search 
+
+   systemctl stop firewalld  关闭防火墙
+   
+   ps aux|grep rocketmq     查看rocketmq进程或服务是否运行
+
+   passwd root               修改root用户密码
+   
+   rename _wa wa *_wa        将文件名为_wa后缀的修改成后缀为wa
+   
+   top                       查看cpu等占用率
+   
+  
+						
+   systemctl stop firewalld  关闭防火墙
+ 
+配置nfs：
+	1 安装nfs和rpcbind
+	  yum install nfs-utils rpcbind
+	2 创建配置文件
+	  vim /etc/exports
+	    /tmp/test 192.168.254.131(rw) //“/tmp/test是要共享的目录”，192.168.254.131是共享的网络地址 rw是权限
+		
+	3 启动服务
+	   
+	   service rpcbind start
+	   service nfs start
+	   
+    4 客户端挂载nfs中共享的目录
+	   mount 192.168.254.130:/tmp/test/ /tmp/te/  /*将远端的共享目录挂载到/tmp/te/*/
+	   
+	   查看挂载的状态
+			mount |grep nfs
+	   
+ 腾讯云  IP  132.232.23.164    账号：root    密码：jiang1996	
+ 
+ 
+ 添加端口
+	 firewall-cmd --zone=public --add-port=8180/tcp --permanent  //添加8180端口
+	 
+ 安装仓库拓展库
+	yum install epel-release -y
+
+ 

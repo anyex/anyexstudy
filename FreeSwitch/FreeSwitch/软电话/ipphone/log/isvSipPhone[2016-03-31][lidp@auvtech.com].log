@@ -1,0 +1,130 @@
+2016-3-31 13:40:14.489	
+
+******************************************
+
+
+2016-3-31 13:40:14.491	SipPhone Trace App Log Trace 2016/3/31 13:40:14
+
+
+2016-3-31 13:40:14.491	SipPhone Log Start!!!!!!!
+2016-3-31 13:40:14.492	SipPhone Log windows pointer 0018EF10!!!!!!!
+2016-3-31 13:40:14.493	Success_InParasfromCapi!
+2016-3-31 13:40:14.493	Success_Create SipPhone CS Interface!
+2016-3-31 13:40:14.524	Success_CSInterfaceInit!
+2016-3-31 13:40:14.856	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-3-31 13:40:14.857	Mainproc Login Begin!
+2016-3-31 13:40:14.933	Mainproc Login End!
+2016-3-31 13:40:14.933	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-3-31 13:40:14.934	Mainproc Login Begin!
+2016-3-31 13:40:14.934	EncryptRtpPort:0 SignalEncrypt:0
+2016-3-31 13:40:16.393	*** Mainproc Begin*** method = /cs/sipphone/Dial/800006/1000
+2016-3-31 13:40:16.394	Mainproc Dial Begin!
+2016-3-31 13:40:16.395	Caller = 2001, Called = 1001
+2016-3-31 13:40:16.397	CSipPhoneProc::shellBeginDial Begin: Caller = 2001,Called = 53645008
+2016-3-31 13:40:16.398	CSipPhoneProc::shellBeginDial : 1 m_bSecure = 0
+2016-3-31 13:40:16.399	CSipPhoneProc::shellBeginDial : 2, idinfo = "2001"<sip:2001@192.168.1.249:5060>
+2016-3-31 13:40:16.400	CSipPhoneProc::shellBeginDial : 3
+2016-3-31 13:40:16.401	CSipPhoneProc::shellBeginDial : 4 url = <sip:1001@192.168.1.249:5060>
+2016-3-31 13:40:16.480	CSipPhoneProc::shellBeginDial : 5 pjsua_call_make_call status = 0
+2016-3-31 13:40:16.481	CSipPhoneProc::shellBeginDial : 6
+2016-3-31 13:40:16.481	incomingEventFunction: OUTGOINGCALL: SendMessage2CS
+2016-3-31 13:40:16.482	1001
+2016-3-31 13:40:16.482	Mainproc Dial End! ret = 1
+2016-3-31 13:40:18.793	*** Mainproc Begin*** method = /cs/sipphone/EndCall/800006/1000
+2016-3-31 13:40:18.794	Mainproc EndCall Begin!
+2016-3-31 13:40:18.797	Mainproc EndCall End!
+2016-3-31 13:56:45.626	*** Mainproc Begin*** method = /cs/sipphone/Logout/800006/1000
+2016-3-31 13:56:45.628	Mainproc Logout Begin!
+2016-3-31 13:56:46.959	Mainproc Logout End!
+2016-3-31 13:56:47.363	*** DllExit Begin***
+2016-3-31 13:56:47.364	*** DllExit Begining***
+2016-3-31 13:56:47.365	*** DllExit End***
+2016-3-31 13:56:47.874	
+
+******************************************
+
+
+2016-3-31 13:56:47.874	SipPhone Trace App Log Trace 2016/3/31 13:56:47
+
+
+2016-3-31 13:56:47.875	SipPhone Log Start!!!!!!!
+2016-3-31 13:56:47.875	SipPhone Log windows pointer 0018EF10!!!!!!!
+2016-3-31 13:56:47.876	Success_InParasfromCapi!
+2016-3-31 13:56:47.876	Success_Create SipPhone CS Interface!
+2016-3-31 13:56:47.877	Success_CSInterfaceInit!
+2016-3-31 13:56:48.530	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-3-31 13:56:48.531	Mainproc Login Begin!
+2016-3-31 13:56:48.582	Mainproc Login End!
+2016-3-31 13:56:48.583	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-3-31 13:56:48.584	Mainproc Login Begin!
+2016-3-31 13:56:48.584	EncryptRtpPort:0 SignalEncrypt:0
+2016-3-31 13:56:53.970	*** Mainproc Begin*** method = /cs/sipphone/Dial/800006/1000
+2016-3-31 13:56:53.971	Mainproc Dial Begin!
+2016-3-31 13:56:53.972	Caller = 2002, Called = 1001
+2016-3-31 13:56:53.974	CSipPhoneProc::shellBeginDial Begin: Caller = 2002,Called = 53644936
+2016-3-31 13:56:53.975	CSipPhoneProc::shellBeginDial : 1 m_bSecure = 0
+2016-3-31 13:56:53.976	CSipPhoneProc::shellBeginDial : 2, idinfo = "2002"<sip:2002@192.168.1.249:5060>
+2016-3-31 13:56:53.977	CSipPhoneProc::shellBeginDial : 3
+2016-3-31 13:56:53.978	CSipPhoneProc::shellBeginDial : 4 url = <sip:1001@192.168.1.249:5060>
+2016-3-31 13:56:54.55	CSipPhoneProc::shellBeginDial : 5 pjsua_call_make_call status = 0
+2016-3-31 13:56:54.55	CSipPhoneProc::shellBeginDial : 6
+2016-3-31 13:56:54.56	incomingEventFunction: OUTGOINGCALL: SendMessage2CS
+2016-3-31 13:56:54.56	1001
+2016-3-31 13:56:54.57	Mainproc Dial End! ret = 1
+2016-3-31 13:57:5.659	*** Mainproc Begin*** method = /cs/sipphone/EndCall/800006/1000
+2016-3-31 13:57:5.660	Mainproc EndCall Begin!
+2016-3-31 13:57:5.662	Mainproc EndCall End!
+2016-3-31 13:57:25.194	*** Mainproc Begin*** method = /cs/sipphone/Logout/800006/1000
+2016-3-31 13:57:25.196	Mainproc Logout Begin!
+2016-3-31 13:57:26.708	Mainproc Logout End!
+2016-3-31 13:57:27.26	*** DllExit Begin***
+2016-3-31 13:57:27.27	*** DllExit Begining***
+2016-3-31 13:57:27.29	*** DllExit End***
+2016-3-31 13:57:53.340	
+
+******************************************
+
+
+2016-3-31 13:57:53.343	SipPhone Trace App Log Trace 2016/3/31 13:57:53
+
+
+2016-3-31 13:57:53.344	SipPhone Log Start!!!!!!!
+2016-3-31 13:57:53.345	SipPhone Log windows pointer 0018EF10!!!!!!!
+2016-3-31 13:57:53.346	Success_InParasfromCapi!
+2016-3-31 13:57:53.347	Success_Create SipPhone CS Interface!
+2016-3-31 13:57:53.398	Success_CSInterfaceInit!
+2016-3-31 13:57:53.931	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-3-31 13:57:53.932	Mainproc Login Begin!
+2016-3-31 13:57:54.3	Mainproc Login End!
+2016-3-31 13:57:54.4	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-3-31 13:57:54.4	Mainproc Login Begin!
+2016-3-31 13:57:54.4	EncryptRtpPort:0 SignalEncrypt:0
+2016-3-31 13:57:58.906	*** Mainproc Begin*** method = /cs/sipphone/Dial/800006/1000
+2016-3-31 13:57:58.906	Mainproc Dial Begin!
+2016-3-31 13:57:58.907	Caller = 3007, Called = 1001
+2016-3-31 13:57:58.908	CSipPhoneProc::shellBeginDial Begin: Caller = 3007,Called = 41389776
+2016-3-31 13:57:58.909	CSipPhoneProc::shellBeginDial : 1 m_bSecure = 0
+2016-3-31 13:57:58.910	CSipPhoneProc::shellBeginDial : 2, idinfo = "3007"<sip:3007@192.168.1.249:5060>
+2016-3-31 13:57:58.911	CSipPhoneProc::shellBeginDial : 3
+2016-3-31 13:57:58.911	CSipPhoneProc::shellBeginDial : 4 url = <sip:1001@192.168.1.249:5060>
+2016-3-31 13:57:58.986	CSipPhoneProc::shellBeginDial : 5 pjsua_call_make_call status = 0
+2016-3-31 13:57:58.986	CSipPhoneProc::shellBeginDial : 6
+2016-3-31 13:57:58.987	incomingEventFunction: OUTGOINGCALL: SendMessage2CS
+2016-3-31 13:57:58.987	1001
+2016-3-31 13:57:58.987	Mainproc Dial End! ret = 1
+2016-3-31 13:58:1.370	*** Mainproc Begin*** method = /cs/sipphone/EndCall/800006/1000
+2016-3-31 13:58:1.371	Mainproc EndCall Begin!
+2016-3-31 13:58:1.373	Mainproc EndCall End!
+2016-3-31 13:58:6.330	*** Mainproc Begin*** method = /cs/sipphone/Dial/800006/1000
+2016-3-31 13:58:6.331	Mainproc Dial Begin!
+2016-3-31 13:58:6.332	Caller = 3007, Called = 2002
+2016-3-31 13:58:6.334	CSipPhoneProc::shellBeginDial Begin: Caller = 3007,Called = 41389704
+2016-3-31 13:58:6.335	CSipPhoneProc::shellBeginDial : 1 m_bSecure = 0
+2016-3-31 13:58:6.336	CSipPhoneProc::shellBeginDial : 2, idinfo = "3007"<sip:3007@192.168.1.249:5060>
+2016-3-31 13:58:6.337	CSipPhoneProc::shellBeginDial : 3
+2016-3-31 13:58:6.338	CSipPhoneProc::shellBeginDial : 4 url = <sip:2002@192.168.1.249:5060>
+2016-3-31 13:58:6.393	CSipPhoneProc::shellBeginDial : 5 pjsua_call_make_call status = 0
+2016-3-31 13:58:6.393	CSipPhoneProc::shellBeginDial : 6
+2016-3-31 13:58:6.393	incomingEventFunction: OUTGOINGCALL: SendMessage2CS
+2016-3-31 13:58:6.394	2002
+2016-3-31 13:58:6.394	Mainproc Dial End! ret = 1

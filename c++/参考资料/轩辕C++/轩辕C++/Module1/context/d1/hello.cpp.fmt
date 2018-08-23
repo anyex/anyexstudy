@@ -1,0 +1,6 @@
+     1	#include <iostream>
+     2	
+     3	int main() {
+     4		std::cout << "hello, world!\n";
+     5		return 0;
+     6	}

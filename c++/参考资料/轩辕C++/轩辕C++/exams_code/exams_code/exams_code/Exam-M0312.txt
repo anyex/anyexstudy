@@ -1,0 +1,87 @@
+一、请指出下列代码中的隐患
+// #1
+class A {
+    int k;
+};
+
+class B {
+    A* a;
+public:
+    B(int k) : a(new A) {
+        if (k < 0)
+            throw exception();	// 在此处抛出异常之前，没有先释放指针a指向的内存空间
+    }
+
+    // ...
+};
+
+
+// #2
+class Connection {
+    // ...
+public:
+    void open() {
+        // ...
+    }
+
+    bool isOpened() {
+        // ...
+    }
+    void close() {
+        // ...
+        if (-1 == en)
+            throw ConnectionException();
+    }
+};
+
+class C {
+    Connection conn;
+public:
+    C() {
+        conn.open();
+    }
+
+    ~C() {
+        // …
+		if (conn.isOpened())
+       		 conn.close();		// 此处有可能抛出异常，在析构函数中不应该抛出异常而不捕获
+    }
+};
+
+// #3
+class Ea {};
+class Eb {};
+class Ec {};
+
+void f(int i) throw (Ec, Ea) {
+    if (i > 12)
+        throw Eb();		// 此处抛出了未期望的异常Eb(期望的异常 Ec, Ea)，将导致程序终止
+    if (i < -1)
+        throw Ea();
+
+    // ...
+}
+
+二、请判断下列代码中存在的错误
+namespace ns1 {
+class MathException {};
+class ConnectionException {};
+}
+
+struct B {
+    virtual void f1() const throw (std::bad_alloc);
+    virtual void f2() throw (std::exception);
+    virtual void f3() const throw (std::exception, ns1::MathException);
+};
+
+struct D: public B {
+    void f1() const;	// 可能比基类抛出更多的异常，基类只可能抛出std::bad_alloc，而这里是可以抛出任意类型的对象
+    void f2() throw (std::bad_cast);
+    void f3() const throw (std::out_of_range, 
+							 ns1::ConnectionException); // 同基类的异常描述不符
+};
+
+三、尝试将Linux系统中socket相关的一族函数封装成2个Socket类，一个用于Server端，一个用于Client端，定义合适的exception类，用来描述各种socket相关的错误。
+提示：可以通过man 2 socket 查询相关的函数。
+
+(略)

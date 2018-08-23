@@ -1,0 +1,29 @@
+2016-7-6 12:36:14.965	
+
+******************************************
+
+
+2016-7-6 12:36:14.972	SipPhone Trace App Log Trace 2016/7/6 12:36:14
+
+
+2016-7-6 12:36:14.973	SipPhone Log Start!!!!!!!
+2016-7-6 12:36:14.975	SipPhone Log windows pointer 0018EF10!!!!!!!
+2016-7-6 12:36:14.976	Success_InParasfromCapi!
+2016-7-6 12:36:14.977	Success_Create SipPhone CS Interface!
+2016-7-6 12:36:15.40	Success_CSInterfaceInit!
+2016-7-6 12:36:15.416	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-7-6 12:36:15.418	Mainproc Login Begin!
+2016-7-6 12:36:15.894	Mainproc Login End!
+2016-7-6 12:36:15.933	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-7-6 12:36:15.935	Mainproc Login Begin!
+2016-7-6 12:36:15.936	EncryptRtpPort:0 SignalEncrypt:0
+2016-7-6 12:36:28.247	send WM_SIPPHONE_INCOMINGCALL: , 0
+2016-7-6 12:36:28.358	send WM_SIPPHONE_INCOMINGCALL: Incoming call, 0
+2016-7-6 12:37:34.289	send WM_SIPPHONE_INCOMINGCALL: , 1
+2016-7-6 12:37:34.291	send WM_SIPPHONE_INCOMINGCALL: Incoming call, 1
+2016-7-6 12:37:41.746	*** Mainproc Begin*** method = /cs/sipphone/Logout/800006/1000
+2016-7-6 12:37:41.748	Mainproc Logout Begin!
+2016-7-6 12:37:42.944	Mainproc Logout End!
+2016-7-6 12:37:43.306	*** DllExit Begin***
+2016-7-6 12:37:43.307	*** DllExit Begining***
+2016-7-6 12:37:43.309	*** DllExit End***

@@ -1,0 +1,1 @@
+30 17 * * * /usr/bin/find /home/kwarph -name 'core*' -exec rm {} \;

@@ -1,0 +1,88 @@
+一、为下列表达式加上括号，不改变原有的语义
+// From "The C++ Programming Language" Ch6
+// 第一部分
+a = b + c * d << 2 & 8				a = (((b + (c * d)) << 2) & 8)
+a & 077 != 3						(a & (077 != 3))
+a == b || a == c && c < 5			(a == b) || ((a == c) && (c < 5))
+c = x != 0							c = (x != 0)
+0 <= i < 7							0 <= (i < 7)
+f(1, 2) + 3;						f(1, 2) + 3
+a = -1 + +b-- - 5					a = (((-1) + (+(b--))) - 5)
+a = b == c++						a = (b == (c++))
+a = b = c = 0						a = (b = (c = 0)))
+a[4][2] *= *b ? c : *d * 2			((a[4][2]) *= (*b)) ? c : ((*d) * 2)
+a - b, c = d						(a - b), (c = d)
+
+// 第二部分
+*p++ 								*(p++)
+*--p 								*(--p)
+++a-- 								++(a--)
+(int*)p->m 							(int*)(p->m)
+*p.m 								*(p.m)
+*a[i]								*(a[i])
+
+二、描述下列表达式中操作数的隐式类型转换过程
+bool isLeap(const int& year); 
+
+double d1 = 32.6, d2 = 1.52; 
+int y = 2009, m = 2; 
+
+// 从以下语句开始 
+short d = 28 + isLeap(y);
+	1, isLeap(y)结果为bool，提升为int类型和28加 (第1次转换)
+	2，28 + isLeap(y)结果为int，赋值给d，转换为short (第2次转换)
+
+float f1 = d1 + m; 
+	1, m为int，需转换为double类型和d1加 (第1次转换)
+	2，d1 + m结果为double，赋值给f1，转换为float (第2次转换)
+
+int k = d2 + 25 + 'V'; 
+	1, 25为int，需转换为double类型和d2加 (第1次转换)
+	2，d2 + 25结果为double，而 'V'为char，需转换为double参与运算 (第2次转换)
+	3，d2 + 25 + 'V'结果为double，赋值给k，需转换为int (第3次转换)
+
+double db = 12.f + 0xffffffffLU;
+	1, 0xffffffffLU为unsigned long int，需转换为float类型和12.f加 (第1次转换)
+	2，12.f + 0xffffffffLU结果为float，赋值给db，转换为double (第2次转换)
+	
+
+三、编写const表达式
+1. int型对象n的常量引用		const int& nr = n;
+2. int型指针ip，指向常量的int型对象m	const int m = 9;  const int* ip = &m;
+3. dobue型常量指针dp，指向double型常量对象d		const double d = 0.; const double* dp = &d;
+
+四、表达式求值，如果系未定义次序的表达式，请指出
+说明：以下代码片段仅用于测试对“序列点”概念的认识，切勿在实际项目中编写类似的代码。
+// #1
+int i = 1;
+i = i++ - ++i;	// i的求值次序不确定
+
+// #2
+int j = 0;
+j = j + 1;
+j = ++j;		// j的求值次序不确定
+
+// #3
+int a = 8, b = 7, c = 5, d = 11;
+(--a, b > a-- && c > d) ? d++ : a--;	// OK
+
+提示：在自行判断之后，编译一次，注意打开g++ 的 -Wall选项，看看C++实现（编译器）怎么说。
+
+五、操作符相关
+1. 描述 ++k 和 k++ 的区别。
+	a，++k结果为左值(k的引用)，k++结果为右值(临时对象)
+	b，++k的结果是累加1后的k，k++结果是未累加前的k原值(临时对象保持该值)
+	c，相同点：二者都将k的值累加1
+
+2. 描述 k += 2 与 k = k + 2的区别。
+	(同上)
+
+3. 假定类型为 T，new T 操作，编译器帮我们做了什么？
+	常规new操作符先后做一下3件事情：
+		a，在堆区申请一块内存空间，恰好能容纳一个T类型的对象；
+		b，调用T类型的(某个)构造函数，初始化刚申请的内存空间；
+		c，返回指向该空间的首地址的T类型的指针。
+
+4. 请解释operator new() 和操作符 new 二者的异同。
+	参考：Effective C++ Third Edition 55 Specific Ways to Improve Your Programs and Designs
+		一书中的 Chapter 8. Customizing new and delete

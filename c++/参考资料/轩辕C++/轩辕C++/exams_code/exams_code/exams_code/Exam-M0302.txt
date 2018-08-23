@@ -1,0 +1,87 @@
+一、判断下面对数组、指针的声明或使用是否正确(逐句分析)
+double d = 2;
+int n, m = 9;
+const int s = 6;
+
+int& rn;
+rn = n;		// 错误，这两行对引用rn的定义错误，引用在定义时必须初始化，并且值接受非const左值
+
+double da[d];	// 错误，d非const整型表达式
+int ia1[n];
+int ia2[s * m];
+int ia3[s] = { 2, 4, 6, 8, 9, 12, 15 };  // 错误，数组初始化列表中元素数量7超出维数6
+int ia4[];			// 错误，数组维数
+ia4 = { 2, 3, 5 };	// 错误，错误的初始化
+
+char* cp;
+cp[0] = 's';	// 符合语法，但危险：对未初始化的指针进行读写操作
+char ca[] = "Tiger";
+char* cm = ca;
+ca[1] = 's';
+char cb[6] = cm;	// 错误，错误的初始化方式
+ca[6] = 'y';		// 符合语法，但危险：对数组越界写操作
+cout << &ca[6] << endl; // 正确，可以对数组越界读取
+cout << ca + 6 << endl;	// 正确，可以对数组越界读取
+
+int arr1[8] = {};
+int arr2[9] = {};
+int arr3[8] = {};
+arr1 = arr2;	// 错误，不能为数组赋值
+arr1 = arr3;	// 错误，不能为数组赋值
+
+int ma[6][5];
+ma[0,2] = 7;	// 错误，赋值操作符两边操作数类型不匹配，左边ma[2]指向int[5]类型的数组，而7是int标量
+
+二、数组、指针的声明和初始化
+1. 声明容纳15个double型指针的数组		double* dp[15];
+2. 声明及初始化一个3X3X3（3维） int型数组（矩阵） 
+	int m333[3][3][3] = { 
+						  { {1,2,3}, {2,3,4}, {3,4,5} },
+						  {	{1,2,3}, {2,3,4}, {3,4,5} },
+						  {	{1,2,3}, {2,3,4}, {3,4,5} }
+						};
+
+3. 指向char类型的指针的指针		char** cpp;
+4. 指向字面常量 "Hello"的指针 		const char* cp = "Hello";
+5. 对一个容纳10个int型对象的数组的引用	int ia[10];  int (&iar)[10] = ia;
+6. 对字面常量 23 的引用		const int& ir = 23;
+7. 对一个指向char的指针的引用		char* cp;  char*& cpr = cp;
+
+三、定义一些指针和数组对象，查看它们的size。
+
+四、预测下面代码的输出
+const char* cc = "abcdefghijklmnopqrstuvwxyz";
+// 如果将上句换成下句，可以吗？
+// char cc[] = "abcdefghijklmnopqrstuvwxyz";
+while(*cc)
+	cout << cc++ << endl;
+
+将cc换成数组形式，将导致编译器错误，数组名虽然当作指针，但其类型是指针常量，如 char cc[] 的类型为 char* const
+
+五、用结构定义类型：
+使用struct定义一种类型Stock，Stock类型至少有两个成员：股票代码、市值，类型定义完成后做以下工作：
+1. 定义一个数组，容纳一定数量的Stock;
+2. 初始化每个数组元素
+3. 一个操作界面，提供一些操作：
+A. 列出所有股票的信息
+B. 提示用户选择要更新的股票
+C. 提示用户输入股票更新内容（如更新市值等）
+D. 更新成功后打印更新后的股票信息
+E. [可选功能] 重复A-D操作，直至用户输入"quit"退出程序
+提示：有关cin的操作可以查看标准库I/O流istream类的API和文档。
+
+(附件：Stock.zip)
+
+六、实现C标准库中的strcpy()函数：
+/**
+ * @brief Copies the string pointed to by src, including the 
+ *     	terminating null byte ('\0'), to the buffer pointed
+ *        to by dest
+ * @param src – source string
+ * @param dest – destination string
+ * @return destination string
+ */
+char* strcpy(char* dest, const char* src);
+
+(附件：strcpy.zip)
+

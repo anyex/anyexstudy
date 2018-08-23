@@ -1,0 +1,440 @@
+2016-4-26 12:58:24.761	
+
+******************************************
+
+
+2016-4-26 12:58:24.761	SipPhone Trace App Log Trace 2016/4/26 12:58:24
+
+
+2016-4-26 12:58:24.761	SipPhone Log Start!!!!!!!
+2016-4-26 12:58:24.761	SipPhone Log windows pointer 0018EF10!!!!!!!
+2016-4-26 12:58:24.776	Success_InParasfromCapi!
+2016-4-26 12:58:24.776	Success_Create SipPhone CS Interface!
+2016-4-26 12:58:24.870	Success_CSInterfaceInit!
+2016-4-26 12:58:25.463	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-4-26 12:58:25.463	Mainproc Login Begin!
+2016-4-26 12:58:25.619	Mainproc Login End!
+2016-4-26 12:58:25.619	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-4-26 12:58:25.619	Mainproc Login Begin!
+2016-4-26 12:58:25.619	EncryptRtpPort:0 SignalEncrypt:0
+2016-4-26 12:58:26.664	*** Mainproc Begin*** method = /cs/sipphone/Dial/800006/1000
+2016-4-26 12:58:26.664	Mainproc Dial Begin!
+2016-4-26 12:58:26.664	Caller = 86806006, Called = 13996180255
+2016-4-26 12:58:26.664	CSipPhoneProc::shellBeginDial Begin: Caller = 86806006,Called = 56135376
+2016-4-26 12:58:26.664	CSipPhoneProc::shellBeginDial : 1 m_bSecure = 0
+2016-4-26 12:58:26.664	CSipPhoneProc::shellBeginDial : 2, idinfo = "86806006"<sip:86806006@221.5.152.180:5060>
+2016-4-26 12:58:26.664	CSipPhoneProc::shellBeginDial : 3
+2016-4-26 12:58:26.664	CSipPhoneProc::shellBeginDial : 4 url = <sip:13996180255@221.5.152.180:5060>
+2016-4-26 12:58:27.42	CSipPhoneProc::shellBeginDial : 5 pjsua_call_make_call status = 0
+2016-4-26 12:58:27.42	CSipPhoneProc::shellBeginDial : 6
+2016-4-26 12:58:27.42	incomingEventFunction: OUTGOINGCALL: SendMessage2CS
+2016-4-26 12:58:27.42	13996180255
+2016-4-26 12:58:27.42	Mainproc Dial End! ret = 1
+2016-4-26 12:58:44.259	*** Mainproc Begin*** method = /cs/sipphone/EndCall/800006/1000
+2016-4-26 12:58:44.259	Mainproc EndCall Begin!
+2016-4-26 12:58:44.259	Mainproc EndCall End!
+2016-4-26 16:43:58.306	
+
+******************************************
+
+
+2016-4-26 16:43:58.309	SipPhone Trace App Log Trace 2016/4/26 16:43:58
+
+
+2016-4-26 16:43:58.310	SipPhone Log Start!!!!!!!
+2016-4-26 16:43:58.312	SipPhone Log windows pointer 0018EF10!!!!!!!
+2016-4-26 16:43:58.313	Success_InParasfromCapi!
+2016-4-26 16:43:58.314	Success_Create SipPhone CS Interface!
+2016-4-26 16:43:58.351	Success_CSInterfaceInit!
+2016-4-26 16:43:59.33	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-4-26 16:43:59.34	Mainproc Login Begin!
+2016-4-26 16:43:59.116	Mainproc Login End!
+2016-4-26 16:43:59.116	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-4-26 16:43:59.116	Mainproc Login Begin!
+2016-4-26 16:43:59.117	EncryptRtpPort:0 SignalEncrypt:0
+2016-4-26 16:44:26.649	*** Mainproc Begin*** method = /cs/sipphone/Dial/800006/1000
+2016-4-26 16:44:26.650	Mainproc Dial Begin!
+2016-4-26 16:44:26.651	Caller = 86806006, Called = 55512345
+2016-4-26 16:44:26.652	CSipPhoneProc::shellBeginDial Begin: Caller = 86806006,Called = 7442128
+2016-4-26 16:44:26.653	CSipPhoneProc::shellBeginDial : 1 m_bSecure = 0
+2016-4-26 16:44:26.654	CSipPhoneProc::shellBeginDial : 2, idinfo = "86806006"<sip:86806006@192.168.1.249:5060>
+2016-4-26 16:44:26.656	CSipPhoneProc::shellBeginDial : 3
+2016-4-26 16:44:26.657	CSipPhoneProc::shellBeginDial : 4 url = <sip:55512345@192.168.1.249:5060>
+2016-4-26 16:44:26.812	CSipPhoneProc::shellBeginDial : 5 pjsua_call_make_call status = 0
+2016-4-26 16:44:26.812	CSipPhoneProc::shellBeginDial : 6
+2016-4-26 16:44:26.812	incomingEventFunction: OUTGOINGCALL: SendMessage2CS
+2016-4-26 16:44:26.813	55512345
+2016-4-26 16:44:26.813	Mainproc Dial End! ret = 1
+2016-4-26 16:44:52.80	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:44:52.81	Mainproc DtmfCall Begin!
+2016-4-26 16:44:52.82	Mainproc DtmfCall End!
+2016-4-26 16:44:54.24	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:44:54.25	Mainproc DtmfCall Begin!
+2016-4-26 16:44:54.26	Mainproc DtmfCall End!
+2016-4-26 16:45:1.521	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:45:1.523	Mainproc DtmfCall Begin!
+2016-4-26 16:45:1.525	Mainproc DtmfCall End!
+2016-4-26 16:45:2.809	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:45:2.810	Mainproc DtmfCall Begin!
+2016-4-26 16:45:2.811	Mainproc DtmfCall End!
+2016-4-26 16:45:3.169	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:45:3.170	Mainproc DtmfCall Begin!
+2016-4-26 16:45:3.171	Mainproc DtmfCall End!
+2016-4-26 16:45:31.272	*** Mainproc Begin*** method = /cs/sipphone/EndCall/800006/1000
+2016-4-26 16:45:31.272	Mainproc EndCall Begin!
+2016-4-26 16:45:31.274	Mainproc EndCall End!
+2016-4-26 16:47:22.386	*** Mainproc Begin*** method = /cs/sipphone/Dial/800006/1000
+2016-4-26 16:47:22.387	Mainproc Dial Begin!
+2016-4-26 16:47:22.388	Caller = 86806006, Called = 55512345
+2016-4-26 16:47:22.389	CSipPhoneProc::shellBeginDial Begin: Caller = 86806006,Called = 7442056
+2016-4-26 16:47:22.391	CSipPhoneProc::shellBeginDial : 1 m_bSecure = 0
+2016-4-26 16:47:22.392	CSipPhoneProc::shellBeginDial : 2, idinfo = "86806006"<sip:86806006@192.168.1.249:5060>
+2016-4-26 16:47:22.393	CSipPhoneProc::shellBeginDial : 3
+2016-4-26 16:47:22.394	CSipPhoneProc::shellBeginDial : 4 url = <sip:55512345@192.168.1.249:5060>
+2016-4-26 16:47:22.550	CSipPhoneProc::shellBeginDial : 5 pjsua_call_make_call status = 0
+2016-4-26 16:47:22.551	CSipPhoneProc::shellBeginDial : 6
+2016-4-26 16:47:22.551	incomingEventFunction: OUTGOINGCALL: SendMessage2CS
+2016-4-26 16:47:22.551	55512345
+2016-4-26 16:47:22.552	Mainproc Dial End! ret = 1
+2016-4-26 16:47:27.874	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:47:27.875	Mainproc DtmfCall Begin!
+2016-4-26 16:47:27.876	Mainproc DtmfCall End!
+2016-4-26 16:47:29.193	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:47:29.194	Mainproc DtmfCall Begin!
+2016-4-26 16:47:29.195	Mainproc DtmfCall End!
+2016-4-26 16:47:29.936	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:47:29.937	Mainproc DtmfCall Begin!
+2016-4-26 16:47:29.938	Mainproc DtmfCall End!
+2016-4-26 16:47:30.513	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:47:30.514	Mainproc DtmfCall Begin!
+2016-4-26 16:47:30.515	Mainproc DtmfCall End!
+2016-4-26 16:47:30.984	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:47:30.985	Mainproc DtmfCall Begin!
+2016-4-26 16:47:30.986	Mainproc DtmfCall End!
+2016-4-26 16:47:34.225	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:47:34.226	Mainproc DtmfCall Begin!
+2016-4-26 16:47:34.228	Mainproc DtmfCall End!
+2016-4-26 16:47:40.881	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:47:40.882	Mainproc DtmfCall Begin!
+2016-4-26 16:47:40.883	Mainproc DtmfCall End!
+2016-4-26 16:47:41.634	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:47:41.635	Mainproc DtmfCall Begin!
+2016-4-26 16:47:41.636	Mainproc DtmfCall End!
+2016-4-26 16:47:44.986	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:47:44.987	Mainproc DtmfCall Begin!
+2016-4-26 16:47:44.988	Mainproc DtmfCall End!
+2016-4-26 16:47:53.240	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:47:53.241	Mainproc DtmfCall Begin!
+2016-4-26 16:47:53.242	Mainproc DtmfCall End!
+2016-4-26 16:47:53.840	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:47:53.841	Mainproc DtmfCall Begin!
+2016-4-26 16:47:53.842	Mainproc DtmfCall End!
+2016-4-26 16:47:54.232	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:47:54.233	Mainproc DtmfCall Begin!
+2016-4-26 16:47:54.234	Mainproc DtmfCall End!
+2016-4-26 16:47:54.649	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:47:54.650	Mainproc DtmfCall Begin!
+2016-4-26 16:47:54.651	Mainproc DtmfCall End!
+2016-4-26 16:47:55.57	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:47:55.58	Mainproc DtmfCall Begin!
+2016-4-26 16:47:55.59	Mainproc DtmfCall End!
+2016-4-26 16:47:57.354	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:47:57.355	Mainproc DtmfCall Begin!
+2016-4-26 16:47:57.356	Mainproc DtmfCall End!
+2016-4-26 16:48:1.417	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:48:1.418	Mainproc DtmfCall Begin!
+2016-4-26 16:48:1.420	Mainproc DtmfCall End!
+2016-4-26 16:48:2.41	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:48:2.42	Mainproc DtmfCall Begin!
+2016-4-26 16:48:2.43	Mainproc DtmfCall End!
+2016-4-26 16:48:2.464	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:48:2.466	Mainproc DtmfCall Begin!
+2016-4-26 16:48:2.466	Mainproc DtmfCall End!
+2016-4-26 16:48:2.969	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:48:2.970	Mainproc DtmfCall Begin!
+2016-4-26 16:48:2.971	Mainproc DtmfCall End!
+2016-4-26 16:48:3.409	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:48:3.410	Mainproc DtmfCall Begin!
+2016-4-26 16:48:3.411	Mainproc DtmfCall End!
+2016-4-26 16:48:6.288	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:48:6.289	Mainproc DtmfCall Begin!
+2016-4-26 16:48:6.291	Mainproc DtmfCall End!
+2016-4-26 16:48:18.737	*** Mainproc Begin*** method = /cs/sipphone/EndCall/800006/1000
+2016-4-26 16:48:18.738	Mainproc EndCall Begin!
+2016-4-26 16:48:18.740	Mainproc EndCall End!
+2016-4-26 16:51:39.81	*** Mainproc Begin*** method = /cs/sipphone/Dial/800006/1000
+2016-4-26 16:51:39.82	Mainproc Dial Begin!
+2016-4-26 16:51:39.83	Caller = 86806006, Called = 55512345
+2016-4-26 16:51:39.84	CSipPhoneProc::shellBeginDial Begin: Caller = 86806006,Called = 7442272
+2016-4-26 16:51:39.85	CSipPhoneProc::shellBeginDial : 1 m_bSecure = 0
+2016-4-26 16:51:39.86	CSipPhoneProc::shellBeginDial : 2, idinfo = "86806006"<sip:86806006@192.168.1.249:5060>
+2016-4-26 16:51:39.87	CSipPhoneProc::shellBeginDial : 3
+2016-4-26 16:51:39.88	CSipPhoneProc::shellBeginDial : 4 url = <sip:55512345@192.168.1.249:5060>
+2016-4-26 16:51:39.253	CSipPhoneProc::shellBeginDial : 5 pjsua_call_make_call status = 0
+2016-4-26 16:51:39.253	CSipPhoneProc::shellBeginDial : 6
+2016-4-26 16:51:39.253	incomingEventFunction: OUTGOINGCALL: SendMessage2CS
+2016-4-26 16:51:39.254	55512345
+2016-4-26 16:51:39.254	Mainproc Dial End! ret = 1
+2016-4-26 16:51:45.921	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:51:45.922	Mainproc DtmfCall Begin!
+2016-4-26 16:51:45.923	Mainproc DtmfCall End!
+2016-4-26 16:51:46.505	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:51:46.506	Mainproc DtmfCall Begin!
+2016-4-26 16:51:46.507	Mainproc DtmfCall End!
+2016-4-26 16:51:46.905	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:51:46.906	Mainproc DtmfCall Begin!
+2016-4-26 16:51:46.907	Mainproc DtmfCall End!
+2016-4-26 16:51:47.297	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:51:47.298	Mainproc DtmfCall Begin!
+2016-4-26 16:51:47.299	Mainproc DtmfCall End!
+2016-4-26 16:51:47.634	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:51:47.636	Mainproc DtmfCall Begin!
+2016-4-26 16:51:47.637	Mainproc DtmfCall End!
+2016-4-26 16:51:50.305	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:51:50.306	Mainproc DtmfCall Begin!
+2016-4-26 16:51:50.307	Mainproc DtmfCall End!
+2016-4-26 16:51:54.433	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:51:54.435	Mainproc DtmfCall Begin!
+2016-4-26 16:51:54.436	Mainproc DtmfCall End!
+2016-4-26 16:51:54.770	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:51:54.771	Mainproc DtmfCall Begin!
+2016-4-26 16:51:54.772	Mainproc DtmfCall End!
+2016-4-26 16:51:55.57	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:51:55.59	Mainproc DtmfCall Begin!
+2016-4-26 16:51:55.60	Mainproc DtmfCall End!
+2016-4-26 16:51:55.393	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:51:55.395	Mainproc DtmfCall Begin!
+2016-4-26 16:51:55.396	Mainproc DtmfCall End!
+2016-4-26 16:51:55.705	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:51:55.706	Mainproc DtmfCall Begin!
+2016-4-26 16:51:55.708	Mainproc DtmfCall End!
+2016-4-26 16:51:58.481	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:51:58.482	Mainproc DtmfCall Begin!
+2016-4-26 16:51:58.484	Mainproc DtmfCall End!
+2016-4-26 16:52:54.785	*** Mainproc Begin*** method = /cs/sipphone/EndCall/800006/1000
+2016-4-26 16:52:54.786	Mainproc EndCall Begin!
+2016-4-26 16:52:54.788	Mainproc EndCall End!
+2016-4-26 16:56:10.898	*** Mainproc Begin*** method = /cs/sipphone/Dial/800006/1000
+2016-4-26 16:56:10.899	Mainproc Dial Begin!
+2016-4-26 16:56:10.900	Caller = 86806006, Called = 55512345
+2016-4-26 16:56:10.902	CSipPhoneProc::shellBeginDial Begin: Caller = 86806006,Called = 7442200
+2016-4-26 16:56:10.903	CSipPhoneProc::shellBeginDial : 1 m_bSecure = 0
+2016-4-26 16:56:10.904	CSipPhoneProc::shellBeginDial : 2, idinfo = "86806006"<sip:86806006@192.168.1.249:5060>
+2016-4-26 16:56:10.905	CSipPhoneProc::shellBeginDial : 3
+2016-4-26 16:56:10.907	CSipPhoneProc::shellBeginDial : 4 url = <sip:55512345@192.168.1.249:5060>
+2016-4-26 16:56:11.98	CSipPhoneProc::shellBeginDial : 5 pjsua_call_make_call status = 0
+2016-4-26 16:56:11.98	CSipPhoneProc::shellBeginDial : 6
+2016-4-26 16:56:11.98	incomingEventFunction: OUTGOINGCALL: SendMessage2CS
+2016-4-26 16:56:11.99	55512345
+2016-4-26 16:56:11.99	Mainproc Dial End! ret = 1
+2016-4-26 16:56:14.801	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:56:14.802	Mainproc DtmfCall Begin!
+2016-4-26 16:56:14.803	Mainproc DtmfCall End!
+2016-4-26 16:56:15.257	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:56:15.258	Mainproc DtmfCall Begin!
+2016-4-26 16:56:15.259	Mainproc DtmfCall End!
+2016-4-26 16:56:15.593	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:56:15.595	Mainproc DtmfCall Begin!
+2016-4-26 16:56:15.596	Mainproc DtmfCall End!
+2016-4-26 16:56:15.913	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:56:15.914	Mainproc DtmfCall Begin!
+2016-4-26 16:56:15.916	Mainproc DtmfCall End!
+2016-4-26 16:56:16.257	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:56:16.259	Mainproc DtmfCall Begin!
+2016-4-26 16:56:16.261	Mainproc DtmfCall End!
+2016-4-26 16:56:18.681	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:56:18.682	Mainproc DtmfCall Begin!
+2016-4-26 16:56:18.683	Mainproc DtmfCall End!
+2016-4-26 16:56:22.841	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:56:22.842	Mainproc DtmfCall Begin!
+2016-4-26 16:56:22.843	Mainproc DtmfCall End!
+2016-4-26 16:56:23.329	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:56:23.330	Mainproc DtmfCall Begin!
+2016-4-26 16:56:23.331	Mainproc DtmfCall End!
+2016-4-26 16:56:23.698	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:56:23.700	Mainproc DtmfCall Begin!
+2016-4-26 16:56:23.702	Mainproc DtmfCall End!
+2016-4-26 16:56:24.59	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:56:24.61	Mainproc DtmfCall Begin!
+2016-4-26 16:56:24.62	Mainproc DtmfCall End!
+2016-4-26 16:56:24.426	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:56:24.427	Mainproc DtmfCall Begin!
+2016-4-26 16:56:24.428	Mainproc DtmfCall End!
+2016-4-26 16:56:27.225	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 16:56:27.226	Mainproc DtmfCall Begin!
+2016-4-26 16:56:27.227	Mainproc DtmfCall End!
+2016-4-26 16:56:39.906	*** Mainproc Begin*** method = /cs/sipphone/EndCall/800006/1000
+2016-4-26 16:56:39.907	Mainproc EndCall Begin!
+2016-4-26 16:56:39.909	Mainproc EndCall End!
+2016-4-26 17:1:33.722	*** Mainproc Begin*** method = /cs/sipphone/Dial/800006/1000
+2016-4-26 17:1:33.723	Mainproc Dial Begin!
+2016-4-26 17:1:33.724	Caller = 86806006, Called = 55512345
+2016-4-26 17:1:33.724	CSipPhoneProc::shellBeginDial Begin: Caller = 86806006,Called = 7442128
+2016-4-26 17:1:33.725	CSipPhoneProc::shellBeginDial : 1 m_bSecure = 0
+2016-4-26 17:1:33.726	CSipPhoneProc::shellBeginDial : 2, idinfo = "86806006"<sip:86806006@192.168.1.249:5060>
+2016-4-26 17:1:33.726	CSipPhoneProc::shellBeginDial : 3
+2016-4-26 17:1:33.727	CSipPhoneProc::shellBeginDial : 4 url = <sip:55512345@192.168.1.249:5060>
+2016-4-26 17:1:33.794	CSipPhoneProc::shellBeginDial : 5 pjsua_call_make_call status = 0
+2016-4-26 17:1:33.794	CSipPhoneProc::shellBeginDial : 6
+2016-4-26 17:1:33.795	incomingEventFunction: OUTGOINGCALL: SendMessage2CS
+2016-4-26 17:1:33.795	55512345
+2016-4-26 17:1:33.796	Mainproc Dial End! ret = 1
+2016-4-26 17:1:38.361	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:1:38.362	Mainproc DtmfCall Begin!
+2016-4-26 17:1:38.363	Mainproc DtmfCall End!
+2016-4-26 17:1:38.874	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:1:38.875	Mainproc DtmfCall Begin!
+2016-4-26 17:1:38.876	Mainproc DtmfCall End!
+2016-4-26 17:1:39.329	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:1:39.330	Mainproc DtmfCall Begin!
+2016-4-26 17:1:39.331	Mainproc DtmfCall End!
+2016-4-26 17:1:39.802	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:1:39.803	Mainproc DtmfCall Begin!
+2016-4-26 17:1:39.804	Mainproc DtmfCall End!
+2016-4-26 17:1:40.377	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:1:40.378	Mainproc DtmfCall Begin!
+2016-4-26 17:1:40.379	Mainproc DtmfCall End!
+2016-4-26 17:1:42.825	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:1:42.826	Mainproc DtmfCall Begin!
+2016-4-26 17:1:42.826	Mainproc DtmfCall End!
+2016-4-26 17:1:46.857	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:1:46.858	Mainproc DtmfCall Begin!
+2016-4-26 17:1:46.858	Mainproc DtmfCall End!
+2016-4-26 17:1:47.280	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:1:47.282	Mainproc DtmfCall Begin!
+2016-4-26 17:1:47.283	Mainproc DtmfCall End!
+2016-4-26 17:1:47.673	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:1:47.674	Mainproc DtmfCall Begin!
+2016-4-26 17:1:47.675	Mainproc DtmfCall End!
+2016-4-26 17:1:48.113	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:1:48.114	Mainproc DtmfCall Begin!
+2016-4-26 17:1:48.114	Mainproc DtmfCall End!
+2016-4-26 17:1:48.497	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:1:48.498	Mainproc DtmfCall Begin!
+2016-4-26 17:1:48.499	Mainproc DtmfCall End!
+2016-4-26 17:1:50.137	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:1:50.138	Mainproc DtmfCall Begin!
+2016-4-26 17:1:50.138	Mainproc DtmfCall End!
+2016-4-26 17:2:6.985	*** Mainproc Begin*** method = /cs/sipphone/EndCall/800006/1000
+2016-4-26 17:2:6.985	Mainproc EndCall Begin!
+2016-4-26 17:2:6.986	Mainproc EndCall End!
+2016-4-26 17:4:40.729	*** Mainproc Begin*** method = /cs/sipphone/Dial/800006/1000
+2016-4-26 17:4:40.730	Mainproc Dial Begin!
+2016-4-26 17:4:40.731	Caller = 86806006, Called = 55512345
+2016-4-26 17:4:40.731	CSipPhoneProc::shellBeginDial Begin: Caller = 86806006,Called = 7442056
+2016-4-26 17:4:40.732	CSipPhoneProc::shellBeginDial : 1 m_bSecure = 0
+2016-4-26 17:4:40.733	CSipPhoneProc::shellBeginDial : 2, idinfo = "86806006"<sip:86806006@192.168.1.249:5060>
+2016-4-26 17:4:40.733	CSipPhoneProc::shellBeginDial : 3
+2016-4-26 17:4:40.734	CSipPhoneProc::shellBeginDial : 4 url = <sip:55512345@192.168.1.249:5060>
+2016-4-26 17:4:40.899	CSipPhoneProc::shellBeginDial : 5 pjsua_call_make_call status = 0
+2016-4-26 17:4:40.900	CSipPhoneProc::shellBeginDial : 6
+2016-4-26 17:4:40.900	incomingEventFunction: OUTGOINGCALL: SendMessage2CS
+2016-4-26 17:4:40.900	55512345
+2016-4-26 17:4:40.901	Mainproc Dial End! ret = 1
+2016-4-26 17:4:56.650	*** Mainproc Begin*** method = /cs/sipphone/EndCall/800006/1000
+2016-4-26 17:4:56.650	Mainproc EndCall Begin!
+2016-4-26 17:4:56.652	Mainproc EndCall End!
+2016-4-26 17:10:22.987	*** Mainproc Begin*** method = /cs/sipphone/Dial/800006/1000
+2016-4-26 17:10:22.988	Mainproc Dial Begin!
+2016-4-26 17:10:22.990	Caller = 86806006, Called = 55512345
+2016-4-26 17:10:22.991	CSipPhoneProc::shellBeginDial Begin: Caller = 86806006,Called = 7442272
+2016-4-26 17:10:22.992	CSipPhoneProc::shellBeginDial : 1 m_bSecure = 0
+2016-4-26 17:10:22.993	CSipPhoneProc::shellBeginDial : 2, idinfo = "86806006"<sip:86806006@192.168.1.249:5060>
+2016-4-26 17:10:22.994	CSipPhoneProc::shellBeginDial : 3
+2016-4-26 17:10:22.995	CSipPhoneProc::shellBeginDial : 4 url = <sip:55512345@192.168.1.249:5060>
+2016-4-26 17:10:23.178	CSipPhoneProc::shellBeginDial : 5 pjsua_call_make_call status = 0
+2016-4-26 17:10:23.178	CSipPhoneProc::shellBeginDial : 6
+2016-4-26 17:10:23.178	incomingEventFunction: OUTGOINGCALL: SendMessage2CS
+2016-4-26 17:10:23.179	55512345
+2016-4-26 17:10:23.179	Mainproc Dial End! ret = 1
+2016-4-26 17:10:39.251	*** Mainproc Begin*** method = /cs/sipphone/EndCall/800006/1000
+2016-4-26 17:10:39.252	Mainproc EndCall Begin!
+2016-4-26 17:10:39.254	Mainproc EndCall End!
+2016-4-26 17:12:38.18	*** Mainproc Begin*** method = /cs/sipphone/Dial/800006/1000
+2016-4-26 17:12:38.20	Mainproc Dial Begin!
+2016-4-26 17:12:38.21	Caller = 86806006, Called = 55512345
+2016-4-26 17:12:38.22	CSipPhoneProc::shellBeginDial Begin: Caller = 86806006,Called = 7442200
+2016-4-26 17:12:38.23	CSipPhoneProc::shellBeginDial : 1 m_bSecure = 0
+2016-4-26 17:12:38.24	CSipPhoneProc::shellBeginDial : 2, idinfo = "86806006"<sip:86806006@192.168.1.249:5060>
+2016-4-26 17:12:38.25	CSipPhoneProc::shellBeginDial : 3
+2016-4-26 17:12:38.26	CSipPhoneProc::shellBeginDial : 4 url = <sip:55512345@192.168.1.249:5060>
+2016-4-26 17:12:38.213	CSipPhoneProc::shellBeginDial : 5 pjsua_call_make_call status = 0
+2016-4-26 17:12:38.213	CSipPhoneProc::shellBeginDial : 6
+2016-4-26 17:12:38.214	incomingEventFunction: OUTGOINGCALL: SendMessage2CS
+2016-4-26 17:12:38.214	55512345
+2016-4-26 17:12:38.214	Mainproc Dial End! ret = 1
+2016-4-26 17:12:42.386	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:12:42.387	Mainproc DtmfCall Begin!
+2016-4-26 17:12:42.388	Mainproc DtmfCall End!
+2016-4-26 17:12:42.947	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:12:42.948	Mainproc DtmfCall Begin!
+2016-4-26 17:12:42.950	Mainproc DtmfCall End!
+2016-4-26 17:12:43.467	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:12:43.468	Mainproc DtmfCall Begin!
+2016-4-26 17:12:43.469	Mainproc DtmfCall End!
+2016-4-26 17:12:44.130	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:12:44.131	Mainproc DtmfCall Begin!
+2016-4-26 17:12:44.132	Mainproc DtmfCall End!
+2016-4-26 17:12:44.538	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:12:44.539	Mainproc DtmfCall Begin!
+2016-4-26 17:12:44.540	Mainproc DtmfCall End!
+2016-4-26 17:12:46.210	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:12:46.210	Mainproc DtmfCall Begin!
+2016-4-26 17:12:46.211	Mainproc DtmfCall End!
+2016-4-26 17:12:50.41	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:12:50.42	Mainproc DtmfCall Begin!
+2016-4-26 17:12:50.43	Mainproc DtmfCall End!
+2016-4-26 17:12:50.778	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:12:50.780	Mainproc DtmfCall Begin!
+2016-4-26 17:12:50.781	Mainproc DtmfCall End!
+2016-4-26 17:12:51.90	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:12:51.91	Mainproc DtmfCall Begin!
+2016-4-26 17:12:51.92	Mainproc DtmfCall End!
+2016-4-26 17:12:53.530	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:12:53.531	Mainproc DtmfCall Begin!
+2016-4-26 17:12:53.532	Mainproc DtmfCall End!
+2016-4-26 17:13:0.603	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:13:0.604	Mainproc DtmfCall Begin!
+2016-4-26 17:13:0.605	Mainproc DtmfCall End!
+2016-4-26 17:13:0.995	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:13:0.996	Mainproc DtmfCall Begin!
+2016-4-26 17:13:0.998	Mainproc DtmfCall End!
+2016-4-26 17:13:1.442	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:13:1.444	Mainproc DtmfCall Begin!
+2016-4-26 17:13:1.445	Mainproc DtmfCall End!
+2016-4-26 17:13:1.905	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:13:1.906	Mainproc DtmfCall Begin!
+2016-4-26 17:13:1.906	Mainproc DtmfCall End!
+2016-4-26 17:13:2.338	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:13:2.340	Mainproc DtmfCall Begin!
+2016-4-26 17:13:2.341	Mainproc DtmfCall End!
+2016-4-26 17:13:4.498	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:13:4.499	Mainproc DtmfCall Begin!
+2016-4-26 17:13:4.500	Mainproc DtmfCall End!
+2016-4-26 17:13:7.313	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:13:7.314	Mainproc DtmfCall Begin!
+2016-4-26 17:13:7.315	Mainproc DtmfCall End!
+2016-4-26 17:13:7.946	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:13:7.946	Mainproc DtmfCall Begin!
+2016-4-26 17:13:7.947	Mainproc DtmfCall End!
+2016-4-26 17:13:8.427	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:13:8.428	Mainproc DtmfCall Begin!
+2016-4-26 17:13:8.429	Mainproc DtmfCall End!
+2016-4-26 17:13:8.874	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:13:8.875	Mainproc DtmfCall Begin!
+2016-4-26 17:13:8.877	Mainproc DtmfCall End!
+2016-4-26 17:13:9.282	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:13:9.283	Mainproc DtmfCall Begin!
+2016-4-26 17:13:9.284	Mainproc DtmfCall End!
+2016-4-26 17:13:11.897	*** Mainproc Begin*** method = /cs/sipphone/DtmfCall/800006/1000
+2016-4-26 17:13:11.898	Mainproc DtmfCall Begin!
+2016-4-26 17:13:11.899	Mainproc DtmfCall End!
+2016-4-26 17:13:24.834	*** Mainproc Begin*** method = /cs/sipphone/EndCall/800006/1000
+2016-4-26 17:13:24.835	Mainproc EndCall Begin!
+2016-4-26 17:13:24.838	Mainproc EndCall End!
+2016-4-26 17:14:16.35	*** Mainproc Begin*** method = /cs/sipphone/Logout/800006/1000
+2016-4-26 17:14:16.36	Mainproc Logout Begin!
+2016-4-26 17:14:17.443	Mainproc Logout End!
+2016-4-26 17:14:17.714	*** DllExit Begin***
+2016-4-26 17:14:17.716	*** DllExit Begining***
+2016-4-26 17:14:17.717	*** DllExit End***

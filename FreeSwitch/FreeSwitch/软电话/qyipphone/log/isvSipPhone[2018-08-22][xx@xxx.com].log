@@ -1,0 +1,195 @@
+2018-8-22 9:56:46.43	
+
+******************************************
+
+
+2018-8-22 9:56:46.45	SipPhone Trace App Log Trace 2018/8/22 星期三 上午 09:56:46
+
+
+2018-8-22 9:56:46.45	SipPhone Log Start!!!!!!!
+2018-8-22 9:56:46.46	SipPhone Log windows pointer 0038EA44!!!!!!!
+2018-8-22 9:56:46.46	Success_InParasfromCapi!
+2018-8-22 9:56:46.46	Success_Create SipPhone CS Interface!
+2018-8-22 9:56:46.63	Success_CSInterfaceInit!
+2018-8-22 9:56:46.65	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 9:56:46.65	Mainproc Login Begin!
+2018-8-22 9:56:46.102	Mainproc Login End!
+2018-8-22 9:56:46.103	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 9:56:46.103	Mainproc Login Begin!
+2018-8-22 9:56:46.105	EncryptRtpPort:0 SignalEncrypt:0
+2018-8-22 9:57:4.384	*** Mainproc Begin*** method = /cs/sipphone/Logout/800006/1000
+2018-8-22 9:57:4.387	Mainproc Logout Begin!
+2018-8-22 9:57:5.597	Mainproc Logout End!
+2018-8-22 9:57:5.599	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 9:57:5.599	Mainproc Login Begin!
+2018-8-22 9:57:5.620	Mainproc Login End!
+2018-8-22 9:57:5.621	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 9:57:5.625	Mainproc Login Begin!
+2018-8-22 9:57:5.669	EncryptRtpPort:0 SignalEncrypt:0
+2018-8-22 10:3:30.388	*** Mainproc Begin*** method = /cs/sipphone/Logout/800006/1000
+2018-8-22 10:3:30.389	Mainproc Logout Begin!
+2018-8-22 10:3:31.688	Mainproc Logout End!
+2018-8-22 10:3:31.692	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 10:3:31.693	Mainproc Login Begin!
+2018-8-22 10:3:31.738	Mainproc Login End!
+2018-8-22 10:3:31.739	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 10:3:31.739	Mainproc Login Begin!
+2018-8-22 10:3:31.741	EncryptRtpPort:0 SignalEncrypt:0
+2018-8-22 10:3:40.905	*** Mainproc Begin*** method = /cs/sipphone/Logout/800006/1000
+2018-8-22 10:3:40.906	Mainproc Logout Begin!
+2018-8-22 10:3:42.222	Mainproc Logout End!
+2018-8-22 10:3:42.227	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 10:3:42.229	Mainproc Login Begin!
+2018-8-22 10:3:42.283	Mainproc Login End!
+2018-8-22 10:3:42.283	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 10:3:42.284	Mainproc Login Begin!
+2018-8-22 10:3:42.285	EncryptRtpPort:0 SignalEncrypt:0
+2018-8-22 10:11:19.401	*** Mainproc Begin*** method = /cs/sipphone/Logout/800006/1000
+2018-8-22 10:11:19.403	Mainproc Logout Begin!
+2018-8-22 10:11:20.438	Mainproc Logout End!
+2018-8-22 10:11:20.441	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 10:11:20.443	Mainproc Login Begin!
+2018-8-22 10:11:20.486	Mainproc Login End!
+2018-8-22 10:11:20.488	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 10:11:20.488	Mainproc Login Begin!
+2018-8-22 10:11:20.488	EncryptRtpPort:0 SignalEncrypt:0
+2018-8-22 10:12:45.7	*** Mainproc Begin*** method = /cs/sipphone/Logout/800006/1000
+2018-8-22 10:12:45.9	Mainproc Logout Begin!
+2018-8-22 10:12:46.512	Mainproc Logout End!
+2018-8-22 10:12:46.514	*** DllExit Begin***
+2018-8-22 10:12:46.514	*** DllExit Begining***
+2018-8-22 10:12:46.517	*** DllExit End***
+2018-8-22 10:14:50.299	
+
+******************************************
+
+
+2018-8-22 10:14:50.301	SipPhone Trace App Log Trace 2018/8/22 星期三 上午 10:14:50
+
+
+2018-8-22 10:14:50.301	SipPhone Log Start!!!!!!!
+2018-8-22 10:14:50.302	SipPhone Log windows pointer 007AE7FC!!!!!!!
+2018-8-22 10:14:50.302	Success_InParasfromCapi!
+2018-8-22 10:14:50.304	Success_Create SipPhone CS Interface!
+2018-8-22 10:14:50.316	Success_CSInterfaceInit!
+2018-8-22 10:14:50.317	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 10:14:50.319	Mainproc Login Begin!
+2018-8-22 10:14:50.357	Mainproc Login End!
+2018-8-22 10:14:50.358	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 10:14:50.359	Mainproc Login Begin!
+2018-8-22 10:14:50.360	EncryptRtpPort:0 SignalEncrypt:0
+2018-8-22 10:15:56.851	send WM_SIPPHONE_INCOMINGCALL: , 0
+2018-8-22 11:15:38.809	
+
+******************************************
+
+
+2018-8-22 11:15:38.811	SipPhone Trace App Log Trace 2018/8/22 星期三 上午 11:15:38
+
+
+2018-8-22 11:15:38.811	SipPhone Log Start!!!!!!!
+2018-8-22 11:15:38.811	SipPhone Log windows pointer 003CEAB4!!!!!!!
+2018-8-22 11:15:38.811	Success_InParasfromCapi!
+2018-8-22 11:15:38.814	Success_Create SipPhone CS Interface!
+2018-8-22 11:15:38.829	Success_CSInterfaceInit!
+2018-8-22 11:15:38.829	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 11:15:38.831	Mainproc Login Begin!
+2018-8-22 11:15:38.871	Mainproc Login End!
+2018-8-22 11:15:38.871	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 11:15:38.874	Mainproc Login Begin!
+2018-8-22 11:15:38.874	EncryptRtpPort:0 SignalEncrypt:0
+2018-8-22 12:3:29.173	send WM_SIPPHONE_INCOMINGCALL: , 0
+2018-8-22 14:47:26.567	
+
+******************************************
+
+
+2018-8-22 14:47:26.568	SipPhone Trace App Log Trace 2018/8/22 星期三 下午 02:47:26
+
+
+2018-8-22 14:47:26.571	SipPhone Log Start!!!!!!!
+2018-8-22 14:47:26.572	SipPhone Log windows pointer 0034E92C!!!!!!!
+2018-8-22 14:47:26.573	Success_InParasfromCapi!
+2018-8-22 14:47:26.575	Success_Create SipPhone CS Interface!
+2018-8-22 14:47:26.588	Success_CSInterfaceInit!
+2018-8-22 14:47:26.591	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 14:47:26.591	Mainproc Login Begin!
+2018-8-22 14:47:26.631	Mainproc Login End!
+2018-8-22 14:47:26.632	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 14:47:26.633	Mainproc Login Begin!
+2018-8-22 14:47:26.635	EncryptRtpPort:0 SignalEncrypt:0
+2018-8-22 14:47:40.81	*** Mainproc Begin*** method = /cs/sipphone/Logout/800006/1000
+2018-8-22 14:47:40.83	Mainproc Logout Begin!
+2018-8-22 14:47:41.139	Mainproc Logout End!
+2018-8-22 14:47:41.143	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 14:47:41.146	Mainproc Login Begin!
+2018-8-22 14:47:41.223	Mainproc Login End!
+2018-8-22 14:47:41.223	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 14:47:41.224	Mainproc Login Begin!
+2018-8-22 14:47:41.224	EncryptRtpPort:0 SignalEncrypt:0
+2018-8-22 14:48:16.974	send WM_SIPPHONE_INCOMINGCALL: , 0
+2018-8-22 14:48:20.777	send WM_SIPPHONE_INCOMINGCALL: Incoming call, 0
+2018-8-22 14:51:7.857	send WM_SIPPHONE_INCOMINGCALL: , 1
+2018-8-22 14:51:10.248	send WM_SIPPHONE_INCOMINGCALL: Incoming call, 1
+2018-8-22 14:57:30.130	send WM_SIPPHONE_INCOMINGCALL: , 2
+2018-8-22 14:57:33.148	send WM_SIPPHONE_INCOMINGCALL: Incoming call, 2
+2018-8-22 18:37:33.15	*** Mainproc Begin*** method = /cs/sipphone/Logout/800006/1000
+2018-8-22 18:37:33.15	Mainproc Logout Begin!
+2018-8-22 18:37:34.452	Mainproc Logout End!
+2018-8-22 18:37:34.452	*** DllExit Begin***
+2018-8-22 18:37:34.452	*** DllExit Begining***
+2018-8-22 18:37:34.452	*** DllExit End***
+2018-8-22 22:7:32.867	
+
+******************************************
+
+
+2018-8-22 22:7:32.890	SipPhone Trace App Log Trace 2018/8/22 22:07:32
+
+
+2018-8-22 22:7:32.894	SipPhone Log Start!!!!!!!
+2018-8-22 22:7:32.898	SipPhone Log windows pointer 00CFE4D0!!!!!!!
+2018-8-22 22:7:32.902	Success_InParasfromCapi!
+2018-8-22 22:7:32.906	Success_Create SipPhone CS Interface!
+2018-8-22 22:7:32.929	Success_CSInterfaceInit!
+2018-8-22 22:7:32.934	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 22:7:32.938	Mainproc Login Begin!
+2018-8-22 22:7:32.980	Mainproc Login End!
+2018-8-22 22:7:32.985	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 22:7:32.991	Mainproc Login Begin!
+2018-8-22 22:7:32.996	EncryptRtpPort:0 SignalEncrypt:0
+2018-8-22 22:8:56.86	*** Mainproc Begin*** method = /cs/sipphone/Logout/800006/1000
+2018-8-22 22:8:56.91	Mainproc Logout Begin!
+2018-8-22 22:8:57.580	Mainproc Logout End!
+2018-8-22 22:8:57.593	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 22:8:57.601	Mainproc Login Begin!
+2018-8-22 22:8:57.627	Mainproc Login End!
+2018-8-22 22:8:57.631	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2018-8-22 22:8:57.635	Mainproc Login Begin!
+2018-8-22 22:8:57.639	EncryptRtpPort:0 SignalEncrypt:0
+2018-8-22 22:9:8.706	*** Mainproc Begin*** method = /cs/sipphone/Dial/800006/1000
+2018-8-22 22:9:8.711	Mainproc Dial Begin!
+2018-8-22 22:9:8.714	Caller = 1001, Called = 1002
+2018-8-22 22:9:8.717	CSipPhoneProc::shellBeginDial Begin: Caller = 1001,Called = 109673848
+2018-8-22 22:9:8.721	CSipPhoneProc::shellBeginDial : 1 m_bSecure = 0
+2018-8-22 22:9:8.725	CSipPhoneProc::shellBeginDial : 2, idinfo = "1001"<sip:1001@132.232.23.164:5060>
+2018-8-22 22:9:8.729	CSipPhoneProc::shellBeginDial : 3
+2018-8-22 22:9:8.732	CSipPhoneProc::shellBeginDial : 4 url = <sip:1002@132.232.23.164:5060>
+2018-8-22 22:9:8.926	CSipPhoneProc::shellBeginDial : 5 pjsua_call_make_call status = 0
+2018-8-22 22:9:8.930	CSipPhoneProc::shellBeginDial : 6
+2018-8-22 22:9:8.934	incomingEventFunction: OUTGOINGCALL: SendMessage2CS
+2018-8-22 22:9:8.938	1002
+2018-8-22 22:9:8.942	Mainproc Dial End! ret = 1
+2018-8-22 22:10:25.367	*** Mainproc Begin*** method = /cs/sipphone/Dial/800006/1000
+2018-8-22 22:10:25.372	Mainproc Dial Begin!
+2018-8-22 22:10:25.377	Caller = 1001, Called = 1002
+2018-8-22 22:10:25.381	CSipPhoneProc::shellBeginDial Begin: Caller = 1001,Called = 109674064
+2018-8-22 22:10:25.386	CSipPhoneProc::shellBeginDial : 1 m_bSecure = 0
+2018-8-22 22:10:25.391	CSipPhoneProc::shellBeginDial : 2, idinfo = "1001"<sip:1001@132.232.23.164:5060>
+2018-8-22 22:10:25.396	CSipPhoneProc::shellBeginDial : 3
+2018-8-22 22:10:25.400	CSipPhoneProc::shellBeginDial : 4 url = <sip:1002@132.232.23.164:5060>
+2018-8-22 22:10:25.588	CSipPhoneProc::shellBeginDial : 5 pjsua_call_make_call status = 0
+2018-8-22 22:10:25.592	CSipPhoneProc::shellBeginDial : 6
+2018-8-22 22:10:25.596	incomingEventFunction: OUTGOINGCALL: SendMessage2CS
+2018-8-22 22:10:25.598	1002
+2018-8-22 22:10:25.603	Mainproc Dial End! ret = 1

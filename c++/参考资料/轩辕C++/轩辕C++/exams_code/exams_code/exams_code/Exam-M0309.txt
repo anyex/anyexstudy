@@ -1,0 +1,58 @@
+一、请问下面个表达式中使用类哪些转换？
+// From "The C++ Programming Language" Ch11
+
+struct X {
+    int i;
+    X(int);
+    X operator+(int);
+};
+
+struct Y {
+    int i;
+    Y(X);
+    Y operator+(X);
+    operator int();
+};
+
+extern X operator*(X, Y);
+extern int f(X);
+
+X x = 1;	// 隐式转换，调用X的单参数构造函数，X x = X(1);
+Y y = x;	// 隐式转换，调用Y的单参数构造函数，Y y = Y(x);
+int i = 2;
+
+int main() {
+    i + 10;
+    y + 10;	// 这里有二义性：1, 可以是 y通过函数Y::operator int()，转换成int参与运算，
+                           2，也可以是调用 Y::operator+(X)，即y + X(10)，10向X隐式转换（即调用X的单参数构造函数）
+    y + 10 * y; // 这里有二义性：同上
+    x + y + i;  // 先调用y.operator int()将y转换成int，再调用x.operator(int)
+    x * x + i;	// 先将后面的x隐式转换为Y(调用Y(X)构造)，然后调用X.operator+(int)
+    f(7);	// 隐式转换，调用X的单参数构造函数，X x = X(7);
+    f(y);	// 调用失败，没有Y到X的转换
+    y + y;	// 调用y.operator int()
+    106 + y; // 调用y.operator int()
+}
+
+修改以上代码，使程序能正确运行，并打印每个给出的合法表达式的值。
+
+
+二、继续实现Exam-M0308题五
+1. 让类Array可以象数组一样，通过下标操作其内的元素;
+2. 重载ostream 的 << 操作符，使其能象输出基本类型一样输出Array对象的内容，如：
+Array ar;  cout << ar << endl;
+
+(参考：Exam-M0309-2)
+
+三、实现一个简易的智能指针
+1. 本次实现的智能指针仅管理类型 class A 的指针;
+2. 智能指针的对象初始化方式：SmartPtr ptr(new A); // 或new A的其它构造函数；
+3. 初始化后象平常对象指针 A* 一样使用ptr，如：
+1. *ptr  → 去引用
+2. ptr->A的成员
+4. 智能指针之间可以赋值；
+5. 当所有指向同一个A对象的智能指针都销毁后，最后一个销毁的智能指针负责销毁A对象。
+
+(参考：Exam-M0309-3)
+
+

@@ -1,0 +1,76 @@
+2016-7-7 13:53:40.228	
+
+******************************************
+
+
+2016-7-7 13:53:40.247	SipPhone Trace App Log Trace 2016/7/7 13:53:40
+
+
+2016-7-7 13:53:40.248	SipPhone Log Start!!!!!!!
+2016-7-7 13:53:40.248	SipPhone Log windows pointer 0018EF10!!!!!!!
+2016-7-7 13:53:40.249	Success_InParasfromCapi!
+2016-7-7 13:53:40.250	Success_Create SipPhone CS Interface!
+2016-7-7 13:53:40.283	Success_CSInterfaceInit!
+2016-7-7 13:53:40.923	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-7-7 13:53:40.924	Mainproc Login Begin!
+2016-7-7 13:53:41.150	Mainproc Login End!
+2016-7-7 13:53:41.163	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-7-7 13:53:41.164	Mainproc Login Begin!
+2016-7-7 13:53:41.168	EncryptRtpPort:0 SignalEncrypt:0
+2016-7-7 13:53:41.170	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-7-7 13:53:41.171	Mainproc Login Begin!
+2016-7-7 13:53:42.186	Mainproc Login End!
+2016-7-7 13:53:42.188	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-7-7 13:53:42.189	Mainproc Login Begin!
+2016-7-7 13:53:42.190	EncryptRtpPort:0 SignalEncrypt:0
+2016-7-7 13:54:15.228	
+
+******************************************
+
+
+2016-7-7 13:54:15.231	SipPhone Trace App Log Trace 2016/7/7 13:54:15
+
+
+2016-7-7 13:54:15.232	SipPhone Log Start!!!!!!!
+2016-7-7 13:54:15.233	SipPhone Log windows pointer 0018EF10!!!!!!!
+2016-7-7 13:54:15.234	Success_InParasfromCapi!
+2016-7-7 13:54:15.235	Success_Create SipPhone CS Interface!
+2016-7-7 13:54:15.274	Success_CSInterfaceInit!
+2016-7-7 13:54:15.811	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-7-7 13:54:15.812	Mainproc Login Begin!
+2016-7-7 13:54:15.891	Mainproc Login End!
+2016-7-7 13:54:15.891	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-7-7 13:54:15.892	Mainproc Login Begin!
+2016-7-7 13:54:15.892	EncryptRtpPort:0 SignalEncrypt:0
+2016-7-7 13:54:19.821	*** Mainproc Begin*** method = /cs/sipphone/Dial/800006/1000
+2016-7-7 13:54:19.822	Mainproc Dial Begin!
+2016-7-7 13:54:19.824	Caller = 10008021, Called = 13996180255
+2016-7-7 13:54:19.825	CSipPhoneProc::shellBeginDial Begin: Caller = 10008021,Called = 53120720
+2016-7-7 13:54:19.826	CSipPhoneProc::shellBeginDial : 1 m_bSecure = 0
+2016-7-7 13:54:19.827	CSipPhoneProc::shellBeginDial : 2, idinfo = "10008021"<sip:10008021@222.180.162.53:7248>
+2016-7-7 13:54:19.828	CSipPhoneProc::shellBeginDial : 3
+2016-7-7 13:54:19.829	CSipPhoneProc::shellBeginDial : 4 url = <sip:13996180255@222.180.162.53:7248>
+2016-7-7 13:54:20.104	CSipPhoneProc::shellBeginDial : 5 pjsua_call_make_call status = 0
+2016-7-7 13:54:20.105	CSipPhoneProc::shellBeginDial : 6
+2016-7-7 13:54:20.105	incomingEventFunction: OUTGOINGCALL: SendMessage2CS
+2016-7-7 13:54:20.106	13996180255
+2016-7-7 13:54:20.106	Mainproc Dial End! ret = 1
+2016-7-7 13:55:17.342	*** Mainproc Begin*** method = /cs/sipphone/Dial/800006/1000
+2016-7-7 13:55:17.343	Mainproc Dial Begin!
+2016-7-7 13:55:17.344	Caller = 10008021, Called = 13996180255
+2016-7-7 13:55:17.345	CSipPhoneProc::shellBeginDial Begin: Caller = 10008021,Called = 53120648
+2016-7-7 13:55:17.346	CSipPhoneProc::shellBeginDial : 1 m_bSecure = 0
+2016-7-7 13:55:17.347	CSipPhoneProc::shellBeginDial : 2, idinfo = "10008021"<sip:10008021@222.180.162.53:7248>
+2016-7-7 13:55:17.349	CSipPhoneProc::shellBeginDial : 3
+2016-7-7 13:55:17.350	CSipPhoneProc::shellBeginDial : 4 url = <sip:13996180255@222.180.162.53:7248>
+2016-7-7 13:55:17.558	CSipPhoneProc::shellBeginDial : 5 pjsua_call_make_call status = 0
+2016-7-7 13:55:17.558	CSipPhoneProc::shellBeginDial : 6
+2016-7-7 13:55:17.558	incomingEventFunction: OUTGOINGCALL: SendMessage2CS
+2016-7-7 13:55:17.559	13996180255
+2016-7-7 13:55:17.559	Mainproc Dial End! ret = 1
+2016-7-7 13:56:13.235	*** Mainproc Begin*** method = /cs/sipphone/Logout/800006/1000
+2016-7-7 13:56:13.236	Mainproc Logout Begin!
+2016-7-7 13:56:14.550	Mainproc Logout End!
+2016-7-7 13:56:14.819	*** DllExit Begin***
+2016-7-7 13:56:14.821	*** DllExit Begining***
+2016-7-7 13:56:14.822	*** DllExit End***

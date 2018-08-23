@@ -1,0 +1,78 @@
+2016-5-13 16:8:56.855	
+
+******************************************
+
+
+2016-5-13 16:8:56.855	SipPhone Trace App Log Trace 2016/5/13 16:08:56
+
+
+2016-5-13 16:8:56.855	SipPhone Log Start!!!!!!!
+2016-5-13 16:8:56.855	SipPhone Log windows pointer 0018EF10!!!!!!!
+2016-5-13 16:8:56.855	Success_InParasfromCapi!
+2016-5-13 16:8:56.855	Success_Create SipPhone CS Interface!
+2016-5-13 16:8:56.995	Success_CSInterfaceInit!
+2016-5-13 16:8:57.370	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-5-13 16:8:57.370	Mainproc Login Begin!
+2016-5-13 16:8:57.541	Mainproc Login End!
+2016-5-13 16:8:57.557	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-5-13 16:8:57.557	Mainproc Login Begin!
+2016-5-13 16:8:57.572	EncryptRtpPort:0 SignalEncrypt:0
+2016-5-13 16:9:0.162	*** Mainproc Begin*** method = /cs/sipphone/Dial/800006/1000
+2016-5-13 16:9:0.162	Mainproc Dial Begin!
+2016-5-13 16:9:0.162	Caller = 86806488, Called = 13996180255
+2016-5-13 16:9:0.162	CSipPhoneProc::shellBeginDial Begin: Caller = 86806488,Called = 40210128
+2016-5-13 16:9:0.162	CSipPhoneProc::shellBeginDial : 1 m_bSecure = 0
+2016-5-13 16:9:0.162	CSipPhoneProc::shellBeginDial : 2, idinfo = "86806488"<sip:86806488@221.5.152.180:5060>
+2016-5-13 16:9:0.162	CSipPhoneProc::shellBeginDial : 3
+2016-5-13 16:9:0.178	CSipPhoneProc::shellBeginDial : 4 url = <sip:13996180255@221.5.152.180:5060>
+2016-5-13 16:9:0.487	CSipPhoneProc::shellBeginDial : 5 pjsua_call_make_call status = 0
+2016-5-13 16:9:0.487	CSipPhoneProc::shellBeginDial : 6
+2016-5-13 16:9:0.487	incomingEventFunction: OUTGOINGCALL: SendMessage2CS
+2016-5-13 16:9:0.487	13996180255
+2016-5-13 16:9:0.487	Mainproc Dial End! ret = 1
+2016-5-13 16:9:11.537	*** Mainproc Begin*** method = /cs/sipphone/Logout/800006/1000
+2016-5-13 16:9:11.547	Mainproc Logout Begin!
+2016-5-13 16:9:13.95	Mainproc Logout End!
+2016-5-13 16:9:13.110	*** DllExit Begin***
+2016-5-13 16:9:13.110	*** DllExit Begining***
+2016-5-13 16:9:13.110	*** DllExit End***
+2016-5-13 16:9:13.142	*** DllExit Begin***
+2016-5-13 16:9:13.142	*** DllExit End***
+2016-5-13 16:9:35.247	
+
+******************************************
+
+
+2016-5-13 16:9:35.247	SipPhone Trace App Log Trace 2016/5/13 16:09:35
+
+
+2016-5-13 16:9:35.247	SipPhone Log Start!!!!!!!
+2016-5-13 16:9:35.247	SipPhone Log windows pointer 0018EF10!!!!!!!
+2016-5-13 16:9:35.262	Success_InParasfromCapi!
+2016-5-13 16:9:35.262	Success_Create SipPhone CS Interface!
+2016-5-13 16:9:35.262	Success_CSInterfaceInit!
+2016-5-13 16:9:35.668	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-5-13 16:9:35.668	Mainproc Login Begin!
+2016-5-13 16:9:35.762	Mainproc Login End!
+2016-5-13 16:9:35.762	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-5-13 16:9:35.762	Mainproc Login Begin!
+2016-5-13 16:9:35.762	EncryptRtpPort:0 SignalEncrypt:0
+2016-5-13 16:9:37.290	*** Mainproc Begin*** method = /cs/sipphone/Dial/800006/1000
+2016-5-13 16:9:37.290	Mainproc Dial Begin!
+2016-5-13 16:9:37.290	Caller = 86800965, Called = 13996180255
+2016-5-13 16:9:37.290	CSipPhoneProc::shellBeginDial Begin: Caller = 86800965,Called = 40210128
+2016-5-13 16:9:37.290	CSipPhoneProc::shellBeginDial : 1 m_bSecure = 0
+2016-5-13 16:9:37.290	CSipPhoneProc::shellBeginDial : 2, idinfo = "86800965"<sip:86800965@221.5.152.180:5060>
+2016-5-13 16:9:37.290	CSipPhoneProc::shellBeginDial : 3
+2016-5-13 16:9:37.306	CSipPhoneProc::shellBeginDial : 4 url = <sip:13996180255@221.5.152.180:5060>
+2016-5-13 16:9:37.500	CSipPhoneProc::shellBeginDial : 5 pjsua_call_make_call status = 0
+2016-5-13 16:9:37.501	CSipPhoneProc::shellBeginDial : 6
+2016-5-13 16:9:37.501	incomingEventFunction: OUTGOINGCALL: SendMessage2CS
+2016-5-13 16:9:37.501	13996180255
+2016-5-13 16:9:37.502	Mainproc Dial End! ret = 1
+2016-5-13 16:9:47.663	*** Mainproc Begin*** method = /cs/sipphone/Logout/800006/1000
+2016-5-13 16:9:47.663	Mainproc Logout Begin!
+2016-5-13 16:9:49.205	Mainproc Logout End!
+2016-5-13 16:9:50.188	*** DllExit Begin***
+2016-5-13 16:9:50.188	*** DllExit Begining***
+2016-5-13 16:9:50.188	*** DllExit End***

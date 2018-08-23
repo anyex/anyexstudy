@@ -1,0 +1,72 @@
+2016-5-5 10:46:32.269	
+
+******************************************
+
+
+2016-5-5 10:46:32.270	SipPhone Trace App Log Trace 2016/5/5 10:46:32
+
+
+2016-5-5 10:46:32.271	SipPhone Log Start!!!!!!!
+2016-5-5 10:46:32.271	SipPhone Log windows pointer 0018EF10!!!!!!!
+2016-5-5 10:46:32.271	Success_InParasfromCapi!
+2016-5-5 10:46:32.272	Success_Create SipPhone CS Interface!
+2016-5-5 10:46:32.313	Success_CSInterfaceInit!
+2016-5-5 10:46:32.941	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-5-5 10:46:32.942	Mainproc Login Begin!
+2016-5-5 10:46:32.998	Mainproc Login End!
+2016-5-5 10:46:32.999	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-5-5 10:46:32.999	Mainproc Login Begin!
+2016-5-5 10:46:33.0	EncryptRtpPort:0 SignalEncrypt:0
+2016-5-5 10:46:42.561	send WM_SIPPHONE_INCOMINGCALL: , 0
+2016-5-5 10:46:42.586	send WM_SIPPHONE_INCOMINGCALL: Incoming call, 0
+2016-5-5 10:46:43.653	*** Mainproc Begin*** method = /cs/sipphone/AcceptCall/800006/1000
+2016-5-5 10:46:43.655	Mainproc AcceptCall Begin!
+2016-5-5 10:46:43.872	Mainproc AcceptCall End!
+2016-5-5 10:46:56.37	send WM_SIPPHONE_INCOMINGCALL: , 1
+2016-5-5 10:46:56.50	send WM_SIPPHONE_INCOMINGCALL: Incoming call, 1
+2016-5-5 10:46:57.518	*** Mainproc Begin*** method = /cs/sipphone/AcceptCall/800006/1000
+2016-5-5 10:46:57.519	Mainproc AcceptCall Begin!
+2016-5-5 10:46:57.597	Mainproc AcceptCall End!
+2016-5-5 10:51:23.540	send WM_SIPPHONE_INCOMINGCALL: , 2
+2016-5-5 10:51:23.540	send WM_SIPPHONE_INCOMINGCALL: Incoming call, 2
+2016-5-5 10:51:25.365	*** Mainproc Begin*** method = /cs/sipphone/AcceptCall/800006/1000
+2016-5-5 10:51:25.366	Mainproc AcceptCall Begin!
+2016-5-5 10:51:25.450	Mainproc AcceptCall End!
+2016-5-5 10:51:30.172	send WM_SIPPHONE_INCOMINGCALL: , 3
+2016-5-5 10:51:30.173	send WM_SIPPHONE_INCOMINGCALL: Incoming call, 3
+2016-5-5 10:51:31.574	*** Mainproc Begin*** method = /cs/sipphone/AcceptCall/800006/1000
+2016-5-5 10:51:31.575	Mainproc AcceptCall Begin!
+2016-5-5 10:51:31.638	Mainproc AcceptCall End!
+2016-5-5 10:51:53.940	send WM_SIPPHONE_INCOMINGCALL: , 0
+2016-5-5 10:51:53.941	send WM_SIPPHONE_INCOMINGCALL: Incoming call, 0
+2016-5-5 10:51:55.413	*** Mainproc Begin*** method = /cs/sipphone/AcceptCall/800006/1000
+2016-5-5 10:51:55.415	Mainproc AcceptCall Begin!
+2016-5-5 10:51:55.476	Mainproc AcceptCall End!
+2016-5-5 10:51:59.21	send WM_SIPPHONE_INCOMINGCALL: , 1
+2016-5-5 10:51:59.28	send WM_SIPPHONE_INCOMINGCALL: Incoming call, 1
+2016-5-5 10:52:0.285	*** Mainproc Begin*** method = /cs/sipphone/AcceptCall/800006/1000
+2016-5-5 10:52:0.286	Mainproc AcceptCall Begin!
+2016-5-5 10:52:0.361	Mainproc AcceptCall End!
+2016-5-5 10:52:4.511	send WM_SIPPHONE_INCOMINGCALL: , 2
+2016-5-5 10:52:4.512	send WM_SIPPHONE_INCOMINGCALL: Incoming call, 2
+2016-5-5 10:52:5.37	*** Mainproc Begin*** method = /cs/sipphone/AcceptCall/800006/1000
+2016-5-5 10:52:5.37	Mainproc AcceptCall Begin!
+2016-5-5 10:52:5.67	Mainproc AcceptCall End!
+2016-5-5 10:52:8.183	send WM_SIPPHONE_INCOMINGCALL: , 3
+2016-5-5 10:52:8.184	send WM_SIPPHONE_INCOMINGCALL: Incoming call, 3
+2016-5-5 10:52:9.133	*** Mainproc Begin*** method = /cs/sipphone/AcceptCall/800006/1000
+2016-5-5 10:52:9.133	Mainproc AcceptCall Begin!
+2016-5-5 10:52:9.175	Mainproc AcceptCall End!
+2016-5-5 10:52:12.806	send WM_SIPPHONE_INCOMINGCALL: , 0
+2016-5-5 10:52:12.807	send WM_SIPPHONE_INCOMINGCALL: Incoming call, 0
+2016-5-5 10:52:13.677	*** Mainproc Begin*** method = /cs/sipphone/AcceptCall/800006/1000
+2016-5-5 10:52:13.678	Mainproc AcceptCall Begin!
+2016-5-5 10:52:13.746	Mainproc AcceptCall End!
+2016-5-5 16:32:30.862	*** Mainproc Begin*** method = /cs/sipphone/Logout/800006/1000
+2016-5-5 16:32:30.875	Mainproc Logout Begin!
+2016-5-5 16:32:32.477	Mainproc Logout End!
+2016-5-5 16:32:32.492	*** DllExit Begin***
+2016-5-5 16:32:32.492	*** DllExit Begining***
+2016-5-5 16:32:32.493	*** DllExit End***
+2016-5-5 16:32:32.495	*** DllExit Begin***
+2016-5-5 16:32:32.495	*** DllExit End***

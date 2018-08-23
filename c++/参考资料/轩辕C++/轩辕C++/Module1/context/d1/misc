@@ -1,0 +1,14 @@
+line 1.
+line 2.
+line 3.
+line 3.
+line 3.
+line 3.
+line 3.
+line 3.
+#include <iostream>
+
+int main() {
+	std::cout << "hello, world!\n";
+	return 0;
+}

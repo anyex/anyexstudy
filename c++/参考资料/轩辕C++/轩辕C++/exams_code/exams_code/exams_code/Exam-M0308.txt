@@ -1,0 +1,166 @@
+一、请判断以下类型的size：
+
+====== 以下以32bits GCC 为例：=======
+
+class A {
+    char c;
+    static double d;
+public:
+    void f();
+}; // 1 byte
+
+class B {
+    char c;
+    bool b;
+public:
+    void f();
+}; // 2 bytes
+
+class C {
+    char ca[21];	// 24 bytes，字节对齐
+    char* cp;		// 4 bytes
+public:
+    void f();
+};	// 28 bytes
+
+class D {
+    int n;	// 4 bytes
+    bool b;	// 4 bytes，字节对齐
+    double d;	// 8 bytes，字节对齐
+    char c; // 4 bytes，字节对齐
+public:
+    void f();
+};  // 20 bytes
+
+class E {
+    char c;
+    bool b;
+    short s; // 这个3个字段 4bytes
+    double d;
+public:
+    void f();
+};  // 12 bytes
+
+二、请完整实现 class T ，让程序通过编译、正确运行
+class T {
+    int& ir; 
+    const int k; 
+    int* ar; 
+    static int g;
+public:
+    // ...
+}; 
+
+void f(const T& t) {
+    cout << t.getIr() << endl;
+}
+
+int main() {
+    // 在这里声明一个 T 的对象 t1，可供函数 f() 使用
+    f(t1);
+    {
+        T t2 = t1;
+        cout << t2.getK() << endl;
+    }
+}
+
+
+===============================================
+class T {
+	int& ir;
+	const int k;
+	int* ar;
+	static int g;
+public:
+	T(int& i, int n) :
+			ir(i), k(n) {
+		ar = new int();
+	}
+
+	T(const T& rhs) :
+			ir(rhs.ir), k(rhs.k), ar(new int(*rhs.ar)) {
+
+	}
+
+	T& operator=(const T& rhs) {
+		if (this != &rhs) {
+			ir = rhs.ir;
+			*ar = *rhs.ar;
+		}
+
+		return *this;
+	}
+
+	int& getIr() const {
+		return ir;
+	}
+
+	int getK() const {
+		return k;
+	}
+};
+
+int T::g = 0;
+ 
+
+void f(const T& t) {
+    cout << t.getIr() << endl;
+}
+
+int main() {
+    // 在这里声明一个 T 的对象 t1，可供函数 f() 使用
+	int n = 100;
+	T t1(n, 20);
+    f(t1);
+    {
+        T t2 = t1;
+        cout << t2.getK() << endl;
+    }
+}
+
+===============================================
+
+三、添加代码
+如有代码片段：
+// From "The C++ Programming Language" Ch10
+
+int main() {
+        cout << "hello, world!\n";
+}
+
+在不修改main()函数的前提下，使程序产生以下输出：
+welcome ...
+hello, world!
+bye!
+
+===============================================
+
+struct A {
+	A() { cout << "welcome ...\n"; }
+	~A() { cout << "bye!\n"; }
+};
+
+A a;
+
+int main() {
+        cout << "hello, world!\n";
+}
+
+// 或main()之后也可，总之在main()函数之外：
+// A a2;
+
+===============================================
+
+四、实现一个基本可用的Date类：
+将C标准库中的时间日期API封装成一个可用Date类，可以提供基本的操作：如创建Date对象、日期格式化输出、查看d天以前、m月以后、y年以前的日期等等
+提示：具体API可以查看C标准库头文件  <time.h>，或先在shell下 man 3 ctime
+
+(参考：Exam-M0308-4)
+
+五、设计一个动态数组类 Array
+1. 可以向Array中插入、尾部追加、任意位置删除元素；
+2. 数组的容量可以随元素的增加而增长；
+3. 提供访问、修改任意元素的值的接口；
+4. 能随时获取数组元素的个数。
+
+(参考：Exam-M0308-5)

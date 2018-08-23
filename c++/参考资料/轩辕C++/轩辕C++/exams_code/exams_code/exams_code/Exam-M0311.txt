@@ -1,0 +1,152 @@
+一、请预测下列代码的输出以及可能遇到的编译警告
+class B {
+    int i;
+public:
+    B(int j) : i(j) {
+        cout << "B::B(" << i << ")\n";
+    }
+
+    ~B() {
+        cout << "B::~B(" << i << ")\n";
+    }
+};
+
+class D: public B {
+    B b;
+    int k;
+public:
+    D(int x, int y) : k(x), b(y), B(0) { // 此处：初始化次序应该是 B(0) , b(y), k(x)
+        cout << "D::D(" << k << ")\n";
+    }
+
+    ~D() {
+        cout << "D::~D(" << k << ")\n";
+    }
+};
+
+int main() {
+    D d(1, 2);
+}
+
+二、请找出下列代码中存在的错误，说明原因并修正之
+struct B {
+    virtual void f1() = 0;
+    virtual void f2() {
+        cout << "B::f2()\n";
+    }
+};
+
+struct C: B {
+    virtual void f3() {
+        cout << "B::f3()\n";
+    }
+};
+
+struct D: B {
+    D(int i) {
+        cout << "D::D(" << i << ")\n";
+    }
+    virtual void f3() {
+        cout << "D::f3()\n";
+    }
+
+    void f6() {
+        cout << "D::f6()\n";
+    }
+};
+
+class E: public C, protected D {
+public:
+    E() {	// 基类D无默认构造函数，所以派生类E的构造函数要显式调用基类D::D(int)
+        cout << "E::E()\n";
+    }
+
+    void test() {
+        f1();
+    }
+};
+
+int main() {
+	E e1; // E是抽象类，因为基类B::f1()纯虚函数为实现
+	e1.f2(); // f2() 二义性：是C::f2()和D::f2()中的哪一个
+	e1.f3(); // f3()是 D::f3()，而E是protected派生自D，所以不能访问
+	e1.f6(); // 同上
+}
+
+修改过后的代码：
+========================================================
+
+struct B {
+	virtual void f1() = 0;
+	virtual void f2() {
+		cout << "B::f2()\n";
+	}
+
+	virtual ~B() {		// #1 基类增加虚析构
+
+	}
+};
+
+struct C: virtual B {		// #2 改为虚继承
+	virtual void f3() {
+		cout << "B::f3()\n";
+	}
+};
+
+struct D: virtual B { // #3 改为虚继承
+	D(int i) {
+		cout << "D::D(" << i << ")\n";
+	}
+	virtual void f3() {
+		cout << "D::f3()\n";
+	}
+
+	void f6() {
+		cout << "D::f6()\n";
+	}
+};
+
+class E: public C, protected D {
+public:
+	E():D(0) {	// #4 显式调用D的构造函数D(int)
+		cout << "E::E()\n";
+	}
+
+	virtual void f1() { // #5 实现B::f1()
+
+	}
+
+	using D::f6;	// #6 让D::f6()和D::f3() 在pulbic域可见
+	using D::f3;
+	void test() {
+		f1();
+	}
+};
+
+========================================================
+
+三、请思考以下2个问题
+1. C++标准库中的string类，没有任何的虚函数，请问为什么这么设计？
+2. C++ Boost库中有大量的class以private的方式继承于noncopyable这个基类：
+	1. 为什么采取private继承？
+	2. 从noncopyable字面上理解，您认为该Base Class中会定义些什么成员？
+
+(略)
+
+四、请设计一个超市商品类层次结构：
+适应以下case的需求：
+1. case1：计算单次结算的金额，如：
+某顾客本次购买：长城干红2提、天府花生12包、金华火腿2只、真维斯XL牛仔裤1条...
+2. case2：统计某月某类商品的销售总额，如：
+2009年12月酒类销售总额
+3. case3：统计某月某种商品的销售量，如：
+2009年12月剑南春特曲的销售量
+4. case4：本年度总销售额
+5. [可选]使用Dia、ArgoUML、Umbrello、Rose、Together、Visio等绘图工具中任意一种画出类图，导出图片格式
+
+说明：
+1. 为模拟单次结算，可能还需定义一个类型来描述结算单据的内容；
+2. 实际的物料管理系统（或进销存系统）不会以类层次结构来实现上述case，如ERP和MRP都会采用严格的物料编码方式。本次练习仅用于熟悉类层次结构的设计。
+
+(略)
+

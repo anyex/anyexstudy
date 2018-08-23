@@ -1,0 +1,52 @@
+2016-7-23 23:40:34.794	
+
+******************************************
+
+
+2016-7-23 23:40:34.809	SipPhone Trace App Log Trace 2016/7/23 23:40:34
+
+
+2016-7-23 23:40:34.809	SipPhone Log Start!!!!!!!
+2016-7-23 23:40:34.809	SipPhone Log windows pointer 0018EF10!!!!!!!
+2016-7-23 23:40:34.809	Success_InParasfromCapi!
+2016-7-23 23:40:34.809	Success_Create SipPhone CS Interface!
+2016-7-23 23:40:34.981	Success_CSInterfaceInit!
+2016-7-23 23:40:35.433	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-7-23 23:40:35.433	Mainproc Login Begin!
+2016-7-23 23:40:35.730	Mainproc Login End!
+2016-7-23 23:40:35.745	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-7-23 23:40:35.745	Mainproc Login Begin!
+2016-7-23 23:40:35.745	EncryptRtpPort:0 SignalEncrypt:0
+2016-7-23 23:40:52.843	*** Mainproc Begin*** method = /cs/sipphone/Logout/800006/1000
+2016-7-23 23:40:52.843	Mainproc Logout Begin!
+2016-7-23 23:40:54.106	Mainproc Logout End!
+2016-7-23 23:40:54.450	*** DllExit Begin***
+2016-7-23 23:40:54.450	*** DllExit Begining***
+2016-7-23 23:40:54.450	*** DllExit End***
+2016-7-23 23:54:11.18	
+
+******************************************
+
+
+2016-7-23 23:54:11.18	SipPhone Trace App Log Trace 2016/7/23 23:54:11
+
+
+2016-7-23 23:54:11.18	SipPhone Log Start!!!!!!!
+2016-7-23 23:54:11.18	SipPhone Log windows pointer 0018EF10!!!!!!!
+2016-7-23 23:54:11.18	Success_InParasfromCapi!
+2016-7-23 23:54:11.18	Success_Create SipPhone CS Interface!
+2016-7-23 23:54:11.80	Success_CSInterfaceInit!
+2016-7-23 23:54:11.548	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-7-23 23:54:11.548	Mainproc Login Begin!
+2016-7-23 23:54:11.673	Mainproc Login End!
+2016-7-23 23:54:11.673	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-7-23 23:54:11.673	Mainproc Login Begin!
+2016-7-23 23:54:11.673	EncryptRtpPort:0 SignalEncrypt:0
+2016-7-23 23:54:23.264	*** Mainproc Begin*** method = /cs/sipphone/Logout/800006/1000
+2016-7-23 23:54:23.264	Mainproc Logout Begin!
+2016-7-23 23:54:24.496	Mainproc Logout End!
+2016-7-23 23:54:24.496	*** DllExit Begin***
+2016-7-23 23:54:24.496	*** DllExit Begining***
+2016-7-23 23:54:24.496	*** DllExit End***
+2016-7-23 23:54:24.496	*** DllExit Begin***
+2016-7-23 23:54:24.496	*** DllExit End***

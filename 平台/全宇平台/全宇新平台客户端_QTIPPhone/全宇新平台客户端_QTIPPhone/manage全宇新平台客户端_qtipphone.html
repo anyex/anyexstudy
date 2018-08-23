@@ -1,0 +1,1636 @@
+<!-- $Id: example.html,v 1.4 2006/03/27 02:44:36 pat Exp $ -->
+<!DOCTYPE HTML>
+<html>
+<head>
+    <!--<meta http-equiv="Content-Type" content="text/html; charset=gb2312">-->
+    <title>全宇新平台qtipphone客户端</title>
+<!--    
+    <link type="text/css" href="websocket_client.css" rel="stylesheet" />
+-->    
+    <link type="text/css" href="css/ui-lightness/jquery-ui-1.8.18.custom.css" rel="stylesheet" />
+
+    <script type="text/javascript" src="js/jquery-1.7.1.min.js"></script>
+
+    <script type="text/javascript" src="js/jquery-ui-1.8.18.custom.min.js"></script>
+
+	<script type="text/javascript" src="js/qwebchannel.js"></script>
+    <script type="text/javascript" src="js/qyproxy-3.0.0.js"></script>
+    <script type="text/javascript" src="js/qyagent-3.0.0.js"></script>
+    <script type="text/javascript" src="js/reconnecting-websocket.js"></script>
+    
+    
+
+    <script type="text/javascript">
+
+        $(document).ready(function() {
+
+            var g_bTestAuto = false;        //是否自动测试
+            var g_bLoginBusy = false; 		//是否登陆置忙
+            var g_Interval_TestAuto;        //自动测试的延时操作的定时器
+            
+            var g_interval_test_crash;
+
+            //
+            $.QYProxy.on('On_Mo_S_GetPageHead_R', 'On_Mo_S_GetPageHead_R');
+            $.QYProxy.on('On_ErrorJsonMsg', 'On_ErrorJsonMsg');
+            $.QYProxy.on('On_ServerNetInfo', 'On_ServerNetInfo');
+
+            $.QYProxy.on('On_AbnormalReadyState', 'On_AbnormalReadyState');
+            $.QYProxy.on('On_DoLogin_R', 'On_DoLogin_R');
+            $.QYProxy.on('On_S_LoginOut_R', 'On_S_LoginOut_R');
+            $.QYProxy.on('On_S_AgentState', 'On_S_AgentState');
+            $.QYProxy.on('On_S_SetBusy_R', 'On_S_SetBusy_R');
+            $.QYProxy.on('On_S_SetFree_R', 'On_S_SetFree_R');
+            $.QYProxy.on('On_S_Rest_R', 'On_S_Rest_R');
+            $.QYProxy.on('On_S_SetFree', 'On_S_SetFree');
+            $.QYProxy.on('On_S_Snatch_R', 'On_S_Snatch_R');
+            $.QYProxy.on('On_S_Keep_R', 'On_S_Keep_R');
+            $.QYProxy.on('On_S_Restore_R', 'On_S_Restore_R');
+            $.QYProxy.on('On_S_StartRing', 'On_S_StartRing');
+            $.QYProxy.on('On_S_StopRing', 'On_S_StopRing');
+
+            $.QYProxy.on('On_S_ClientAnswer_R', 'On_S_ClientAnswer_R');
+            $.QYProxy.on('On_S_Hangup', 'On_S_Hangup');
+            $.QYProxy.on('On_S_Transing', 'On_S_Transing');
+            $.QYProxy.on('On_S_Trans_R', 'On_S_Trans_R');
+            $.QYProxy.on('On_S_TransCancel_R', 'On_S_TransCancel_R');
+            $.QYProxy.on('On_S_MakeCallingOut', 'On_S_MakeCallingOut');
+            $.QYProxy.on('On_S_MakeCallOut_R', 'On_S_MakeCallOut_R');
+            $.QYProxy.on('On_S_MakeCallOutCancel_R', 'On_S_MakeCallOutCancel_R');
+            $.QYProxy.on('On_S_ConfStart_R', 'On_S_ConfStart_R');
+            $.QYProxy.on('On_S_ConfStartCallResult', 'On_S_ConfStartCallResult');
+            $.QYProxy.on('On_S_ConfStartCancel_R', 'On_S_ConfStartCancel_R');
+            $.QYProxy.on('On_S_ConfConfirm_R', 'On_S_ConfConfirm_R');
+            $.QYProxy.on('On_S_ConfExit_R', 'On_S_ConfExit_R');
+            $.QYProxy.on('On_S_InManager_R', 'On_S_InManager_R');
+            $.QYProxy.on('On_S_OutManager_R', 'On_S_OutManager_R');
+            $.QYProxy.on('On_S_Listen_R', 'On_S_Listen_R');
+            $.QYProxy.on('On_S_NotifyListen', 'On_S_NotifyListen');
+            $.QYProxy.on('On_S_ForceInsert_R', 'On_S_ForceInsert_R');
+            $.QYProxy.on('On_S_NotifyForceInsert', 'On_S_NotifyForceInsert');
+            $.QYProxy.on('On_S_ExitForceInsert_R', 'On_S_ExitForceInsert_R');
+            $.QYProxy.on('On_S_NotifyExitForceInsert', 'On_S_NotifyExitForceInsert');
+            $.QYProxy.on('On_S_ExitListen_R', 'On_S_ExitListen_R');
+            $.QYProxy.on('On_S_NotifyExitListen', 'On_S_NotifyExitListen');
+            $.QYProxy.on('On_S_ForceSetBusy_R', 'On_S_ForceSetBusy_R');
+            $.QYProxy.on('On_S_ForceSetFree_R', 'On_S_ForceSetFree_R');
+            $.QYProxy.on('On_S_ForceLogout_R', 'On_S_ForceLogout_R');
+
+            $.QYProxy.on('On_S_GetAgentInfo_R', 'On_S_GetAgentInfo_R');
+            $.QYProxy.on('On_S_GetChannelQueueSize_R', 'On_S_GetChannelQueueSize_R');
+            $.QYProxy.on('On_S_GetChannelQueueInfo_R', 'On_S_GetChannelQueueInfo_R');
+
+            $.QYProxy.on('On_S_CTIMessage', 'On_S_CTIMessage');
+            $.QYProxy.on('On_S_GetFreeAgentCount_R', 'On_S_GetFreeAgentCount_R');
+            $.QYProxy.on('On_S_ApplyTelLogin_R', 'On_S_ApplyTelLogin_R');
+            //            $.QYProxy.on('On_S_GetBusyState_R', 'On_S_GetBusyState_R');
+
+            //20170227
+            $.QYProxy.on('S_GetIPPhonePort_R', 'S_GetIPPhonePort_R');
+
+            //20171020
+            $.QYProxy.on('S_GetPredialInfo_R', 'S_GetPredialInfo_R');
+            
+            //20150424
+            $.QYProxy.on('On_S_ChatEvent', 'On_S_ChatEvent');
+
+            $.QYProxy.SetDebug(0);
+            $.QYProxy.UpdateCurrentState();
+
+            LoadUIDatas();
+
+            $('#TestAuto').click(function() {
+                if (g_bTestAuto) {
+                    g_bTestAuto = false;
+                    document.all.TestAuto.innerText = '开始自动测试';
+
+                }
+                else {
+                    g_bTestAuto = true;
+                    document.all.TestAuto.innerText = '停止自动测试';
+
+                    var StrCaller = $('#input_Caller').val();
+                    var StrCalled = $('#input_CallNumber').val();
+                    //                $.QYProxy.MakeCallOut(StrCaller, StrCalled, '', '');
+                }
+
+
+            });
+
+            $('#testcode').click(function() {
+                //$.QYProxy.on('On_ErrorJsonMsg', On_ErrorJsonMsg);
+                //var v = $('div#div_extensionstate');
+
+                /*
+                alert($.QYProxy.GetCurrentState());
+
+                var v2 = document.getElementById('qy_socket_init_flag');
+
+                if (v2 != null) {
+                alert('插件已经安装');
+                }
+                else
+                alert('插件未安装');
+                */
+
+                //$.QYProxy.GetFreeAgentCount(0);
+
+                //$.QYProxy.SetDebug(1);
+                //$.QYProxy.m_EnableHeart = false;
+
+                //var packet = jQuery.parseJSON('{"array0":[{"hot":"xxxxx","ivr":"5","queue":"3","connect":"7"}],"array1":[{"hot":"xxxxx","ivr":"5","queue":"3","connect":"7"}]}');
+
+                var debug = 1;
+                $.QYProxy.DoMoLogin("192.168.1.245", "1231", '', '');
+
+
+            });
+
+            $('#testcode2').click(function() {
+                var debug = 1;
+                $.QYProxy.MoGetPageHead("test_name", "test_page");
+            });
+
+//            //在关闭页面时弹出确认提示窗口
+//            window.onbeforeunload = function(event){
+//                return 'Are you sure to leave?';
+//            };
+
+            $(window).unload(function(event) {
+           // alert(1);
+              //  SaveUIDatas();
+                //$.QYProxy.Logout();
+            });
+
+            $('#connect').click(function() {
+                var str = $('#input_ipport').val();
+                var separator = str.indexOf(":");
+                var ip = "";
+                var _port = "";
+                if (separator != -1) {
+                    ip = str.substr(0, separator);
+                    _port = str.substr(separator + 1);
+                }
+                else
+                    ip = str;
+
+                $.QYProxy.connect(ip, _port);
+            });
+
+            function on_timer_test_crash() {
+
+                $.QYProxy.GetChannelQueueSize(1,0);
+            }
+
+            function OnTimer_TestAuto() {
+                clearTimeout(g_Interval_TestAuto); //关闭定时器
+
+                $.QYProxy.Hangup();
+            }
+
+            function LoadUIDatas() {
+                if (!window.localStorage)
+                    return;
+                $("input:text", document.forms[0]).each(function() {
+                    var StrID = this.id;
+                    if (!window.localStorage.getItem(StrID)) window.localStorage.setItem(StrID, "");
+                    this.value = window.localStorage.getItem(StrID);
+                });
+
+                var StrID = 'select_TermilateType';
+                if (!window.localStorage.getItem(StrID)) window.localStorage.setItem(StrID, "0");
+                $('#select_TermilateType').val(parseInt(window.localStorage.getItem(StrID)));
+                
+                
+                var StrID = 'check_enable_ipps';
+                var v =getlocalStorage("check_enable_ipps")=="1"?true:false;// $("#check_enable_ipps")[0].checked?1:0;
+                 $("#check_enable_ipps")[0].checked=v;
+                
+            }
+
+            function savelocalStorage(key,value) {
+    		    if (window.localStorage) {
+    		        window.localStorage.setItem(key, value);
+    		    } else {
+    		        alert('当前浏览器不支持HTML5的特性localStorage');
+    		    }
+		    }
+		    
+		    function getlocalStorage (key) {
+    		    if (window.localStorage) {
+    		        return window.localStorage.getItem(key);
+    		    } else {
+    		        alert('当前浏览器不支持HTML5的特性localStorage');
+    		    }
+		    }
+		
+            function SaveUIDatas() {
+                
+
+                $("input:text", document.forms[0]).each(function() {
+                    var StrID = this.id;
+                    savelocalStorage(StrID, $('#' + StrID).val());
+                });
+
+                var StrID = 'select_TermilateType';
+                var v = $('#select_TermilateType').val();
+                window.localStorage.setItem(StrID, v);
+
+                var StrID = 'check_enable_ipps';
+                var v = $("#check_enable_ipps")[0].checked?1:0;
+                window.localStorage.setItem(StrID, v);
+            }
+
+            (function($) {
+                $.extend($, { acooly: {} });
+                $.extend($.acooly, { agent: {
+
+                    On_Mo_S_GetPageHead_R: function(msg) {
+                        msg.ui_id;
+                    },
+
+                    //消息解析Json错误的调试事件
+                    On_ErrorJsonMsg: function(msg) {
+                        document.all.label_otherinfo.innerText = '解析Json消息错误:' + msg;
+                    },
+
+                    //网络消息事件
+                    On_ServerNetInfo: function(state) {
+                        var s = '成功';
+                        if (state == 0)
+                            s = '失败';
+                        document.all.label_otherinfo.innerText = '网络连接' + s;
+                    },
+
+                    //网络socket状态异常事件
+                    On_AbnormalReadyState: function(_readyState) {
+                        document.all.label_otherinfo.innerText = '网络socket异常状态:readyState = ' + parseInt(_readyState);
+                    },
+
+                    //登录消息事件
+                    On_DoLogin_R: function(packet) {
+                        packet.Result; //结果值
+                        packet.SubResult; //二级结果值
+                        packet.ErrorInfo; //错误信息
+
+                        document.all.label_otherinfo.innerText = packet.ErrorInfo;
+
+                        //开始接受坐席状态广播
+ //                       $.QYProxy.GetChannelQueueInfo(61,0);
+                        $.QYProxy.GetAgentInfo(2, 0, "");
+                        
+                        //g_interval_test_crash = setInterval(on_timer_test_crash, "10");
+												
+												var debug = 1;
+                        
+                    },
+
+                    //注册反馈事件
+                    On_S_Register_R: function(packet) {
+                        packet.Result; //注册结果值
+                        packet.ErrorInfo; //错误信息
+
+                        if (packet.Result != 0) {
+                            document.all.label_otherinfo.innerText = '注册失败:' + packet.ErrorInfo;
+                            return;
+                        }
+
+                        var StrCid = $('#input_cid').val() + '$企业名称';
+                        var StrGid = $('#input_gid').val();
+                        var AgentCode = $('#input_agentCode').val();
+                        var ExtPhone = $('#input_ExtPhone').val();
+                        var AgentName = $('#input_agentname').val();
+
+                        StrGid = parseInt(StrGid) + ',组名称,0,1';
+                        var TemilateType = document.all.select_TermilateType.value;
+
+                        //发送登陆请求
+                        $.QYProxy.Login(TemilateType, StrCid, StrGid, ExtPhone, AgentCode, AgentName, g_bLoginBusy, '');
+                    },
+
+                    //登陆反馈事件
+                    On_S_Login_R: function(packet) {
+                        packet.Channel; //通道号
+                        packet.Result; //结果值
+                        packet.time; //登录时间
+                        packet.State; //坐席状态
+                        packet.ExtPhone; //分机号
+                        packet.AgentType; //坐席类型
+                        packet.ErrorInfo; //错误信息
+
+                        var s;
+                        if (packet.Result == 0)
+                            s = '成功';
+                        else
+                            s = '失败';
+
+                        document.all.label_otherinfo.innerText = '登陆' + s + ':' + packet.ErrorInfo;
+
+                        //发送获取坐席信息请求
+                        $.QYProxy.GetAgentInfo(1, 0, '');
+                        $.QYProxy.GetChannelQueueInfo(61,0);
+                        $.QYProxy.GetChannelQueueSize(3, 0);
+                        $.QYProxy.GetChannelQueueSize(61, 0);
+
+                    },
+
+                    //登出反馈事件
+                    On_S_LoginOut_R: function(packet) {
+                        packet.Channel; //通道号
+                        packet.Result; //结果值
+                        packet.pos; //注销方式 0 - 电话注销 1 - pc注销
+                        packet.State; //坐席状态
+                        packet._Reason; //原因(不为空串时需要展现出来)
+
+                        var s;
+                        if (packet._Reason != "") {
+                            alert(packet._Reason);
+                        }
+                    },
+
+                    //坐席状态事件
+                    On_S_AgentState: function(packet) {
+                        packet.Channel; //通道号
+                        packet.Code; //工号
+                        packet.State; //坐席状态
+                        packet.time; //状态时间点
+
+                        setAgentState(packet.State); //packet.State);
+
+                        if (packet.State == 6) {
+                            //自动测试
+                            if (g_bTestAuto == true) {
+                                g_Interval_TestAuto = setInterval(OnTimer_TestAuto, "3000");
+                            }
+                        }
+                    },
+
+                    //坐席置忙操作结果事件
+                    On_S_SetBusy_R: function(packet) {
+                        packet.Channel; //通道号
+                        packet.Result; //是否成功
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //坐席置闲操作结果事件
+                    On_S_SetFree_R: function(packet) {
+                        packet.Channel; //通道号
+                        packet.bAllow; //是否允许
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+
+                    },
+
+                    //坐席脚本置闲事件
+                    On_S_SetFree: function(packet) {
+                        packet.Channel; //通道号
+                        packet.State; //坐席状态
+                        packet.FlowID; //流程id
+
+                        setAgentState(packet.State);
+
+                        //自动测试
+                        if (g_bTestAuto == true) {
+                            /*            
+                            console.info('自动测试');
+                            if (g_bTestAuto == true) {
+                            var StrCaller = $('#input_Caller').val();
+                            var StrCalled = $('#input_CallNumber').val();
+                            $.QYProxy.MakeCallOut(StrCaller, StrCalled, '', '');
+                            }
+                            */
+
+                        }
+                    },
+
+                    //坐席小休操作结果事件
+                    On_S_SetRest_R: function(packet) {
+                        packet.Channel; //通道号
+                        packet.Result; //是否成功
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //坐席抢接操作结果事件
+                    On_S_Snatch_R: function(packet) {
+                        packet.Result; //是否允许
+                        packet.SnatchCode; //被抢接的坐席工号
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //坐席保持操作结果事件
+                    On_S_Keep_R: function(packet) {
+                        packet.Channel; //通道号
+                        packet.bAllow; //是否允许
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //坐席恢复操作结果事件
+                    On_S_Restore_R: function(packet) {
+                        packet.Channel; //通道号
+                        packet.bAllow; //是否允许
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //坐席振铃事件
+                    On_S_StartRing: function(packet) {
+                        packet.StartRingChannel;
+                        packet.ExtlineChannel;
+                        packet._Caller; //主叫
+                        packet._Called; //被叫
+                        packet.Business; //接入号
+                        packet.ExtLineConnectionId; //外线流水号
+                        packet.Reserved; //保留字段
+                        packet.State; //坐席状态
+                        packet.CallTime; //
+                        packet.bShowClientAnswer; //0 -- 隐藏或者置灰接听按钮, 1 -- 显示接听按钮
+
+                        setAgentState(packet.State);
+                        document.all.label_otherinfo.innerText = "来电号码:" + packet._Caller + " 被叫号码:" + packet._Called;
+
+                        if (g_Interval_TestAuto) {
+                            $.QYProxy.ClientAnswer(0);
+                        }
+                    },
+
+
+                    //坐席停止振铃事件
+                    On_S_StopRing: function(packet) {
+                        packet.StopRingChannel;
+                        packet.nType;  //类型 (0-电话摘机1-超时停止2-对端挂断3-抢接4-呼叫外线坐席失败)
+                        packet.Reserved;
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //坐席应答结果反馈事件
+                    On_S_ClientAnswer_R: function(packet) {
+                        packet.Channel;
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //坐席挂机事件
+                    On_S_Hangup: function(packet) {
+                        packet.Channel;
+                        packet.TalkTime;
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //坐席正在进行转移事件
+                    On_S_Transing: function(packet) {
+                        packet.Channel;
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //坐席转接结果反馈事件
+                    On_S_Trans_R: function(packet) {
+                        packet.Channel;
+                        packet.Result; //结果 (外呼呼叫结果定义,  其中1 - 成功)
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //坐席转接取消结果反馈事件
+                    On_S_TransCancel_R: function(packet) {
+                        packet.Channel;
+                        packet.Result; //结果(0-成功 1-失败)
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+
+                    //坐席正在外呼事件
+                    On_S_MakeCallingOut: function(packet) {
+                        packet.Channel;
+                        packet.WaitingChannel;
+                        packet.ConnectionID;
+                        packet.Reserved;
+                        packet.State; //坐席状态
+                        packet.CallInfo; //坐席信息
+
+                        setAgentState(packet.State);
+                        document.all.label_otherinfo.innerText = "外呼呼叫信息:" + packet.CallInfo;
+                    },
+
+                    //坐席外呼结果事件
+                    On_S_MakeCallOut_R: function(packet) {
+                        packet.Channel;
+                        packet.WaitingChannel;
+                        packet.Result;
+                        packet.RecordFile;
+                        packet.Flag_IsA;
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+
+                    },
+
+                    //坐席取消外呼结果反馈事件
+                    On_S_MakeCallOutCancel_R: function(packet) {
+                        packet.Channel;
+                        packet.Result; //结果(0-成功 1-失败)
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //坐席发起三方通话反馈事件
+                    On_S_ConfStart_R: function(packet) {
+                        packet.Channel;
+                        packet.Result; //结果(0-成功 1-失败)
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //坐席三方通话呼叫结果反馈事件
+                    On_S_ConfStartCallResult: function(packet) {
+                        packet.Channel;
+                        packet.Result; //结果 (外呼呼叫结果定义,  其中1 - 成功)
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //坐席三方通话邀请取消结果反馈事件
+                    On_S_ConfStartCancel_R: function(packet) {
+                        packet.Channel;
+                        packet.Result; //结果(0-成功 1-失败)
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //坐席三方通话邀请确认结果反馈事件
+                    On_S_ConfConfirm_R: function(packet) {
+                        packet.Channel;
+                        packet.Result; //结果(0-成功 1-失败)
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //三方通话退出会议事件反馈
+                    On_S_ConfExit_R: function(packet) {
+                        packet.Channel;
+                        packet.Result; //结果(0-成功 1-失败)
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //班长进入管理状态结果反馈事件
+                    On_S_InManager_R: function(packet) {
+                        packet.Channel;
+                        packet.Result; //结果(0-成功 1-失败)
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //班长退出管理状态结果反馈事件
+                    On_S_OutManager_R: function(packet) {
+                        packet.Channel;
+                        packet.Result; //结果(0-成功 1-失败)
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //班长监听结果反馈事件
+                    On_S_Listen_R: function(packet) {
+                        packet.Channel;
+                        packet.Result; //结果(0-成功 1-失败)
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //话务员被监听事件
+                    On_S_NotifyListen: function(packet) {
+                        packet.Channel;
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //班长强插结果反馈事件
+                    On_S_ForceInsert_R: function(packet) {
+                        packet.Channel;
+                        packet.Result; //结果(0-成功 1-失败)
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //话务员被强插事件
+                    On_S_NotifyForceInsert: function(packet) {
+                        packet.Channel;
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //班长退出强插结果反馈事件
+                    On_S_ExitForceInsert_R: function(packet) {
+                        packet.Channel;
+                        packet.Result; //结果(0-成功 1-失败)
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //话务员退出被强插事件
+                    On_S_NotifyExitForceInsert: function(packet) {
+                        packet.Channel;
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //班长退出监听结果反馈事件
+                    On_S_ExitListen_R: function(packet) {
+                        packet.Channel;
+                        packet.Result; //结果(0-成功 1-失败)
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //话务员退出被监听事件
+                    On_S_NotifyExitListen: function(packet) {
+                        packet.Channel;
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //班长强制置忙结果反馈事件
+                    On_S_ForceSetBusy_R: function(packet) {
+                        packet.Channel;
+                        packet.Result; //结果(0-成功 1-失败)
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //班长强制置闲结果反馈事件
+                    On_S_ForceSetFree_R: function(packet) {
+                        packet.Channel;
+                        packet.Result; //结果(0-成功 1-失败)
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //班长强制注销结果反馈事件
+                    On_S_ForceLogout_R: function(packet) {
+                        packet.Channel;
+                        packet.Result; //结果(0-成功 1-失败)
+                        packet.State; //坐席状态
+
+                        setAgentState(packet.State);
+                    },
+
+                    //获取坐席信息结果反馈事件
+                    On_S_GetAgentInfo_R: function(packet) {
+
+                        for (i = 0; i < packet.Count; i++) {
+                            //工号
+                            var Code = packet.array[i].Fields[3];
+                            //状态
+                            var State = packet.array[i].Fields[5];
+
+                            //如果该工号的状态为空闲
+                            if (State == '1') {
+                            }
+
+                        }
+
+                    },
+
+                    //获取外线队列大小结果反馈事件
+                    On_S_GetChannelQueueSize_R: function(packet) {
+                        packet.Gid; 	//
+                        packet.Count; //个数
+                    },
+
+                    //获取外线队列信息结果反馈事件
+                    On_S_GetChannelQueueInfo_R: function(packet) {
+                        packet.FormatStr; //
+                    },
+
+                    //脚本层来的事件
+                    On_S_CTIMessage: function(packet) {
+                        packet.nType;   //消息类型
+                        packet.Content; //消息内容
+                    },
+
+                    //获取空闲坐席人数的反馈事件
+                    On_S_GetFreeAgentCount_R: function(packet) {
+                        packet.gid;   //组id
+                        packet.Count; //人数
+
+                        alert(packet.gid + ' ' + packet.Count)
+                    },
+
+                    //申请电话登陆的反馈事件
+                    On_S_ApplyTelLogin_R: function(packet) {
+                        packet.Result;   //结果值
+                    },
+
+                    //获取忙状态的反馈事件
+                    //                    On_S_GetBusyState_R: function(packet) {
+                    //                        packet.BusyState;   //忙状态
+                    //                    },
+
+                    //chat event
+                    On_S_ChatEvent: function(packet) {
+                        packet.EventType;       //消息类型
+                        //"SaLoginResult"  - 连接登陆chat的结果事件(只针对sa)
+                        //"CodeList"       - 工号列表更新事件
+                        //"Msg"            - 消息接收的事件
+                        //"SendChatResult" - 消息传递结果事件
+
+                        packet.SaLoginResult;   //sa登录结果(0 - 成功 1 - 失败)
+                        //EventType为时有效
+
+                        packet.CodeList;        //在线工号列表,$间隔
+                        //EventType为时有效
+
+                        packet.Msg;             //消息对象
+                        //EventType为时有效
+
+                        //packet.Msg.MessageID;   //消息
+                        //packet.Msg.Sender;      //发送者工号
+                        //packet.Msg.Receiver;    //接收者工号
+                        //packet.Msg.Content;     //消息内容？
+
+                        packet.SendChatResult; //消息传递结果事件(0 – 成功 1 – 失败)
+                    },
+                    
+                    //
+                    ON_S_GetIPPhonePort_R: function(packet) {
+                        packet.Extphone;   //分机号
+                        packet.Port;        //端口号
+                    },
+
+                    //20171020                    
+                    S_GetPredialInfo_R: function(packet) {
+                        packet.values;  //
+                    },
+
+                }
+                })
+            })(jQuery);
+
+
+            function SetAllBtnState(btnstate) {
+                //document.all.btn_login.disabled = btnstate._login;
+                document.all.btn_logout.disabled = btnstate._logout;
+                document.all.btn_ClientAnswer.disabled = btnstate._ClientAnswer;
+                document.all.btn_ClientAnswerRefuse.disabled = btnstate._ClientAnswerRefuse;
+                document.all.btn_SetBusy.disabled = btnstate._SetBusy;
+                document.all.btn_SetRest.disabled = btnstate._SetRest;
+                document.all.btn_SetFree.disabled = btnstate._SetFree;
+                document.all.btn_Hangup.disabled = btnstate._Hangup;
+                document.all.btn_Keep.disabled = btnstate._Keep;
+                document.all.btn_Silence.disabled = btnstate._Silence;
+                document.all.btn_Restore.disabled = btnstate._Restore;
+            }
+
+            function setAgentState(state) {
+                var btnstate = {
+                    _login: true,
+                    _logout: false,
+                    _ClientAnswer: true,
+                    _ClientAnswerRefuse: true,
+                    _SetBusy: false,
+                    _SetRest: false,
+                    _SetFree: true,
+                    _Hangup: true,
+                    _Keep: true,
+                    _Silence: true,
+                    _Restore: true
+                };
+
+                switch (state) {
+                    case 0:
+                        document.all.label_agentstate.innerText = '坐席不可用';
+                        btnstate._login = false;
+                        break;
+                    case 1:
+                        document.all.label_agentstate.innerText = '空闲';
+                        //btnstate._logout = false;
+                        //btnstate._SetBusy = false;
+                        break;
+                    case 2:
+                        document.all.label_agentstate.innerText = '置忙';
+                        btnstate._loginout = false;
+                        btnstate._SetFree = false;
+                        break;
+                    case 3:
+                        document.all.label_agentstate.innerText = '抢接';
+                        btnstate._Hangup = false;
+                        break;
+                    case 4:
+                        document.all.label_agentstate.innerText = '选出队列';
+                        break;
+                    case 5:
+                        document.all.label_agentstate.innerText = '来电振铃';
+                        btnstate._ClientAnswer = false;
+                        btnstate._ClientAnswerRefuse = false;
+                        break;
+                    case 6:
+                        document.all.label_agentstate.innerText = '通话中';
+                        btnstate._Hangup = false;
+                        btnstate._Keep = false;
+                        btnstate._Silence = false;
+                        break;
+                    case 7:
+                        document.all.label_agentstate.innerText = '转接中';
+                        btnstate._Hangup = false;
+                        break;
+                    case 8:
+                        document.all.label_agentstate.innerText = '转接成功待确认';
+                        btnstate._Hangup = false;
+                        break;
+                    case 9:
+                        document.all.label_agentstate.innerText = '保持';
+                        btnstate._Hangup = false;
+                        btnstate._Restore = false;
+                        break;
+                    case 10:
+                        document.all.label_agentstate.innerText = '会议中';
+                        btnstate._Hangup = false;
+                        break;
+                    case 11:
+                        document.all.label_agentstate.innerText = '话后处理';
+                        btnstate._Hangup = false;
+                        break;
+                    case 12:
+                        document.all.label_agentstate.innerText = '输入被叫号码状态';
+                        break;
+                    case 13:
+                        document.all.label_agentstate.innerText = '发起呼叫';
+                        btnstate._Hangup = false;
+                        break;
+                    case 14:
+                        document.all.label_agentstate.innerText = '管理状态';
+                        break;
+                    case 15:
+                        document.all.label_agentstate.innerText = '班长监听';
+                        btnstate._Hangup = false;
+                        break;
+                    case 16:
+                        document.all.label_agentstate.innerText = '班长强插';
+                        btnstate._Hangup = false;
+                        break;
+                    case 17:
+                        document.all.label_agentstate.innerText = '客户端pc登陆成功后，等待电话登陆';
+                        //btnstate._logout = false;
+                        break;
+                    case 18:
+                        document.all.label_agentstate.innerText = '等待脚本设置成Free';
+                        btnstate._Hangup = false;
+                        break;
+                    case 19:
+                        document.all.label_agentstate.innerText = '被监听';
+                        btnstate._Hangup = false;
+                        break;
+                    case 20:
+                        document.all.label_agentstate.innerText = '被强插';
+                        btnstate._Hangup = false;
+                        break;
+                    case 21:
+                        document.all.label_agentstate.innerText = '三方通话发起邀请';
+                        btnstate._Hangup = false;
+                        break;
+                    case 22:
+                        document.all.label_agentstate.innerText = '三方通话确认第三方';
+                        btnstate._Hangup = false;
+                        break;
+                    case 23:
+                        document.all.label_agentstate.innerText = '三方通话主持人';
+                        btnstate._Hangup = false;
+                        break;
+                    case 24:
+                        document.all.label_agentstate.innerText = '三方通话被确认通话中';
+                        btnstate._Hangup = false;
+                        break;
+                    case 25:
+                        document.all.label_agentstate.innerText = '三方通话成员';
+                        btnstate._Hangup = false;
+                        break;
+                    case 26:
+                        document.all.label_agentstate.innerText = '电话端登陆成功后，等待pc登陆';
+                        break;
+                    case 27:
+                        document.all.label_agentstate.innerText = '电话坐席正在呼叫第一被叫';
+                        break;
+                    case 28:
+                        document.all.label_agentstate.innerText = '会议状态';
+                        break;
+                    case 29:
+                        document.all.label_agentstate.innerText = '小休';
+                        btnstate._loginout = false;
+                        btnstate._SetFree = false;
+                        break;
+                    case 30:
+                        document.all.label_agentstate.innerText = '静音';
+                        btnstate._Hangup = false;
+                        btnstate._Restore = false;
+                        break;
+                    case 31:
+                        document.all.label_agentstate.innerText = '播音';
+                        btnstate._loginout = false;
+                        btnstate._SetFree = false;
+                        break;
+                    case 32:
+                        document.all.label_agentstate.innerText = '播音可打断';
+                        btnstate._loginout = false;
+                        btnstate._SetFree = false;
+                    default:
+                        document.all.label_agentstate.innerText = 'unknown()' + state;
+                        break;
+                }
+
+                SetAllBtnState(btnstate);
+                document.all.label_otherinfo.innerText = '';
+
+            }
+
+            //点击登录按钮
+            $('#btn_SALogin').click(function() {
+                $.QYProxy.DoSALogin('192.168.1.110', '7005', 1, '1101');
+            });
+
+            //点击登录按钮
+            $('#btn_login').click(function() {
+                var agentcode = $('#input_agentCode').val();
+                if (agentcode == "") {
+                    alert("坐席不能为空!");
+                    return;
+                }
+
+                var LoginParam = {};
+
+                var str = $('#input_ipport').val();
+                var separator = str.indexOf(":");
+                var ip = "";
+                var _port = "";
+                if (separator != -1) {
+                    ip = str.substr(0, separator);
+                    _port = str.substr(separator + 1);
+                }
+                else
+                    ip = str;
+
+                LoginParam.ip = ip;
+                LoginParam.port = _port;
+                LoginParam.ExtPhone = $('#input_ExtPhone').val();
+                
+                //20170731
+                LoginParam.ExtPhonePassword = $('#input_ExtPhonePassword').val();
+                
+                LoginParam.Password = $('#input_Password').val();
+                LoginParam.cid = $('#input_cid').val();
+                LoginParam.CidName = '企业名称';
+                LoginParam.HotlineNumberList = $('#input_HotlineNumber').val();
+
+                var StrGid = $('#input_gid').val();
+                LoginParam.Code = $('#input_agentCode').val();
+                LoginParam.CodeName = $('#input_agentname').val();
+                LoginParam.bLoginBusy = 0;
+                LoginParam.Reserved = '';
+
+                LoginParam.gid = parseInt(StrGid) + ',组名称,0,1';
+                LoginParam.TerminalType = document.all.select_TermilateType.value;
+				LoginParam.EnableIpps = document.all.check_enable_ipps.checked;
+				LoginParam.SipServerIPPort = $('#input_sipserver_ipport').val();
+				
+                //20151012
+                //LoginParam.port_ipps = $('#input_port_ipps').val();
+                
+                SaveUIDatas();
+                //发送登录请求
+                $.QYProxy.DoLogin(LoginParam);
+            });
+
+            //点击注销按钮
+            $('#btn_logout').click(function() {
+                $.QYProxy.Logout();
+                setAgentState(0);
+            });
+
+            //点击置忙按钮
+            $('#btn_SetBusy').click(function() {
+                $.QYProxy.SetBusy();
+            });
+
+            //点击置闲按钮
+            $('#btn_SetFree').click(function() {
+                $.QYProxy.SetFree();
+            });
+
+            //点击小休按钮
+            $('#btn_SetRest').click(function() {
+                $.QYProxy.SetRest();
+            });
+
+            //点击置忙状态按钮
+            $('#btn_SetBusyState').click(function() {
+                $.QYProxy.SetBusyState(1);
+            });
+
+            //点击接听按钮
+            $('#btn_ClientAnswer').click(function() {
+                $.QYProxy.ClientAnswer(0);
+            });
+
+            //点击拒绝接听按钮
+            $('#btn_ClientAnswerRefuse').click(function() {
+                $.QYProxy.ClientAnswer(1);
+            });
+
+            //点击挂机按钮
+            $('#btn_Hangup').click(function() {
+                $.QYProxy.Hangup();
+            });
+
+            //点击保持按钮
+            $('#btn_Keep').click(function() {
+                $.QYProxy.Keep();
+            });
+
+            //点击静音按钮
+            $('#btn_Silence').click(function() {
+                $.QYProxy.Silence();
+            });
+
+            //点击恢复按钮
+            $('#btn_Restore').click(function() {
+                $.QYProxy.Restore();
+            });
+
+            //点击呼叫按钮
+            $('#btn_MakeCallOut').click(function() {
+                var StrCaller = $('#input_Caller').val();
+                var StrCalled = $('#input_CallNumber').val();
+                $.QYProxy.MakeCallOut(StrCaller, StrCalled, '', '');
+            });
+
+            //点击呼叫取消按钮
+            $('#btn_MakeCallOutCancel').click(function() {
+                $.QYProxy.MakeCallOutCancel();
+            });
+
+            //点击转移按钮
+            $('#btn_Trans').click(function() {
+                var StrCaller = $('#input_Caller').val();
+                var StrCalled = $('#input_CallNumber').val();
+                if (document.all.select_CallType.value == 1) {		//外线
+                    $.QYProxy.TransTel(StrCaller, StrCalled, '', '');
+                } else if (document.all.select_CallType.value == 2) {	//内线
+                    var StrCode = $('#input_CallNumber').val();
+                    $.QYProxy.TransAgent(0, StrCode);
+                }
+            });
+
+            //点击转移取消按钮
+            $('#btn_TransCancel').click(function() {
+                $.QYProxy.TransCancel();
+            });
+
+            //点击三方通话按钮
+            $('#btn_ConfStart').click(function() {
+                var StrCaller = $('#input_Caller').val();
+                var StrCalled = $('#input_CallNumber').val();
+                $.QYProxy.ConfStart(StrCaller, StrCalled, '');
+            });
+
+            //点击三方通话取消按钮
+            $('#btn_ConfStartCancel').click(function() {
+                $.QYProxy.ConfStartCancel();
+            });
+
+            //点击确认按钮
+            $('#btn_Confirm').click(function() {
+                if (document.all.label_agentstate.innerText == "转接成功待确认") {
+                    $.QYProxy.TransConfirm(0);
+                }
+                else if (document.all.label_agentstate.innerText == "三方通话确认第三方") {
+                    $.QYProxy.ConfConfirm(0);
+                }
+                else {
+                    //alert('error');
+                }
+            });
+
+            //点击拒绝按钮
+            $('#btn_Refuse').click(function() {
+                if (document.all.label_agentstate.innerText == "转接成功待确认") {
+                    $.QYProxy.TransConfirm(1);
+                }
+                else if (document.all.label_agentstate.innerText == "三方通话确认第三方") {
+                    $.QYProxy.ConfConfirm(1);
+                }
+                else {
+                    //alert('error');
+                }
+            });
+
+            //点击发送dtmf按钮
+            $('#btn_senddtmf').click(function() {
+                var Keys = $('#input_dtmfkeys').val();
+                $.QYProxy.SendDTMF(Keys);
+            });
+            
+            //20171212
+            $('#btn_SetPredialTaskInfo1').click(function() {
+                var taskId = $('#input_taskid').val();
+                var taskName = $('#input_taskname').val();
+                $.QYProxy.SetPredialTaskInfo(taskId,taskName,1);
+            });
+            
+            $('#btn_SetPredialTaskInfo2').click(function() {
+                var taskId = $('#input_taskid').val();
+                var taskName = $('#input_taskname').val();
+                $.QYProxy.SetPredialTaskInfo(taskId,taskName,0);
+            });
+
+            //点击发送command order按钮
+            $('#btn_customcommand').click(function() {
+                var i = $('#input_customcommand_type').val();
+                var v = $('#input_customcommand_data').val();
+                $.QYProxy.CustomCommand(parseInt(i), v);
+            });
+
+            //点击chat按钮
+            $('#btn_chat').click(function() {
+                var v1 = $('#input_messageid').val();
+                var v2 = $('#input_messageid').val();
+                $.QYProxy.SendChat(v1, v2);
+            });
+
+            //点击会议发起按钮
+            $('#btn_MeetingStart').click(function() {
+                $.QYProxy.MeetingStart();
+            });
+
+            //点击会议增加成员按钮
+            $('#btn_MeetingAdd').click(function() {
+                var CalledList = $('#input_MeetingNumberList').val();
+                $.QYProxy.MeetingAdd(CalledList);
+            });
+
+            //点击会议更改成员模式按钮
+            $('#btn_MeetingUpdateMode').click(function() {
+                var MeetingNumber = $('#input_MeetingNumber').val();
+                var nMode = $('#input_MeetingMode').val();
+                $.QYProxy.MeetingUpdateMode(MeetingNumber, nMode);
+            });
+
+            //点击会议成员挂断按钮
+            $('#btn_MeetingHangup').click(function() {
+                var MeetingNumber = $('#input_MeetingNumber2').val();
+                $.QYProxy.MeetingHangup(MeetingNumber);
+            });
+
+            //点击会议结束会议按钮
+            $('#btn_MeetingEnd').click(function() {
+                $.QYProxy.MeetingEnd();
+            });
+
+            //点击进入管理按钮
+            $('#btn_InManager').click(function() {
+                $.QYProxy.InManager();
+            });
+            //点击退出管理按钮
+            $('#btn_OutManager').click(function() {
+                $.QYProxy.OutManager();
+            });
+            //点击监听按钮
+            $('#btn_Listen').click(function() {
+                var Code = $('#input_Be_Code').val();
+                $.QYProxy.Listen(Code);
+            });
+            //点击退出监听按钮
+            $('#btn_ExitListen').click(function() {
+                var Code = $('#input_Be_Code').val();
+                $.QYProxy.ExitListen(Code);
+            });
+            //点击强插按钮
+            $('#btn_ForceInsert').click(function() {
+                var Code = $('#input_Be_Code').val();
+                $.QYProxy.ForceInsert(Code);
+            });
+            //点击退出强插按钮
+            $('#btn_ExitForceInsert').click(function() {
+                var Code = $('#input_Be_Code').val();
+                $.QYProxy.ExitForceInsert(Code);
+            });
+            //点击强制置忙按钮
+            $('#btn_ForceSetBusy').click(function() {
+                var Code = $('#input_Be_Code').val();
+                $.QYProxy.ForceSetBusy(Code);
+            });
+            //点击强制置闲按钮
+            $('#btn_ForceSetFree').click(function() {
+                var Code = $('#input_Be_Code').val();
+                $.QYProxy.ForceSetFree(Code);
+            });
+            //点击强制拆线
+            $('#btn_ForceRelease').click(function() {
+                var Code = $('#input_Be_Code').val();
+                $.QYProxy.ForceRelease(Code);
+            });
+            //点击强制注销
+            $('#btn_ForceLogout').click(function() {
+                var Code = $('#input_Be_Code').val();
+                $.QYProxy.ForceLogout(Code);
+            });
+
+            //点击播放
+            $('#btn_audioplay').click(function() {
+                var FileName = $('#input_audiofile').val();
+                $.QYProxy.PlayAudio("play", 0, FileName);
+            });
+
+            //点击停止播放
+            $('#btn_audiostop').click(function() {
+                $.QYProxy.PlayAudio("stop");
+            });
+        });
+			
+    </script>
+
+</head>
+<body>
+    <h1>
+        全宇qtipphone :</h1>
+    <button id="TestAuto">
+        开始自动测试</button>
+    <button id="testcode">
+        测试代码</button><br />
+    <button id="testcode2">
+        测试代码2</button><br />
+
+    <script type="text/javascript">
+        $(function() {
+            $("#tabs").tabs();
+        });
+
+    </script>
+
+    <div class="demo">
+        <div id="tabs">
+            <ul>
+                <li>Echo</a></li>
+            </ul>
+            <div id="tabs-1">
+                坐席状态:<label id="label_agentstate" name="label_agentstate"></label><br />
+                <label id="label_otherinfo" name="label_agentstate">
+                </label>
+                <br />
+                <table border="1" align="left">
+                    <tr>
+                        <td>
+                            <div style="text-align: center">
+                                AS IP端口:<input id="input_ipport" type="text" size="20" value='127.0.0.1:7005' /><br />
+                                热线号码:<input id="input_HotlineNumber" type="text" size="20" maxlength="20" value='9669949'/><br />
+                                主叫:
+                                <input id="input_Caller" type="text" size="20" maxlength="20" value='66843188' /><br />
+                                企业id:
+                                <input id="input_cid" type="text" size="20" maxlength="20" value='5822'/><br />
+                                技能组:
+                                <input id="input_gid" type="text" size="20" maxlength="20" value='61'/><br />
+                                终端类型:<select id="select_TermilateType">
+                                    <option value="0">内线电话</option>
+                                    <option value="1">外线电话</option>
+                                    <option value="2">voip 电话</option>
+                                    <option value="3">voip pc</option>
+                                </select><br />
+                                <input id="check_enable_ipps" type="checkbox" value="" />是否允许连qyphone<br />
+                                工号:
+                                <input id="input_agentCode" type="text" size="20" maxlength="20" value='1001'/><br />
+                                sip服务器
+                                <input id="input_sipserver_ipport" type="text" size="20" maxlength="20" value=''/><br />
+                                分机号:
+                                <input id="input_ExtPhone" type="text" size="20" maxlength="20" value='801'/><br />
+                                分机密码:
+                                <input id="input_ExtPhonePassword" type="text" size="20" maxlength="20" value='111111'/><br />
+                                 名称:
+                                <input id="input_agentname" type="text" size="20" maxlength="20" value=''/><br />
+                                密码:
+                                <input id="input_Password" type="text" size="20" maxlength="20" value='123'/><br />
+                                
+
+<!--                                IPPS端口:
+                                <input id="input_port_ipps" type="text" size="20" maxlength="20" value=''/><br />
+-->                                
+                                <button id="btn_login">
+                                    登陆</button>
+                                <button id="btn_logout">
+                                    注销</button><br />
+                                    
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="text-align: center">
+                                需要输入IP,Port,企业ID,工号<br />
+                                <button id="btn_SALogin">
+                                    管理员连接</button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <table border="1" align="left">
+                    <tr>
+                        <td>
+                            <div style="text-align: center">
+                                <button id="btn_ClientAnswer">
+                                    接听</button>
+                                <button id="btn_ClientAnswerRefuse">
+                                    拒绝接听</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="text-align: center">
+                                <button id="btn_SetBusy">
+                                    置忙</button>
+                                <button id="btn_SetFree">
+                                    置闲</button>
+                                <button id="btn_SetBusyState">
+                                    置忙状态</button>
+                                <button id="btn_SetRest">
+                                    小休</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <!--
+                    <tr>
+                        <td>
+                            <div style="text-align: center">
+                                <select id="select_SnatchType">
+                                    <option value="0">个人</option>
+                                    <option value="1">组</option>
+                                    <option value="2">全体</option>
+                                </select>
+                                <input id="input_SnatchFormatStr" type="text" size="10" maxlength="20" value=''/><br />
+                                <button id="btn_Snatch">
+                                    抢接</button>
+                            </div>
+                        </td>
+                    </tr>
+                        -->
+                    <tr>
+                        <td>
+                            <div style="text-align: center">
+                                <button id="btn_Hangup">
+                                    挂机</button>
+                                <button id="btn_Keep">
+                                    保持</button>
+                                <button id="btn_Silence">
+                                    静音</button>
+                                <button id="btn_Restore">
+                                    恢复</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4" class="style1">
+                            <div style="text-align: center">
+                                <select id="select_CallType">
+                                    <option value="1">外线</option>
+                                    <option value="2">内线</option>
+                                </select>
+                                <input id="input_CallNumber" type="text" size="10" maxlength="256"/>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="style1">
+                            <div style="text-align: center">
+                                <button id="btn_MakeCallOut">
+                                    呼叫</button>
+                                <button id="btn_MakeCallOutCancel">
+                                    取消呼叫</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="style1">
+                            <div style="text-align: center">
+                                <button id="btn_Trans">
+                                    转移</button>
+                                <button id="btn_TransCancel">
+                                    取消转移</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="style1">
+                            <div style="text-align: center">
+                                <button id="btn_ConfStart">
+                                    三方</button>
+                                <button id="btn_ConfStartCancel">
+                                    取消三方</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="style1">
+                            <div style="text-align: center">
+                                <button id="btn_Confirm">
+                                    确认
+                                </button>
+                                <button id="btn_Refuse">
+                                    拒绝
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                  <tr>
+                    <td colspan="4" class="style1"><div style="text-align: center">
+                      <input id="input_dtmfkeys" type="text" size="10" maxlength="30" />
+   	                  <button id="btn_senddtmf">发送dtmf</button>
+                    </div></td>
+                   </tr>
+                  <tr>
+                    <td colspan="4" class="style1"><div style="text-align: center">
+                      <input id="input_taskid" type="text" size="10" maxlength="30" />
+                      <input id="input_taskname" type="text" size="10" maxlength="30" />
+   	                  <button id="btn_SetPredialTaskInfo1">设置任务</button>
+   	                  <button id="btn_SetPredialTaskInfo2">取消任务</button>
+                    </div></td>
+                   </tr>
+                  <tr>
+                    <td colspan="4" class="style1"><div style="text-align: center">
+                      <input id="input_customcommand_type" type="text" size="10" maxlength="30" />
+                      <input id="input_customcommand_data" type="text" size="10" maxlength="30" />
+   	                  <button id="btn_customcommand">发送自定义</button>
+                    </div></td>
+                   </tr>
+                  <tr>
+                    <td colspan="4" class="style1"><div style="text-align: center">
+                      消息id<input id="input_messageid" type="text" size="10" maxlength="30" />
+                      接收者<input id="input_receiver" type="text" size="10" maxlength="30" />
+   	                  <button id="btn_chat">发送chat</button>
+                    </div></td>
+                   </tr>
+                  <tr>
+                    <td colspan="4" class="style1"><div style="text-align: center">
+                      语音文件名<input id="input_audiofile" type="text" size="20" maxlength="256" />
+   	                  <button id="btn_audioplay" >播放</button>
+   	                  <button id="btn_audiostop" >停止</button>
+                    </div></td>
+                   </tr>
+                </table>
+                  </div>
+                <table border="1" align="left">
+                    <tr>
+                        <td>
+                            <div style="text-align: center">
+                                <button id="btn_InManager">
+                                    进入管理
+                                </button>
+                                <button id="btn_OutManager">
+                                    退出管理
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <div style="text-align: center">
+                                被处理工号:<input id="input_Be_Code" type="text" size="10" maxlength="10"/>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="text-align: center">
+                                <button id="btn_Listen">
+                                    监听</button>
+                                <button id="btn_ExitListen">
+                                    退出监听</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="text-align: center">
+                                <button id="btn_ForceInsert">
+                                    强插
+                                </button>
+                                <button id="btn_ExitForceInsert">
+                                    退出强插
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="text-align: center">
+                                <button id="btn_ForceSetBusy">
+                                    强制置忙
+                                </button>
+                                <button id="btn_ForceSetFree">
+                                    强制置闲
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="text-align: center">
+                                <button id="btn_ForceRelease">
+                                    强制拆线
+                                </button>
+                                <button id="btn_ForceLogout">
+                                    强制注销
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+                <table border="1" align="left">
+                    <tr>
+                        <td>
+                            <div style="text-align: center">
+                                <button id="btn_MeetingStart">
+                                    会议发起
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td colspan="4">
+                            <div style="text-align: center">
+                                列表:<input id="input_MeetingNumberList" type="text"/><br />
+                                <button id="btn_MeetingAdd">
+                                    会议增加成员
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="text-align: center">
+                                号码:<input id="input_MeetingNumber" type="text"/><br />
+                                模式:<input id="input_MeetingMode" type="text"/><br />
+                                <button id="btn_MeetingUpdateMode">
+                                    更改成员模式</button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="text-align: center">
+                                号码:<input id="Text4" type="text"/><br />
+                                <button id="btn_MeetingHangup">
+                                    挂断会员
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div style="text-align: center">
+                                <button id="btn_MeetingEnd">
+                                    会议结束
+                                </button>
+                            </div>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <!-- End tabs-1 -->
+        </div>
+        <!-- End tabs -->
+</body>
+</html>

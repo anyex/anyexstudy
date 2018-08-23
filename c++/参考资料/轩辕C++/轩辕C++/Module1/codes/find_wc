@@ -1,0 +1,3 @@
+find ServerCommon/ RouterServer/ PresenceServer/ XMMEP/ \( -name \*.cpp -o -name \*.h \) -exec wc -l {} \; | awk '{x=x+$1} END {print x}'
+
+find ServerCommon/ RouterServer/ PresenceServer/ XMMEP/ \( -name "*.cpp" -o -name "*.h" \) -exec wc -l {} \; | awk '{x=x+$1} END {print x}'

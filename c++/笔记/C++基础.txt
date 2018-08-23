@@ -1,0 +1,463 @@
+1 C++对C的扩展
+	1.1 类型增强
+	     C++中不能把const类型的指针赋值给非const类型的指针
+	1.2	布尔类型
+		 C语言中的逻辑真假用0和非0来表示，而C++中有了具体的类型
+		int main()
+		{
+			bool flag = true;
+			if (flag != false)
+			{
+				printf("此时报错\n");
+			}
+			printf("bool 类型的大小 = %d\n", sizeof(bool));//1个字节大小
+			return 0;
+		}
+
+
+	1.3 枚举
+		C语言中的枚举本质是整型，枚举变量可以用来为任意整型赋值，而C++中枚举变量，只能用被枚举出来的元素初始化
+		enum season{SPR,SUM,AUT,WIN};
+        int main()
+        {
+        	//enum season s = 0;会报错，不能再用整数来初始化
+        	enum season s = SPR;
+        	season s2 = SUM;
+        
+        	if (s2 == 1)//还是可以与整数进行比较
+        	{
+        		printf("夏天\n");
+        	}
+        
+            return 0;
+        }
+	
+	1.4 表达式可以被赋值
+		 C语言中表达式通常不能作为左值，即不可被赋值，C++中某些表达式可以被赋值
+		 #include <iostream>
+
+		 using namespace std;
+		 int main()
+		 {
+			 int a, b = 5;
+			 (a = b) = 10;
+			 cout << "a=" << a << " b=" << b << endl;//a = 10,b=5
+		 
+			 (a < b ? a : b) = 200;
+			 cout << "a = " << a << " b = " << b << endl;//a=10,b=200
+		 
+			 return 0;
+		 }
+		 
+	
+	
+2 输入与输出
+	2.1 cin&&cout	
+		cin和cout是c++的标准输入流和输出流，在iostream中定义
+			cin    标准输入  		键盘
+			cout   标准输出  		屏幕
+			cerr   标准错误输出  	屏幕
+			clog   cerr的缓冲输出 	屏幕
+
+        #include <iostream>
+
+		using namespace std;
+		int main()
+		{
+			char name[30];
+			int age;
+			cout << "输入名字和年龄" << endl;
+			cin >> name;
+			cin >> age;
+			cerr << "faf" << endl;//直接输出到屏幕
+			cout << "名：" << name << endl;//可以重定向到文件
+			cout << "年龄：" << age << endl;
+		
+			return 0;
+		}
+	2.2 格式化
+	#include <iostream>
+	#include <iomanip>
+
+	using namespace std;
+	int main()
+	{
+		printf("%c\n%d\n%f\n", 'a', 100, 120.0);
+		printf("%5c\n%5d\n%6.2f\n", 'a', 100, 120.0);
+	
+		cout << setw(5) << 'a' << endl << setw(5) << 100 << endl
+			<< setprecision(2)<< setiosflags(ios::fixed)<< 120.002 << endl;
+		/*
+		setw()  设置字符显示宽度
+		setprecision(2)设置有效位数，
+		setiosflags(ios::fixed),以小数点的形式表示小数位数
+		setprecision(n)<<setiosflags(ios::fixed)可以设置小数点右边的位数
+		*/
+	
+		/*按进制输出*/
+		int i = 123;
+		cout << i << endl;
+		cout << dec << i << endl;//10进制
+		cout << hex << i << endl;//十六进制
+		cout << oct << i << endl;//8进制
+		
+		cout << setbase(16) << i << endl;//16进制
+		
+		/*设置填充符*/
+		cout << setw(10) << 1234 << endl;
+		cout << setw(10) << setfill('0') << 1234 << endl;
+		cout << setw(10) << setfill('-') << setiosflags(ios::right) << 1234 << endl;
+	
+		return 0;
+	}
+
+3 函数重载
+	重载规则
+		1.函数名相同
+		2.参数个数不同，参数类型不同，参数顺序不同，都可以构成重载
+		3.返回值类型不同不可以构成重载
+		
+	如：
+		void func(int a)
+		void func(char a)
+		void func(char a,int b)
+		void func(int a,char b)
+		
+		char func(int a);//则不能构成重载，与第一个·函数有冲突
+		
+	匹配规则
+		1.严格匹配，找到调用
+		2.通过隐式转换，寻求一个匹配，找到则调用
+	
+	#include <iostream>
+	#include <iomanip>
+
+	using namespace std;
+	
+	void print(int a)
+	{
+		cout << a << endl;
+	}
+	
+	void print(double a)
+	{
+		cout << a << endl;
+	}
+	
+	int main()
+	{
+		print(1);//print(int)
+		print(1.1);//print(double)
+		print('a');//print(int)
+		print(1.f);//print(double)
+		
+		return 0;
+	}
+  c++允许int到long和double，double到int和float隐式类型转换，遇到这种情况容易就容易引起歧义
+  void print(long int a)
+··{
+	cout << a << endl;
+··}
+
+··void print(double a)
+··{
+	cout << a << endl;
+··}
+print(1)就会报错，因为int可以转换为double和long类型可以通过强制类型转换解决，即print((long int)1)或print((double)1)
+	
+	3.1 重载底层实现
+		C++用name mangling技术，来修改函数名，区别参数不同的同名函数
+		如 void func(char a),重命名为func_c(char a)
+		   void func(char a,int b,double c),重命名为func_cid(char a,int b,double c)
+		
+	
+	3.2 extern "C"
+		name mangling发生在两个阶段，.cpp编译和.h声明,只有两个阶段同时进程，才能匹配调用
+		由.c文件的类库文件中的函数名在编译过程中不会发生name mangling行为，而我们在包含.c文件对应的.h文件时，.h文件会发生name manling
+		从而会链接时出错。
+			C++为了避免上述错误，重载了关键字extern,在需要避免name manling的函数前加上extern "C"就可以
+			
+			
+
+4.默认参数
+	通常，函数在调用时，形参从实参那里取得值，对于多次调用同一函数的同一实参时，可以用默认参数来实现
+		规则：默认参数的顺序从右向左，不能跳跃
+			  函数声明和定义一体时，默认参数在定义(声明)处，声明在前，定义在后，默认参数在声明处
+			  一个函数不能既做重载，又作默认参数的函数，当少写一个参数时，系统无法确认是重载还是默认参数
+			  void print(int a)
+			  {
+			  	cout << a << endl;
+			  }
+			  
+			  void print(int a,int b=10)
+			  {
+			  	cout << a << endl;
+			  }
+			  
+			  int main()
+			  {
+			  	
+			  	print(10);//会产生歧义，无法推导调用哪个函数
+			  	return 0;
+			  }
+			 
+
+5 引用
+	为已有的变量起一个别名
+	int a;
+	int &b = a;
+	规则：
+		1 引用没有定义，只是一种关系型声明，声明它和原有某一变量(实体)的关系，故而类型与原类型保持一致，且不分配内存
+		  与被引用的变量有相同的地址
+		2 声明同时必须初始化，一经声明，不可变更
+		3 可对引用再次引用，多次引用的结果是，某个变量有多个别名
+		4 &前有数据类型时是引用，其它的都是取地址
+		int main()
+		{
+			int a, b;
+			int &r = a;
+			//int &r = b;引用只能被初始化一次
+			//float &rr = b;引用类型不匹配
+			int &ra = r;//对引用再次进行引用
+		
+			cout << &a<<"  " << "  "<<&r <<"  "<< &ra;//地址都相同
+			
+			return 0;
+		}
+		
+	引用的本质是指针，C++对裸露的内存地址(指针)做了一次包装，所以再对引用取地址，建立引用的指针没有意义，所以不能定义引用的指针
+	可以定义指针数组，但不能定引用数组，可以定义数组引用
+	
+		int a,b,c;
+		int *parr[] = {&a,&b,&c};//可以定义指针数组
+		int& rarr[] = {a,b,c};//不能定义引用数组
+		int arr[] = {1,2,3};
+		int (&rarr)[3] = arr;//数组的引用
+	
+	常引用
+		const 引用可以防止对象值被随意修改，因而具有一些特性
+		1）const对象的引用必须是const的，将普通引用绑定到const对象不合法
+		2）const引用可以使用相关类型的对象(常量，非同类型的变量或表达式)初始化。
+		const int a = 2;
+		const int & ra = a;//a是const类型，所以它的引用也必须是const类型
+		
+		double val = 3.14;
+		const int &ref = val;
+		double &ref2 = val;
+		cout << ref << " " << ref2 << endl;
+		val = 4.14;
+		cout << ref << " " << ref2 << endl;
+		/*
+		输出 3  3.14
+			3  4.14
+		说明const引用不能被修改
+		*/
+
+		
+6 new/delete/operator
+	C语言中提供了malloc和free两个系统函数，完成对堆内存的申请和释放，而C++则提供了两关键字new和delete
+	6.1 new/new[]用法
+		int *p = new int;//开辟sizof(int)的内存空间
+	    int *a = new int(5);//开辟了一个大小为sizeof(int)空间，并初始化为5
+
+	/*开辟数组空间*/
+	int *b = new int[100]{ 0 };//一维数组
+	
+	int(*c)[6] = new int[5][6];//二维数组
+
+	int(*d)[5][6] = new int[3][5][6];//三维数组
+	
+	/*delete */
+	delete a;//释放单个int空间
+	delete[]b;//释放数组
+	
+
+
+8 内联函数
+	#define SQR(x) ((x)*(x))//宏定义函数，内嵌到调用代码中，避免了函数调用的开销
+						//但因为发生在预处理阶段，缺失了语法检测和有可能带来的语意差错
+
+	//内联可以避免调用时的额外开销(入栈和出栈操作)
+	//会增加代码段空间
+	inline int sqr(int x)
+	{
+		return x * x;
+	}
+	
+
+9 类型强转
+	静态类型转换
+		static_cast<目标类型> (标识符)
+	  转化规则
+		在一个方向上可以作隐式转换，在另外一个方向上可以作静态转换
+		
+		int a = 10;
+		int b = 3;
+		cout << static_cast<float>(a) / b << endl;//static_cast编译时进行类型检查
+
+		int *p;
+		void *q = NULL;
+		p = static_cast<int *>(q);
+
+		char* pp = static_cast<char*>(malloc(100));
+		
+	重解释类型转换
+		reinterpret_cast<目标类型>(标识符)
+		
+		转化规则
+			通常为操作数的位模式提供底层的重新解释，即将数据以二进制的存在形式重新解释，在双方向都不可以隐式类型转换的需要重新解释类型转换
+			int main()
+{
+	int x = 0x12343455;
+	char *p = reinterpret_cast<char*>(&x);
+	printf("%x\n", *p);
+	
+	int a[5] = { 1,2,3,4,5 };
+	cout << dec<<a << endl;
+	int ret = (reinterpret_cast<int>(a));
+	int ret1 = (reinterpret_cast<int>(a)+1);
+
+	int *q = reinterpret_cast<int *>((reinterpret_cast<int>(a) + 1));
+	/*将a的地址转换为整数,再加1再将它转换为一个整型指针,因为内存中的存储为 01 00 00 00 02 00 00 00 ;所以q指向的区域为00 00 00 02 故输出200000000*/
+	printf("%x\n", *q);
+
+	return 0;
+}
+			
+	
+	(脱)常类型转换
+	语法
+		const_cast<目标类型>(标识符)   //目标类型只能是指针或引用
+	规则：
+		用来移除对象的常量性，因为变量本身的const不能够被移除，所以一般是去除指针(或引用)的const属性，再间接修改
+		void func(int &ref)
+		{
+			cout << ref << endl;
+		}
+		
+		int main()
+		{
+			const int m = 444;
+			func(const_cast<int&>(m));//可以在使用其他人定义的函数的时候让编译通过
+		
+			
+		
+			const int x = 200;
+			int &a = const_cast<int&>(x);
+			a = 300;
+			cout << a << x << endl;//300  200
+			cout << &a << "---" << &x << endl;//输出地址相同
+		
+			int *p = const_cast<int*>(&x);
+			*p = 400;
+			cout << a << *p << endl;//400  400 
+			cout << p << "---" << &x << endl;//地址相同
+		
+			/*说明 const_cast去除的只是引用或指针的const属性，原变量还是不能被修改，指针和引用能修改*/
+		
+			return 0;
+			
+		}
+		
+
+
+10 封装
+	封装可以达到对外提供接口，屏蔽数据，对内开放数据
+	比如用struct封装的类，即知其接口，又可以直接访问其内部数据。
+	class封装的类就可以屏蔽内部数据，对外开放接口
+	封装即将数据和行为绑定在一起然后通过对象来操作
+
+	
+11 类和对象
+   11.1 构造器
+		在类对象创建时，自动调用，完成类对象的初始化，尤其是动态堆内存的申请
+		无返回值，与类名相同，可以重载，可以使用默认参数
+		默认无参空体，一经实现，默认的构造器就不存在
+   11.2 参数初始化列表
+		一般只能用来实现类的构造函数，
+		需要初始化的数据成员是对象，需要初始化const修饰的类成员，需要初始化引用成员数据时都必须使用这种方法初始化
+		
+   11.3 析构器
+		  栈对象离开其作用域，堆对象被delete都会调用析构器
+		
+		  对象销毁时，自动调用，完成销毁的善后工作，不可以重载与默认参数
+		  系统提供默认的空析构器，一经实现，就不存在
+		  
+   11.4 C++返回栈对象
+		当对象作为参数传递时，总会发生拷贝构造，返回一个对象时也会发生拷贝构造(会用拷贝构造转存到临时空间，然后将临时空间构造的对象返回)
+   	    
+		栈对象不能返回引用，多用于产生串联应用，比如连等式，栈对象不可以返回引用，除非函数调用者返回自身对象
+		
+   11.5	栈和堆上的对象及对象数组
+		new一个对象会自动调用构造函数，delete一个对象会自动调用析构函数
+		
+		如果生成的数组未初始化，则必调用无参构造器，或手动调用带参构造器
+		  
+12 成员函数的存储方式
+	 类成员的可能的组成
+	 用类去定义对象时，系统会为每一个对象分配存储空间，如果一个类包括了数据和函数，要分别为数据和函数的代码分配存储空间
+	 
+	 每个对象所占用的存储空间只是该对象的数据部分所占用的存储空间，而不包括函数代码所占用的存储空间
+	 12.1调用原理
+		所有的对象都调用公共的函数代码段，this指针区别调用相同函数的不同对象
+		
+
+13 const修饰符
+		const修饰类的成员变量，表示成员常量，不能被修改，同时它只能在初始化列表中赋值。
+		const修饰函数放在函数的声明后，实现体前。const函数不能修改成员变量
+		class A
+{
+public:
+	A() :x(199), y(299) {};
+	void dis()const {
+		//input();//不能调用非const函数，本函数不会修改，不能保证所调用的函数也不修改
+		cout << "x" << x << endl;
+		cout << "y" << y << endl;
+		//y = 200;会报错，const修饰的函数不能修改常量
+
+	}
+
+	void dis()
+	{
+		y = 200;
+	
+	}
+	void input()
+	{
+		cin >> y;
+	}
+
+private:
+	const int x;
+	int y;
+};
+
+
+int main()
+{
+	A a;
+	a.dis();
+
+	return 0;
+	
+}
+
+	 
+	 
+
+	 
+14. static
+		
+      静态成员变量只存储一份供所有对象共用。所以在所有对象中都可以共享它，它并未包含在类里面
+	  静态函数只能访问静态成员，因为非静态成员函数，在调用时this指针被当作参数传进，而静态成员函数属于类，不属于对象，没有this指针
+	  静态成员函数在于管理静态数据成员，完成对静态数据成员的封装
+	  
+	  如果一个类成员，既要实现共享，又要实现不可改变，就可以用static const修饰
+	  
+	  
+	
+
+
+			
+		
+        

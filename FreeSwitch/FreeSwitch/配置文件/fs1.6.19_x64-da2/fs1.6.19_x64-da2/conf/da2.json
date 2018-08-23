@@ -1,0 +1,12 @@
+{
+	"da" : 
+	{
+		"connect" : 
+		{
+			"addr" : "127.0.0.1",
+			"port" : 9977,
+			"reConnectInterval" : 15000,
+			"timer" : 5000
+		}
+	}
+}

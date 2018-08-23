@@ -1,0 +1,1 @@
+g++ -o "/root/projects/TestClient/bin/x64/Debug/TestClient.out" -Wl,--no-undefined -Wl,-L/usr/lib -Wl,-L/usr/lib/ -Wl,-z,relro -Wl,-z,now -Wl,-z,noexecstack -lpthread /root/projects/TestClient/obj/x64/Debug/main.o -lesl

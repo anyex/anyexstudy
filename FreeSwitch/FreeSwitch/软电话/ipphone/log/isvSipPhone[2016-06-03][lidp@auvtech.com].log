@@ -1,0 +1,50 @@
+2016-6-3 17:3:41.275	
+
+******************************************
+
+
+2016-6-3 17:3:41.279	SipPhone Trace App Log Trace 2016/6/3 17:03:41
+
+
+2016-6-3 17:3:41.281	SipPhone Log Start!!!!!!!
+2016-6-3 17:3:41.282	SipPhone Log windows pointer 0018EF10!!!!!!!
+2016-6-3 17:3:41.283	Success_InParasfromCapi!
+2016-6-3 17:3:41.284	Success_Create SipPhone CS Interface!
+2016-6-3 17:3:41.350	Success_CSInterfaceInit!
+2016-6-3 17:3:41.708	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-6-3 17:3:41.709	Mainproc Login Begin!
+2016-6-3 17:3:41.854	Mainproc Login End!
+2016-6-3 17:3:41.864	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-6-3 17:3:41.864	Mainproc Login Begin!
+2016-6-3 17:3:41.865	EncryptRtpPort:0 SignalEncrypt:0
+2016-6-3 17:3:49.923	*** Mainproc Begin*** method = /cs/sipphone/Logout/800006/1000
+2016-6-3 17:3:49.925	Mainproc Logout Begin!
+2016-6-3 17:3:51.333	Mainproc Logout End!
+2016-6-3 17:3:51.651	*** DllExit Begin***
+2016-6-3 17:3:51.653	*** DllExit Begining***
+2016-6-3 17:3:51.654	*** DllExit End***
+2016-6-3 17:3:52.180	
+
+******************************************
+
+
+2016-6-3 17:3:52.181	SipPhone Trace App Log Trace 2016/6/3 17:03:52
+
+
+2016-6-3 17:3:52.183	SipPhone Log Start!!!!!!!
+2016-6-3 17:3:52.184	SipPhone Log windows pointer 0018EF10!!!!!!!
+2016-6-3 17:3:52.185	Success_InParasfromCapi!
+2016-6-3 17:3:52.186	Success_Create SipPhone CS Interface!
+2016-6-3 17:3:52.188	Success_CSInterfaceInit!
+2016-6-3 17:3:52.611	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-6-3 17:3:52.612	Mainproc Login Begin!
+2016-6-3 17:3:52.678	Mainproc Login End!
+2016-6-3 17:3:52.679	*** Mainproc Begin*** method = /cs/sipphone/Login/800006/1000
+2016-6-3 17:3:52.679	Mainproc Login Begin!
+2016-6-3 17:3:52.679	EncryptRtpPort:0 SignalEncrypt:0
+2016-6-3 17:34:53.861	*** Mainproc Begin*** method = /cs/sipphone/Logout/800006/1000
+2016-6-3 17:34:53.863	Mainproc Logout Begin!
+2016-6-3 17:34:55.359	Mainproc Logout End!
+2016-6-3 17:34:55.669	*** DllExit Begin***
+2016-6-3 17:34:55.671	*** DllExit Begining***
+2016-6-3 17:34:55.672	*** DllExit End***

@@ -1,0 +1,141 @@
+/*
+ * Stock.cpp
+ *
+ *  Created on: 2010-1-9
+ *      Author: kwarph
+ */
+
+#include <iostream>
+#include <cstdlib>
+#include <cstdio>
+
+#include "Stock.h"
+
+int StockSystem::handleSelection(const std::string& prompt, const int& end,
+        const int& start) {
+    using namespace StdForward;
+
+    cout << prompt;
+    string input;
+    cin.clear();
+    cin >> input;
+
+    int select;
+    if (!std::isdigit(input[0])) {
+        select = -1;
+    } else {
+        select = std::atoi(input.c_str());
+    }
+
+    if (select < start || end < select) {
+        cout << "Sorry, invalid selection: " << input << endl;
+        return handleSelection(prompt, end, start); // Don't forget the "return"!
+    }
+    cout << endl;
+    return select;
+}
+
+/**
+ * @brief Print all stocks in an array.
+ */
+void StockSystem::listStocks(Stock stocks[], const int& stockCount) {
+    using namespace StdForward;
+
+    cout << "\tNo.\tCODE\tVALUE\n";
+    cout << "\t----------------------\n";
+    for (int i = 0; i < stockCount; ++i) {
+        cout << '\t' << i + 1 << '\t' << stocks[i].code << '\t'
+                << stocks[i].value << endl;
+    }
+    cout << "\t----------------------\n";
+}
+
+/**
+ * @brief Print the specified stock.
+ */
+void StockSystem::listStock(const Stock& stock, const int& num) {
+    using namespace StdForward;
+
+    cout << "\tNo.\tCODE\tVALUE\n";
+    cout << "\t----------------------\n";
+    cout << '\t' << num << '\t' << stock.code << '\t' << stock.value << endl;
+    cout << "\t----------------------\n";
+}
+
+/**
+ * @brief Update the specified stock.
+ */
+void StockSystem::updateStock(Stock& stock, const int& num) {
+    using namespace StdForward;
+
+    string newVal;
+    cin >> newVal;
+    double nv = 0;
+    if (!cin || 0 == (nv = std::atof(newVal.c_str()))) {
+        cout << "Sorry, invalid value: " << newVal << endl;
+        cout << "Please enter the new value of stock " << stock.code << ": ";
+        cin.clear();
+        return updateStock(stock, num);
+    } else {
+        cout << "Value of stock " << stock.code << " will be changed to " << nv
+                << endl;
+        cout << "Are you sure?[y|n] ";
+
+        string as;
+        cin >> as;
+        if ("y" == as || "Y" == as) {
+            stock.value = nv;
+            cout << "Info of stock " << stock.code << " after changed:" << endl;
+            listStock(stock, num);
+        } else {
+            cout << "Changed nothing.\n";
+        }
+    }
+}
+
+void StockSystem::updateStocks(Stock stocks[], const int& stockCount) {
+    listStocks(stocks, stockCount);
+    char prompt[64];
+    std::sprintf(prompt, "\nPlease pick a stock to change[%d-%d]: ", 1,
+            stockCount);
+
+    using namespace StdForward;
+
+    int select = handleSelection(prompt, stockCount);
+    cout << "Info of stock you'll change:\n";
+    listStock(stocks[select - 1], select);
+    cout << "Please enter the new value of stock " << stocks[select - 1].code
+            << ": ";
+
+    updateStock(stocks[select - 1], select);
+
+    cout << "\nWould you like to update another stock?[y|n] ";
+    string as;
+    cin >> as;
+    if ("y" == as || "Y" == as)
+        return updateStocks(stocks, stockCount);
+}
+
+bool StockSystem::handleCommands(Stock stocks[], const int& stockCount) {
+    using namespace StdForward;
+
+    cout << "\n\t      Operations";
+    cout << "\n\t**********************\n";
+    cout << "\t[1] List all stocks.\n";
+    cout << "\t[2] Update stock.\n";
+    cout << "\t[3] Quit.\n";
+    cout << "\t**********************\n\n";
+    int select = handleSelection("Please pick an operation number[1-3]: ", 3);
+
+    switch (select) {
+    case 1:
+        listStocks(stocks, stockCount);
+        break;
+    case 2:
+        updateStocks(stocks, stockCount);
+        break;
+    case 3:
+        return false; // return false to quit.
+    }
+    return true;
+}

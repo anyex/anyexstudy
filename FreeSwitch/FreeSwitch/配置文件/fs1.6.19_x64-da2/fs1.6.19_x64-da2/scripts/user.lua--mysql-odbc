@@ -1,0 +1,43 @@
+﻿local req_domain = params:getHeader("domain")
+local req_key    = params:getHeader("key")
+local req_user   = params:getHeader("user")
+
+local dbh = freeswitch.Dbh("mysql","root","111111")
+
+if dbh:connected() == false then
+  freeswitch.consoleLog("notice", "user.lua cannot connect to database" .. dsn .. "\n")
+  return
+end
+  
+--找不到分机号，则打印如下信息
+ XML_STRING =
+[[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type=" freeswitch/xml"/>
+===========Can't find user: ]] .. req_user .. [[===========
+]]
+
+local my_query = string.format("select iploginpassword from plt_extension where code='%s' limit 1", req_user)
+assert (dbh:query(my_query, function(u) -- there will be only 0 or 1 iteration (limit 1)
+--freeswitch.consoleLog("warning", "login:" .. u.iploginpassword .. ";mysql:" .. u.iploginpassword .. "\n")
+  XML_STRING =
+[[<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type=" freeswitch/xml">
+  <section name="directory">
+    <domain name="]] .. req_domain .. [[">
+      <user id="]] .. req_user  .. [[" cacheable="7200">
+        <params>
+          <param name="password" value="]] .. u.iploginpassword  .. [["/>
+           <param name="dial-string" 
+value="{sip_invite_domain=${dialed_domain},
+presence_id=${dialed_user}@${dialed_domain}}${sofia_contact(${dialed_user}@${dialed_domain})}"/>
+        </params>
+        <variables>
+          <variable name="user_context" value="default"/>
+        </variables>
+      </user>
+    </domain>
+  </section>
+</document>]]
+end)) 	 
+freeswitch.consoleLog("notice", "test from user.lua, generated XML:\n" .. XML_STRING .. "\n")
+ 
